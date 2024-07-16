@@ -42,93 +42,6 @@ export default function Navbar() {
     <>
       <div className={`headerblock active${show} default${reg}`}>{""}</div>
       <div className={`${styles.wrapper} header active${show} default${reg}`}>
-        {/* <div
-          className={
-            menuOpen == true ? styles.fullMenuOpen : styles.fullMenuClosed
-          }
-        >
-          <div
-            className={menuOpen == true ? styles.closeMenu : styles.hidden}
-            onClick={handleMenu}
-          />
-          <div
-            className={
-              menuOpen == true
-                ? styles.fullMenuWrapperOpen
-                : styles.fullMenuWrapperClosed
-            }
-          >
-            <div className={styles.fullMenuTop}>
-              <div className={styles.fullMenuHeader}>
-                <Link
-                  href={"/"}
-                  target={"_top"}
-                  className={styles.titleWrapper}
-                >
-                  <Image src={`/logos/png/icon.png`}
-                    alt="Vemara Solutions"
-                    fill
-                    objectFit='contain' />
-                </Link>
-
-                <div className={styles.menuOpen} onClick={handleMenu}>
-                  <span className={styles.fullMenuClose}>Close</span>
-                </div>
-              </div>
-              <Link
-                className={styles.fullMenuItem}
-                href={"/portfolio"}
-                target={"_top"}
-              >
-                <span className="titleSmall">Portfolio</span>
-                <span className={styles.fullMenuItemDescription}>
-                  Explore Selected Work
-                </span>
-              </Link>
-              <Link
-                className={styles.fullMenuItem}
-                href={"/services"}
-                target={"_top"}
-              >
-                <span className="titleSmall">Services</span>
-                <span className={styles.fullMenuItemDescription}>
-                  Flexible and Scalable Solutions
-                </span>
-              </Link>
-              <Link
-                className={styles.fullMenuItem}
-                href={"/about"}
-                target={"_top"}
-              >
-                <span className="titleSmall">About</span>
-                <span className={styles.fullMenuItemDescription}>
-                  Building Digital Presences
-                </span>
-              </Link>
-              <Link
-                className={styles.fullMenuItem}
-                href={"/blog"}
-                target={"_top"}
-              >
-                <span className="titleSmall">Blog</span>
-                <span className={styles.fullMenuItemDescription}>
-                  Insights and Advice
-                </span>
-              </Link>
-              <Link
-                className={styles.fullMenuItem}
-                href={"/contact"}
-                target={"_top"}
-              >
-                <span className="titleSmall">Contact</span>
-                <span className={styles.fullMenuItemDescription}>
-                  New Business and Inquiries
-                </span>
-              </Link>
-            </div>
-          </div>
-        </div> */}
-
         <div className={styles.topWrapper}>
           <div className={styles.topContainer}>
             <div className={styles.menuOpen} onClick={handleMenu}>
@@ -139,8 +52,6 @@ export default function Navbar() {
               />
             </div>
             <div className={styles.titleDesktopWrapper}>
-
-
               <Link href={"/"} target={"_top"} className={styles.titleWrapper}>
                 <Image src={`/logos/png/logo__side--white.png`}
                   alt="Vemara Solutions"
@@ -183,40 +94,6 @@ export default function Navbar() {
                 objectFit='contain'
               />
             </div>
-
-
-            {/* <div className={styles.menuDesktop}>
-            <Link
-              className={styles.menuButton}
-              href={"/portfolio"}
-              target={"_top"}
-            >
-              <span className={styles.menuText}>Portfolio</span>
-            </Link>
-            <Link
-              className={styles.menuButton}
-              href={"/services"}
-              target={"_top"}
-            >
-              <span className={styles.menuText}>Services</span>
-            </Link>
-            <Link className={styles.menuButton} href={"/about"} target={"_top"}>
-              <span className={styles.menuText}>About</span>
-            </Link>
-            <Link className={styles.menuButton} href={"/blog"} target={"_top"}>
-              <span className={styles.menuText}>Blog</span>
-            </Link>
-            <Link
-              className={styles.menuButton}
-              href={"/contact"}
-              target={"_top"}
-            >
-              <span className={styles.menuText}>Contact</span>
-            </Link>
-          </div> */}
-            {/* <Link className={styles.cta} target="_top" href="/contact">
-            <span className={styles.ctaText}>Get Started</span>
-          </Link> */}
           </div>
         </div>
         <div className={styles.mobileButtonsWrapper}>
@@ -229,7 +106,6 @@ export default function Navbar() {
             <div>
               Schedule a call
             </div>
-
           </div>
         </div>
       </div>
