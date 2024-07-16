@@ -215,7 +215,7 @@
   margin-right: -5.5px;
   margin-left: 0px;
 }
-@media screen and (min-width: 550px) {
+@media screen and (min-width: 500px) {
   .fullMenuWrapperOpen,
   .fullMenuWrapperClosed {
     padding-left: 40px;
@@ -237,7 +237,7 @@
     margin-left: 0px;
   }
 }
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 500px) {
   .container {
     height: 48px;
     max-width: var(--max-width);
