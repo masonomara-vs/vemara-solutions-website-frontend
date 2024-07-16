@@ -42,62 +42,29 @@ export default async function ClientIndex() {
     <>
       <Breadcrumbs firstTitle='Home' firstLink="/" secondTitle="Work" />
       <Header label="Work" title="Creating intuitive, creative, and scalable solutions with industry-leading technology." subtitle="We have over 20 active clients with an average relationship of more than a year and a 96% retention rate." />
-      <div className={styles.clientsContainer}>
-        {clients.map((client) => {
-          // Extract dimensions for whiteLogo
-          const whiteLogoUrl = urlFor(client?.whiteLogo)?.url();
-          const whiteLogoDimensions = whiteLogoUrl ? extractDimensions(whiteLogoUrl) : null;
+      <div className={styles.clientsWrapper}>
+        <div className={styles.clientsContainer}>
+          {clients.map((client) => {
+            return (
+              <div
+                key={client._id}
+                className={styles.clientLinkContainer}
 
-          return (
-            <Link
-              key={client._id}
-              className={styles.clientLinkWrapper}
-              href={`/clients/${client.slug.current}`}
-              style={{
-                backgroundImage: `url(${urlFor(client?.primaryImage)?.url()})`,
-              }}
-            >
-              <div className={styles.clientLinkOverlay} />
-              <div className={styles.clientLinkContainer}>
-                <div className={styles.logoWrapper} style={{
-                  aspectRatio: `${whiteLogoDimensions?.width} / ${whiteLogoDimensions?.height}`
-                }}>
-                  <div className={styles.logoContainer} style={{
-                    aspectRatio: `${whiteLogoDimensions?.width} / ${whiteLogoDimensions?.height}`, position: 'relative',
-
-                  }}>
-                    <Image
-                      src={`${urlFor(client?.whiteLogo)?.url()}`}
-                      alt={`${client?.name}` || "Client"}
-                      fill
-                      objectFit='contain'
-                    />
-                  </div>
-                </div>
-                <div className={styles.clientLinkDescription}>
-                  {client?.overview}
-                </div>
-                <div className={styles.clientLinkButtonWrapper}>
-
-
-                  <div className={styles.clientLinkButtonText}>
-                    Read More
-                  </div>
-
-                  <Image className={styles.clientLinkButtonArrow} src={`/right-chevron.png`}
-                    alt={"arrow"}
-                    height={11}
-                    width={5.5}
-                  >
-
-                  </Image>
+              >
+                <div className={styles.clientLinkImage} style={{
+                  backgroundImage: `url(${urlFor(client?.primaryImage)?.url()})`,
+                }} />
+                <div className={styles.clientInformation}>
+                  <div className={styles.clientName}>{client?.name}</div>
+                  <div className={styles.clientOverview}>{client?.overview}</div>
+                  <div className={styles.clientActionWrapper}><Link className={styles.clientAction} target="_top" href={`/work/${client.slug.current}`} >
+                    <span>View more</span><Image height={12.87} width={12.87} src="clientActionArrow.svg" priority alt=""></Image>
+                  </Link ></div>
                 </div>
               </div>
-            </Link>
-
-          );
-        })}
-
+            );
+          })}
+        </div>
       </div >
     </>
   )
