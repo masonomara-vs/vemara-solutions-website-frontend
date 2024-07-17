@@ -123,15 +123,16 @@
   margin-top: 2px;
 }
 .titleWrapper {
-  height: 24px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 104.74px;
+  width: 127.07px;
   margin-left: -3px;
   position: relative;
   overflow: hidden;
 }
+
 .topWrapper {
   display: flex;
   flex-direction: row;
@@ -139,8 +140,9 @@
   align-items: center;
   background: var(--foreground);
   width: 100%;
-  height: 48px;
+  height: 56px;
 }
+
 .topContainer {
   display: flex;
   flex-direction: row;
@@ -237,7 +239,7 @@
     margin-left: 0px;
   }
 }
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 740px) {
   .container {
     height: 48px;
     max-width: var(--max-width);
@@ -299,25 +301,36 @@
     cursor: pointer;
   }
   .desktopMenuLinks {
-    flex: 1;
     display: flex;
-    gap: 10px;
-    justify-content: center;
-  }
-  .desktopButtonLinks {
-    flex: 1;
-    display: flex;
-    gap: 10px;
+    gap: 20px;
     justify-content: flex-end;
-    align-items: center;
+    flex: 1;
+    padding: 0px 0px;
   }
+
   .titleDesktopWrapper {
     display: flex;
     align-items: center;
-    flex: 1;
+
     justify-content: flex-start;
   }
   .mobileButtonsWrapper {
     display: none;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .desktopButtonLinks {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .desktopMenuLinks {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+    flex: 1;
+    padding: 0px 24px;
   }
 }
