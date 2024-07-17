@@ -64,13 +64,16 @@ export default function Navbar() {
                 Work
               </div>
               <div className={"button textButtonDark"}>
-                Solutions
+                Services
               </div>
               <div className={"button textButtonDark"}>
                 About
               </div>
               <div className={"button textButtonDark"}>
                 Careers
+              </div>
+              <div className={"button textButtonDark"}>
+                Contact
               </div>
             </div>
             <div className={styles.desktopButtonLinks}>
