@@ -48,7 +48,7 @@ export default function Navbar() {
               <Image src={`/menu-icon.png`}
                 alt="Open"
                 fill
-                objectFit='contain'
+                style={{ objectFit: 'contain' }}
               />
             </div>
             <div className={styles.titleDesktopWrapper}>
@@ -56,7 +56,7 @@ export default function Navbar() {
                 <Image src={`/logos/png/logo__side--white.png`}
                   alt="Vemara Solutions"
                   fill
-                  objectFit='contain' />
+                  style={{ objectFit: 'contain' }} />
               </Link>
             </div>
             <div className={styles.desktopMenuLinks}>
@@ -94,7 +94,7 @@ export default function Navbar() {
               <Image src={`/menu-icon.png`}
                 alt="Open"
                 fill
-                objectFit='contain'
+                style={{ objectFit: 'contain' }}
               />
             </div>
           </div>
