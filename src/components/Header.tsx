@@ -6,10 +6,10 @@ export default function Header({ label, title, subtitle }: { label: string, titl
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        <h1 className={styles.label}>{label}</h1>
+        <h1 className={`location ${styles.label}`}>{label}</h1>
         <div className={styles.contentContainer}>
-          <p className={styles.title}>{title}</p>
-          <p className={styles.subtitle}>{subtitle}</p>
+          <p className={`title ${styles.title}`}>{title}</p>
+          <p className={`subtitle ${styles.subtitle}`}>{subtitle}</p>
         </div>
       </div>
     </div>
