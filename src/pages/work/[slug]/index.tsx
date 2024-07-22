@@ -1,9 +1,7 @@
-import { PortableText, type SanityDocument } from "next-sanity";
+import { type SanityDocument } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
-
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { client, sanityFetch } from "@/sanity/client";
-import Link from "next/link";
 import Image from "next/image";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import styles from "../../../styles/selectedclient.module.css";
@@ -106,13 +104,13 @@ export default async function ClientPage({
               Technology:
               {technology
                 ? technology.map((tech: any) => (
-                    <div
-                      key={tech._id}
-                      className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800 capitalize"
-                    >
-                      {tech.name}
-                    </div>
-                  ))
+                  <div
+                    key={tech._id}
+                    className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800 capitalize"
+                  >
+                    {tech.name}
+                  </div>
+                ))
                 : null}
             </div>
             <div className={styles.detailWrapper}>
@@ -175,19 +173,19 @@ export default async function ClientPage({
               Our role
               {solutions
                 ? solutionCategories.map((category: any) => (
-                    <>
-                      <h1>{category.name}</h1>
-                      {category.solutions
-                        .filter((solution: any) =>
-                          getClientSolutionIds().includes(solution._id)
-                        )
-                        .map((categorySolution: any) => (
-                          <div className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800 capitalize">
-                            {categorySolution.name}
-                          </div>
-                        ))}
-                    </>
-                  ))
+                  <>
+                    <h1>{category.name}</h1>
+                    {category.solutions
+                      .filter((solution: any) =>
+                        getClientSolutionIds().includes(solution._id)
+                      )
+                      .map((categorySolution: any) => (
+                        <div className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800 capitalize">
+                          {categorySolution.name}
+                        </div>
+                      ))}
+                  </>
+                ))
                 : null}
             </div>
           </div>
