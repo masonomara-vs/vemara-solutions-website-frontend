@@ -1,126 +1,153 @@
-.clientsWrapper {
+.wrapper {
   display: flex;
   flex-direction: column;
-  gap: 96px;
-  padding: 0px 0px 96px;
+  padding: 0px 0px 0px;
   width: 100%;
   align-items: center;
   justify-content: center;
+  margin-top: 0px;
 }
-.detailWrapper {
+.logoWrapper {
+  width: 100%;
+  height: auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 96px 16px;
+}
+.logoContainer {
+  max-width: 640px;
+  width: 100%;
+  position: relative;
+}
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--foregroundBorder);
+}
+@media screen and (min-width: 550px) {
+  .logoWrapper {
+    padding: 144px 48px;
+  }
+}
+.detailsWrapper {
+  display: flex;
+
+  width: 100%;
+  max-width: var(--max-width);
+  align-items: center;
+  justify-content: center;
+  padding: 0px 0px;
+}
+.detailsContainer {
   display: flex;
   flex-direction: column;
-  gap: 96px;
-  padding: 96px 196px;
+  justify-content: space-between;
+  width: 100%;
+  border-top: 1px solid var(--foregroundBorder);
+  border-bottom: 1px solid var(--foregroundBorder);
+}
+.details {
+  opacity: 0.6;
+  padding: 16px 16px;
+}
+@media screen and (min-width: 550px) {
+  .detailsWrapper {
+    padding: 0px 48px;
+  }
+  .detailsContainer {
+    flex-direction: row;
+  }
+  .details {
+    opacity: 0.6;
+    padding: 16px 0px;
+  }
+}
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 48px 0px 96px;
   width: 100%;
   align-items: center;
   justify-content: center;
+  margin-top: 0px;
+}
+.contentContainer {
+  padding: 0px 16px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
+}
+@media screen and (min-width: 550px) {
+  .contentWrapper {
+    padding: 80px 0px 96px;
+  }
+  .contentContainer {
+    padding: 0px 48px;
+    max-width: 960px;
+  }
+}
+.contentImageWrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  width: 100%;
+  aspect-ratio: 3/2;
+}
+.solutionsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+.solutionsArrayWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.solutionsArraysWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  margin-top: 17px;
+  max-width: 640px;
+}
+.solutionsButton {
+  display: flex;
+  height: 32px;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 44px;
+}
+.contentCopy {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
 }
 .quoteWrapper {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 0px 496px;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
+  gap: 0px;
   text-align: center;
 }
-.quoteAuthorAndTitleWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 0px 496px;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+.quote {
+  opacity: 1;
+  margin-bottom: 12px;
 }
-.authorText {
-  font-weight: "bold";
+.quoteAuthor {
+  font-weight: 600;
+  margin-bottom: 5px;
 }
-.clientsContainer {
-  max-width: var(--max-width);
-  display: flex;
-  padding: 0px 0px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 96px;
-  width: 100%;
-}
-.industryWrapper {
-  display: flex;
-  height: 48px;
-  border-top: 1px solid var(--foregroundBorder);
-  border-bottom: 1px solid var(--foregroundBorder);
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-}
-@media screen and (min-width: 500px) {
-  .clientsContainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Adjust grid columns as needed */
-    padding: 0px 48px;
-  }
-}
-.clientLinkContainer {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  z-index: 1;
-  flex-direction: column;
-  gap: 16px;
-}
-.clientLinkImage {
-  width: 100%;
-  aspect-ratio: 1/1;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border-radius: 12px;
-}
-@media screen and (min-width: 500px) {
-  .clientLinkImage {
-    aspect-ratio: 3/2;
-  }
-}
-.clientInformation {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 9px;
-  color: var(--foreground);
-}
-.clientName {
-  font-size: 15px;
-  line-height: 20px;
+.quoteAuthorTitle {
   opacity: 0.6;
-  font-weight: 500;
 }
-.clientOverview {
-  font-size: 22px;
-  line-height: 28px;
-  font-weight: 600;
-}
-.clientAction {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 48px;
-  padding: 13px 22.75px;
-  background-color: var(--foreground);
-  border-radius: 19.2px;
-  width: fit-content;
-  color: var(--background);
-  gap: 11px;
-  font-weight: 600;
-  margin-top: 9px;
-}
-.spacer {
-  padding: 250px;
+@media screen and (min-width: 550px) {
+  .solutionsArraysWrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 96px;
+    row-gap: 64px;
+  }
 }
