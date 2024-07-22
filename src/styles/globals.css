@@ -111,68 +111,6 @@ a {
   pointer-events: none;
 }
 
-.titleDisplay {
-  font-family: "EditorialRegular" !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.025em !important;
-  font-size: calc(0.19 * (100vw - 40px));
-  line-height: 97%;
-}
-.titleLarge {
-  font-family: "EditorialRegular" !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.025em !important;
-  font-size: calc(0.171 * (100vw - 40px));
-  line-height: 97%;
-}
-.titleMedium {
-  line-height: 97%;
-  font-family: "EditorialRegular" !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.025em !important;
-  font-size: calc(0.114 * (100vw - 40px));
-}
-.titleSmall {
-  font-family: "EditorialRegular" !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.025em !important;
-  font-size: calc(0.109 * (100vw - 40px));
-  line-height: 97%;
-}
-.titleTiny {
-  font-family: "EditorialRegular" !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.025em !important;
-  font-size: calc(0.075 * (100vw - 40px));
-  line-height: 97%;
-}
-.titlePageTitle {
-  font-family: "EditorialRegular" !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.025em !important;
-  line-height: 97%;
-  font-size: calc(0.19 * (100vw - 40px));
-}
-.titlePageSubtitle {
-  font-family: "EditorialRegular" !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.025em !important;
-  line-height: 97%;
-  font-size: calc(0.15 * (100vw - 40px));
-}
-.titleBlogSmall {
-  font-family: "EditorialRegular" !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.025em !important;
-  line-height: 115%;
-  font-size: 32px;
-}
-
-.italic {
-  font-family: "EditorialItalic" !important;
-  font-style: italic !important;
-}
-
 .mobile {
   display: flex;
 }
@@ -417,4 +355,8 @@ a {
     font-weight: 600;
     letter-spacing: -0.02rem;
   }
+}
+
+#__next {
+  width: 100%;
 }
