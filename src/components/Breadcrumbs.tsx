@@ -9,18 +9,18 @@ export default function Breadcrumbs({ firstTitle, firstLink, secondTitle, second
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <Link href={firstLink} target="_top" className={styles.activeLink}>
-          <div>{firstTitle}</div>
+          <div className="active">{firstTitle}</div>
         </Link>
         <Image src="breadcrumbsChevron.svg" height={8.75} width={5.4} priority alt="" />
         {secondLink ? (<Link href={secondLink} target="_top" className={styles.activeLink}>
-          <div>{secondTitle}</div>
+          <div className="active">{secondTitle}</div>
         </Link>) : (<div className={styles.inactiveLink}>
-          <div>{secondTitle}</div>
+          <div className="inactive">{secondTitle}</div>
         </div>)}
         {thirdLink && (<Image src="breadcrumbsChevron.svg" height={8.75} width={5.4} priority alt="" />
         )}
         {thirdLink && (<Link href={thirdLink} target="_top" className={styles.activeLink}>
-          <div>{thirdTitle}</div>
+          <div className="inactive">{thirdTitle}</div>
         </Link>)}
       </div>
     </div >
