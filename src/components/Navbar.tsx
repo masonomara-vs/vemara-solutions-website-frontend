@@ -134,20 +134,7 @@ export default function Navbar() {
             </div>
           </div>
         </div>
-        <div className={styles.mobileButtonsWrapper}>
-          <div
-            className={"button buttonSecondaryDark buttonSecondaryDarkSmall"}
-            style={{ maxWidth: "none" }}
-          >
-            <div>Message us</div>
-          </div>
-          <div
-            className={"button buttonPrimaryDark buttonPrimaryDarkSmall"}
-            style={{ maxWidth: "none" }}
-          >
-            <div>Schedule a call</div>
-          </div>
-        </div>
+
       </div>
     </>
   );
