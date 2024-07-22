@@ -17,11 +17,12 @@ export default function Breadcrumbs({ firstTitle, firstLink, secondTitle, second
         </Link>) : (<div className={styles.inactiveLink}>
           <div>{secondTitle}</div>
         </div>)}
-        {thirdLink && (<Image src="breadcrumbsChevron.svg" height={8.75} width={5.4} priority alt="" />
-        )}
-        {thirdLink && (<Link href={thirdLink} target="_top" className={styles.activeLink}>
+        <Image src="breadcrumbsChevron.svg" height={8.75} width={5.4} priority alt="" />
+        {thirdLink ? (<Link href={thirdLink} target="_top" className={styles.activeLink}>
           <div>{thirdTitle}</div>
-        </Link>)}
+        </Link>) : (<div className={styles.inactiveLink}>
+          <div>{thirdTitle}</div>
+        </div>)}
       </div>
     </div >
   )
