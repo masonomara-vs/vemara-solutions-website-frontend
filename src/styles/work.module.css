@@ -23,6 +23,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr; /* Adjust grid columns as needed */
     padding: 0px 48px;
+    column-gap: 64px;
   }
 }
 .clientLinkContainer {
