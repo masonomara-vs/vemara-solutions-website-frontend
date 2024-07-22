@@ -2,7 +2,7 @@ import Header from '@/components/Header'
 import React from 'react'
 import Link from "next/link";
 import { SanityDocument } from "next-sanity";
-import styles from "../../styles/clients.module.css"
+import styles from "../../styles/work.module.css"
 import { client, sanityFetch } from "@/sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
@@ -58,7 +58,7 @@ export default async function ClientIndex() {
                   <div className={`intro`}>{client?.name}</div>
                   <div className={`label`}>{client?.overview}</div>
                   <div className={styles.clientActionWrapper}><Link className={styles.clientAction} target="_top" href={`/work/${client.slug.current}`} >
-                    <span>View more</span><Image height={12.87} width={12.87} src="clientActionArrow.svg" priority alt=""></Image>
+                    <span className={`callout`}>View more</span><Image height={12.87} width={12.87} src="clientActionArrow.svg" priority alt=""></Image>
                   </Link ></div>
                 </div>
               </div>

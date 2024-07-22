@@ -291,45 +291,45 @@ a {
 
 /* font styles */
 .location {
-  font-size: 22px;
+  font-size: 20px;
   line-height: 120%;
   font-weight: 500;
   letter-spacing: -0.02rem;
   opacity: 0.6;
 }
 .title {
-  font-size: 32px;
+  font-size: 34px;
   line-height: 120%;
   font-weight: 600;
   letter-spacing: -0.02rem;
 }
 .subtitle {
-  font-size: 24px;
+  font-size: 22px;
   line-height: 135%;
   font-weight: 400;
   letter-spacing: -0.02rem;
 }
 .intro {
-  font-size: 17px;
+  font-size: 16px;
   line-height: 133%;
   font-weight: 500;
   letter-spacing: -0.02rem;
   opacity: 0.6;
 }
 .label {
-  font-size: 24px;
+  font-size: 22px;
   line-height: 120%;
   font-weight: 600;
   letter-spacing: -0.02rem;
 }
 .description {
-  font-size: 16px;
+  font-size: 15px;
   line-height: 145%;
   font-weight: 400;
   letter-spacing: -0.02rem;
 }
-.button {
-  font-size: 17px;
+.callout {
+  font-size: 16px;
   line-height: 22px;
   font-weight: 600;
   letter-spacing: -0.02rem;
@@ -365,6 +365,13 @@ a {
   letter-spacing: -0.02rem;
 }
 @media screen and (min-width: 550px) {
+  .location {
+    font-size: 22px;
+    line-height: 120%;
+    font-weight: 500;
+    letter-spacing: -0.02rem;
+    opacity: 0.6;
+  }
   .title {
     font-size: 40px;
     line-height: 120%;
@@ -385,6 +392,13 @@ a {
   }
 }
 @media screen and (min-width: 1000px) {
+  .location {
+    font-size: 24px;
+    line-height: 120%;
+    font-weight: 500;
+    letter-spacing: -0.02rem;
+    opacity: 0.6;
+  }
   .title {
     font-size: 48px;
     line-height: 120%;
@@ -392,7 +406,7 @@ a {
     letter-spacing: -0.02rem;
   }
   .subtitle {
-    font-size: 31px;
+    font-size: 34px;
     line-height: 135%;
     font-weight: 400;
     letter-spacing: -0.02rem;
