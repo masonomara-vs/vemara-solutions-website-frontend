@@ -1,4 +1,4 @@
-.wrapper {
+.breadcrumbsWrapper {
   display: flex;
   height: 48px;
   border-bottom: 1px solid var(--foregroundBorder);
@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
 }
-.container {
+.breadcrumbsContainer {
   max-width: var(--max-width);
   width: 100%;
   padding: 0px 16px;
@@ -20,7 +20,7 @@
   line-height: 20px;
 }
 @media screen and (min-width: 500px) {
-  .container {
+  .breadcrumbsContainer {
     padding: 0px 48px;
   }
 }

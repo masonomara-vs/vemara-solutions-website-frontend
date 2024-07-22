@@ -1,5 +1,4 @@
 
-import Navbar from "@/components/Navbar";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import { AnimatePresence } from 'framer-motion'
@@ -13,7 +12,6 @@ const inter = Inter({ subsets: ["latin"] });
 export default function App({ Component, pageProps, router }: AppProps) {
   return (
     <div className={inter.className}>
-      <Navbar />
       <AnimatePresence >
         <Component key={router.route} {...pageProps} />
         <Analytics />

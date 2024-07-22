@@ -10,6 +10,7 @@ import Image from 'next/image';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import { motion } from "framer-motion"
 import { fadeIn, staggerContainer } from '../utils/motion';
+import Navbar from '@/components/Navbar';
 
 const urlFor = (source: SanityImageSource, projectId: string, dataset: string) =>
   projectId && dataset
@@ -40,7 +41,7 @@ const WorkIndex = ({ clients, projectId, dataset }: { clients: SanityDocument[],
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0 }}>
-      <Breadcrumbs firstTitle='Home' firstLink="/" secondTitle="Work" />
+      <Navbar firstTitle='Home' firstLink="/" secondTitle="Work" />
       <Header label="Work" title="Creating intuitive, creative, and scalable solutions with industry-leading technology." subtitle="We have over 20 active clients with an average relationship of more than a year and a 96% retention rate." />
       <div className={styles.clientsWrapper}>
         <div className={styles.clientsContainer}>
