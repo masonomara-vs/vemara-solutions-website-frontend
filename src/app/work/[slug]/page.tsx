@@ -5,12 +5,30 @@ import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { client, sanityFetch } from "@/sanity/client";
 import Link from "next/link";
 import Image from "next/image";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import styles from "../../../styles/selectedclient.module.css";
 
 const CLIENT_QUERY = `*[
     _type == "client" &&
     slug.current == $slug
   ][0]{
   ...,
+  technology[]->{
+    name
+  },
+  solutions[]->{
+    name,
+    description,
+    _id
+  }
+}`;
+
+const SOLUTION_CATEGORY_QUERY = `*[
+  _type == "solutionCategory"]{
+    name,
+    solutions[]->{
+      ...,
+    }
 }`;
 
 const { projectId, dataset } = client.config();
@@ -30,49 +48,148 @@ export default async function ClientPage({
   });
   const {
     name,
-    slug,
-    solutions,
-    technology,
-    overview,
+    summary,
     industry,
     logo,
-    background,
+    primaryImage,
+    quote,
+    quoteAuthor,
+    quoteAuthorTitle,
+    challenge,
+    challengeImage,
+    solution,
+    solutions,
+    technology,
+    solutionImage,
   } = client;
-  const clientLogoUrl = logo
-    ? urlFor(logo)?.url()
-    : null;
+
+  const solutionCategories = await sanityFetch<SanityDocument>({
+    query: SOLUTION_CATEGORY_QUERY,
+  });
+
+  function getPhotoUrl(photo: any): string | null | undefined {
+    return photo ? urlFor(photo)?.url() : null;
+  }
+
+  function getClientSolutionIds(): any[] {
+    let ids: any[] = [];
+    solutions.map((sol: any) => ids.push(sol._id));
+    return ids;
+  }
 
   return (
-    <main className="container mx-auto grid gap-12 p-12">
-      <div className="mb-4">
-        <Link href="/">← Back to client</Link>
-      </div>
-      <div className="grid items-top gap-12 sm:grid-cols-2">
+    <main className={styles.clientsWrapper}>
+      <Breadcrumbs
+        firstTitle="Home"
+        firstLink="/"
+        secondTitle="Work"
+        secondLink="/work"
+        thirdTitle={name}
+      />
+      <div className={styles.clientsWrapper}>
         <Image
-          src={clientLogoUrl || "https://via.placeholder.com/550x310"}
+          src={getPhotoUrl(logo) || "https://via.placeholder.com/550x310"}
           alt={name || "Client"}
           className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
-          height="310"
-          width="550"
+          height="180"
+          width="720"
         />
-        <div className="flex flex-col justify-center space-y-4">
+        <div className={styles.clientsWrapper}>
           <div className="space-y-4">
-            {name ? (
-              <div className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800 capitalize">
-                {name.replace("-", " ")}
-              </div>
-            ) : null}
-            {name ? (
-              <h1 className="text-4xl font-bold tracking-tighter mb-8">
-                {name}
-              </h1>
-            ) : null}
-            {overview ? (
-              <dl className="grid grid-cols-2 gap-1 text-sm font-medium sm:gap-2 lg:text-base">
-                <dd className="font-semibold">{clientLogoUrl}</dd>
-                <dt>{overview}</dt>
-              </dl>
-            ) : null}
+            <div className={styles.industryWrapper}>
+              {industry ? (
+                <div className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800 capitalize">
+                  Industry: {industry.replace("-", " ")}
+                </div>
+              ) : null}
+              <div className={styles.spacer}></div>
+              Technology:
+              {technology
+                ? technology.map((tech: any) => (
+                    <div
+                      key={tech._id}
+                      className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800 capitalize"
+                    >
+                      {tech.name}
+                    </div>
+                  ))
+                : null}
+            </div>
+            <div className={styles.detailWrapper}>
+              {summary ? (
+                <dl className="grid grid-cols-2 gap-1 text-sm font-medium sm:gap-2 lg:text-base">
+                  <h1>{summary}</h1>
+                </dl>
+              ) : null}
+              <Image
+                src={
+                  getPhotoUrl(primaryImage) ||
+                  "https://via.placeholder.com/550x310"
+                }
+                alt={name || "Client"}
+                className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
+                height="310"
+                width="550"
+              />
+              {quote ? (
+                <dl className={styles.quoteWrapper}>
+                  <dt>{quote}</dt>
+                  <dl className={styles.quoteAuthorAndTitleWrapper}>
+                    <dt className={styles.authorText}>{quoteAuthor}</dt>
+                    <dt>{quoteAuthorTitle}</dt>
+                  </dl>
+                </dl>
+              ) : null}
+              {challenge ? (
+                <dl className="grid grid-cols-2 gap-1 text-sm font-medium sm:gap-2 lg:text-base">
+                  <dt>The challenge</dt>
+                  <dt>{challenge}</dt>
+                </dl>
+              ) : null}
+              <Image
+                src={
+                  getPhotoUrl(challengeImage) ||
+                  "https://via.placeholder.com/550x310"
+                }
+                alt={name || "Client"}
+                className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
+                height="310"
+                width="550"
+              />
+              {solution ? (
+                <dl className="grid grid-cols-2 gap-1 text-sm font-medium sm:gap-2 lg:text-base">
+                  <dt>The solution</dt>
+                  <dt>{solution}</dt>
+                </dl>
+              ) : null}
+              <Image
+                src={
+                  getPhotoUrl(solutionImage) ||
+                  "https://via.placeholder.com/550x310"
+                }
+                alt={name || "Client"}
+                className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
+                height="310"
+                width="550"
+              />
+              Our role
+              {solutions
+                ? solutionCategories.map((category: any) => (
+                    <>
+                      <h1>{category.name}</h1>
+                      {category.solutions
+                        .filter((solution: any) =>
+                          getClientSolutionIds().includes(solution._id)
+                        )
+                        .map((categorySolution: any) => (
+                          <div className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800 capitalize">
+                            {categorySolution.name}
+                          </div>
+                        ))}
+                    </>
+                  ))
+                : null}
+            </div>
           </div>
         </div>
       </div>
