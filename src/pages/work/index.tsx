@@ -75,9 +75,6 @@ const WorkIndex = ({ clients, projectId, dataset }: { clients: SanityDocument[],
 
         </div>
         <div className={`${styles.clientsContainerDesktop} desktop`}>
-
-
-
           {clients.map((client, index) => {
             return (
               <motion.div
