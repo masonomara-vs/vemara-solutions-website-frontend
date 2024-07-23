@@ -8,7 +8,7 @@
   justify-content: center;
   margin-top: 16px;
 }
-.clientsContainer {
+.clientsContainerMobile {
   max-width: var(--max-width);
   display: flex;
   padding: 0px 16px;
@@ -18,12 +18,26 @@
   gap: 96px;
   width: 100%;
 }
+.clientsContainerDesktop {
+  display: none;
+}
 @media screen and (min-width: 550px) {
-  .clientsContainer {
+  .clientsContainerDesktop {
+    max-width: var(--max-width);
+    display: flex;
+    padding: 0px 16px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 96px;
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr; /* Adjust grid columns as needed */
     padding: 0px 48px;
     column-gap: 64px;
+  }
+  .clientsContainerMobile {
+    display: none;
   }
 }
 .clientLinkContainer {

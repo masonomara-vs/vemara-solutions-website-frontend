@@ -1,3 +1,4 @@
+// pages/work/index.tsx
 import Header from '@/components/Header';
 import React from 'react';
 import Link from "next/link";
@@ -7,7 +8,7 @@ import { client, sanityFetch } from "@/sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import Image from 'next/image';
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 import { fadeIn, staggerContainer } from '../utils/motion';
 import Navbar from '@/components/Navbar';
 
@@ -34,23 +35,24 @@ export async function getStaticProps() {
   };
 }
 
-
-
 const WorkIndex = ({ clients, projectId, dataset }: { clients: SanityDocument[], projectId: string, dataset: string }) => {
-
-
   return (
-    <motion.div variants={staggerContainer(0.1, 0.2)}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0 }}>
+    <div>
       <Navbar firstTitle='Home' firstLink="/" secondTitle="Work" />
       <Header label="Work" title="Creating intuitive, creative, and scalable solutions with industry-leading technology." subtitle="We have over 20 active clients with an average relationship of more than a year and a 96% retention rate." />
       <div className={styles.clientsWrapper}>
-        <div className={styles.clientsContainer}>
+        <div className={`${styles.clientsContainerMobile} mobile`}>
+
+
+
           {clients.map((client, index) => {
             return (
-              <motion.div key={client._id} variants={fadeIn("up", "spring", 0.2 + index * 0.1, 0.8)}
+              <motion.div
+                key={client._id}
+                variants={fadeIn("up", "spring", 0, 0.8)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0 }} // Adjust amount as needed
               >
                 <div className={styles.clientLinkContainer}>
                   <div
@@ -61,7 +63,6 @@ const WorkIndex = ({ clients, projectId, dataset }: { clients: SanityDocument[],
                   />
                   <div className={styles.clientInformation}>
                     <div className={`intro`}>{client?.name}</div>
-
                     <div className={`label`}>{client?.overview}</div>
                     <div className={styles.clientActionWrapper}>
                       <Link className={styles.clientAction} target="_top" href={`/work/${client.slug.current}`} >
@@ -73,9 +74,46 @@ const WorkIndex = ({ clients, projectId, dataset }: { clients: SanityDocument[],
               </motion.div>
             );
           })}
+
+        </div>
+        <div className={`${styles.clientsContainerDesktop} desktop`}>
+
+
+
+          {clients.map((client, index) => {
+            return (
+              <motion.div
+                key={client._id}
+                variants={fadeIn("up", "spring", index % 2 === 0 ? '0.0' : '0.1', 0.8)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0 }} // Adjust amount as needed
+              >
+                <div className={styles.clientLinkContainer}>
+                  <div
+                    className={styles.clientLinkImage}
+                    style={{
+                      backgroundImage: `url(${urlFor(client?.primaryImage, projectId, dataset)?.url()})`,
+                    }}
+                  />
+                  <div className={styles.clientInformation}>
+                    <div className={`intro`}>{client?.name}</div>
+                    <div className={`label`}>{client?.overview}</div>
+                    {/* <div className={`label`}>{index % 2 === 0 ? '0.0' : '0.1'}</div> */}
+                    <div className={styles.clientActionWrapper}>
+                      <Link className={styles.clientAction} target="_top" href={`/work/${client.slug.current}`} >
+                        <span className={`callout`}>View more</span><Image height={12.87} width={12.87} src="clientActionArrow.svg" priority alt=""></Image>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
