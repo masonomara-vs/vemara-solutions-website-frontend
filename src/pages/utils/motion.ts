@@ -113,9 +113,10 @@ export const fadeIn = (
   duration: any
 ) => ({
   hidden: {
-    x: direction === "left" ? 100 : direction === "right" ? -100 : 0,
-    y: direction === "up" ? 50 : direction === "down" ? -100 : 0,
+    x: direction === "left" ? 25 : direction === "right" ? -25 : 0,
+    y: direction === "up" ? 12.5 : direction === "down" ? -25 : 0,
     opacity: 0,
+    scale: 0.98,
   },
   show: {
     x: 0,
@@ -125,8 +126,9 @@ export const fadeIn = (
       type,
       delay,
       duration,
-      ease: "easeOut",
+      ease: "cubic-bezier(0.25, 0.1, 0.25, 1)",
     },
+    scale: 1,
   },
 });
 
