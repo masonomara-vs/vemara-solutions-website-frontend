@@ -247,25 +247,25 @@ a {
   letter-spacing: -0.02rem;
 }
 @media screen and (min-width: 550px) {
-  .location {
+  /* .location {
     font-size: 22px;
     line-height: 120%;
     font-weight: 500;
     letter-spacing: -0.02rem;
     opacity: 0.6;
-  }
+  } */
   .title {
     font-size: 40px;
     line-height: 120%;
     font-weight: 600;
     letter-spacing: -0.02rem;
   }
-  .subtitle {
+  /* .subtitle {
     font-size: 25px;
     line-height: 135%;
     font-weight: 400;
     letter-spacing: -0.02rem;
-  }
+  } */
   .header {
     font-size: 32px;
     line-height: 120%;
@@ -274,25 +274,25 @@ a {
   }
 }
 @media screen and (min-width: 1000px) {
-  .location {
+  /* .location {
     font-size: 24px;
     line-height: 120%;
     font-weight: 500;
     letter-spacing: -0.02rem;
     opacity: 0.6;
-  }
+  } */
   .title {
     font-size: 48px;
     line-height: 120%;
     font-weight: 600;
     letter-spacing: -0.02rem;
   }
-  .subtitle {
+  /* .subtitle {
     font-size: 28px;
     line-height: 135%;
     font-weight: 400;
     letter-spacing: -0.02rem;
-  }
+  } */
   .header {
     font-size: 36px;
     line-height: 120%;
@@ -303,4 +303,27 @@ a {
 
 #__next {
   width: 100%;
+}
+
+.headerblock {
+  height: 104px;
+  z-index: 1000;
+}
+.headerbar {
+  height: 104px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 1000;
+  transform: translateY(0px);
+  transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.headerbar.activefalse {
+  transform: translateY(-104px);
+  transition: all 400ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.headerbar.activefalse.defaulttrue {
+  transform: translateY(0px);
+  transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }

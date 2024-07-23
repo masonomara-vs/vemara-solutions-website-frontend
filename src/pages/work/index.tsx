@@ -7,7 +7,6 @@ import { client, sanityFetch } from "@/sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import Image from 'next/image';
-import Breadcrumbs from '@/components/Breadcrumbs';
 import { motion } from "framer-motion"
 import { fadeIn, staggerContainer } from '../utils/motion';
 import Navbar from '@/components/Navbar';
@@ -21,7 +20,7 @@ export async function getStaticProps() {
   const CLIENTS_QUERY = `*[
     _type == "client"
     && defined(slug.current)
-  ]{_id, name, slug, overview, primaryImage, logo, whiteLogo}|order(name desc)`;
+  ]{_id, name, slug, overview, primaryImage, logo, whiteLogo, position }|order(position desc)`;
 
   const clients = await sanityFetch<SanityDocument[]>({ query: CLIENTS_QUERY });
   const { projectId, dataset } = client.config();
@@ -35,7 +34,11 @@ export async function getStaticProps() {
   };
 }
 
+
+
 const WorkIndex = ({ clients, projectId, dataset }: { clients: SanityDocument[], projectId: string, dataset: string }) => {
+
+
   return (
     <motion.div variants={staggerContainer(0.1, 0.2)}
       initial="hidden"
@@ -58,6 +61,7 @@ const WorkIndex = ({ clients, projectId, dataset }: { clients: SanityDocument[],
                   />
                   <div className={styles.clientInformation}>
                     <div className={`intro`}>{client?.name}</div>
+
                     <div className={`label`}>{client?.overview}</div>
                     <div className={styles.clientActionWrapper}>
                       <Link className={styles.clientAction} target="_top" href={`/work/${client.slug.current}`} >

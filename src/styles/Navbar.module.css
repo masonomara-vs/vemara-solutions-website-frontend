@@ -123,11 +123,11 @@
   margin-top: 2px;
 }
 .titleWrapper {
-  height: 28px;
+  height: 25px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 127.07px;
+  aspect-ratio: 127.07 / 28;
   margin-left: -3px;
   position: relative;
   overflow: hidden;
@@ -311,7 +311,6 @@
   .titleDesktopWrapper {
     display: flex;
     align-items: center;
-
     justify-content: flex-start;
   }
   .mobileButtonsWrapper {
@@ -342,7 +341,8 @@
   width: 100%;
   align-items: center;
   justify-content: center;
-  background-color: var(--background);
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(6px);
   z-index: 1000;
 }
 .breadcrumbsContainer {

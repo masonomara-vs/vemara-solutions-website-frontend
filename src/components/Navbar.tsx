@@ -10,7 +10,7 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const controlNavbar = () => {
-    if (window.scrollY > 48) {
+    if (window.scrollY > 208) {
       setReg(false);
     }
 
@@ -35,8 +35,9 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
 
   return (
     <>
-      <div className={`headerblock active${show} default${reg}`}>
-        <div className={`${styles.wrapper} headerbar active${show} default${reg}`}>
+      <div className={`headerblock`}></div>
+      <div className={` headerbar active${show} default${reg}`}>
+        <div className={`${styles.wrapper}`}>
           <div className={styles.topWrapper}>
             <div className={styles.topContainer}>
               <div className={styles.menuOpen} onClick={handleMenu}>
@@ -125,8 +126,8 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
               </div>
             </div>
           </div>
-        </div>
-        <div className={`${styles.breadcrumbsWrapper}  headerbar active${show} default${reg}`}>
+        </div >
+        <div className={`${styles.breadcrumbsWrapper}`}>
           <div className={styles.breadcrumbsContainer}>
             <Link href={firstLink} target="_top" className={styles.activeLink}>
               <div className="active">{firstTitle}</div>
