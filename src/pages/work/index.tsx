@@ -43,8 +43,6 @@ const WorkIndex = ({ clients, projectId, dataset }: { clients: SanityDocument[],
       <div className={styles.clientsWrapper}>
         <div className={`${styles.clientsContainerMobile} mobile`}>
 
-
-
           {clients.map((client, index) => {
             return (
               <motion.div
@@ -52,7 +50,7 @@ const WorkIndex = ({ clients, projectId, dataset }: { clients: SanityDocument[],
                 variants={fadeIn("up", "spring", 0, 0.8)}
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: true, amount: 0 }} // Adjust amount as needed
+                viewport={{ once: true, amount: 0 }}
               >
                 <div className={styles.clientLinkContainer}>
                   <div
