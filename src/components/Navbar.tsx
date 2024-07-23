@@ -3,15 +3,22 @@ import styles from "../styles/Navbar.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
-export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink, thirdTitle, thirdLink }: { firstTitle: string, firstLink: string, secondTitle: string, secondLink?: string, thirdTitle?: string, thirdLink?: string }) {
+export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink, thirdTitle, thirdLink }: { firstTitle?: string, firstLink?: string, secondTitle?: string, secondLink?: string, thirdTitle?: string, thirdLink?: string }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [show, setShow] = useState(true);
   const [reg, setReg] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
   const controlNavbar = () => {
+    if (window.scrollY < 0) {
+      setShow(true);
+      return;
+    }
+
     if (window.scrollY > 208) {
       setReg(false);
+    } else {
+      setReg(true);
     }
 
     if (window.scrollY > lastScrollY) {
