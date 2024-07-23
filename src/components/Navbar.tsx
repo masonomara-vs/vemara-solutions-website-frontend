@@ -35,29 +35,22 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
 
   return (
     <>
-      <div className={`headerblock`}></div>
-      <div className={` headerbar active${show} default${reg}`}>
+      {firstLink ? (<div className={`headerblockBreadcrumbs`}></div>) :
+        (<div className={`headerblock`}></div>)}
+      <div className={`headerbar active${show} default${reg}`}>
         <div className={`${styles.wrapper}`}>
           <div className={styles.topWrapper}>
             <div className={styles.topContainer}>
-              <div className={styles.menuOpen} onClick={handleMenu}>
-                <Image
-                  src={`/menu-icon.png`}
-                  alt="Open"
-                  fill
-                  style={{ objectFit: "contain" }}
-                />
-              </div>
-              <div className={styles.titleDesktopWrapper}>
-                <Link href={"/"} target={"_top"} className={styles.titleWrapper}>
+              <Link href={"/"} target={"_top"} className={styles.titleDesktopWrapper}>
+                <div className={styles.titleWrapper}>
                   <Image
                     src={`/logos/png/logo__side--white.png`}
                     alt="Vemara Solutions"
                     fill
                     style={{ objectFit: "contain" }}
                   />
-                </Link>
-              </div>
+                </div>
+              </Link>
               <div className={styles.desktopMenuLinks}>
                 <div className={"button textButtonDark"}>
                   <Link
@@ -113,10 +106,7 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
                   <div>Schedule a call</div>
                 </div>
               </div>
-              <div
-                className={`${styles.menuOpen} ${styles.menuFiller}`}
-                onClick={handleMenu}
-              >
+              <div className={styles.menuOpen} onClick={handleMenu}>
                 <Image
                   src={`/menu-icon.png`}
                   alt="Open"
@@ -127,31 +117,35 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
             </div>
           </div>
         </div >
-        <div className={`${styles.breadcrumbsWrapper}`}>
-          <div className={styles.breadcrumbsContainer}>
-            <Link href={firstLink} target="_top" className={styles.activeLink}>
-              <div className="active">{firstTitle}</div>
-            </Link>
-            <Image src="breadcrumbsChevron.svg" height={8.75} width={5.4} priority alt="" />
-            {secondLink ? (
-              <Link href={secondLink} target="_top" className={styles.activeLink}>
-                <div className="active">{secondTitle}</div>
+        {firstLink && (
+          <div className={`${styles.breadcrumbsWrapper} breadcrumbsCheck`}>
+            <div className={styles.breadcrumbsContainer}>
+              <Link href={firstLink} target="_top" className={styles.activeLink}>
+                <div className="active">{firstTitle}</div>
               </Link>
-            ) : (
-              <div className={styles.inactiveLink}>
-                <div className="inactive">{secondTitle}</div>
-              </div>
-            )}
-            {thirdLink && (
-              <>
-                <Image src="breadcrumbsChevron.svg" height={8.75} width={5.4} priority alt="" />
-                <Link href={thirdLink} target="_top" className={styles.activeLink}>
-                  <div className="inactive">{thirdTitle}</div>
+
+              <Image src="/breadcrumbsChevron.svg" height={8.75} width={5.4} priority alt="" />
+              {secondLink ? (
+                <Link href={secondLink} target="_top" className={styles.activeLink}>
+                  <div className="active">{secondTitle}</div>
                 </Link>
-              </>
-            )}
+              ) : (
+                <div className={styles.inactiveLink}>
+                  <div className="inactive">{secondTitle}</div>
+                </div>
+              )}
+
+              {thirdTitle && (
+                <>
+                  <Image src="/breadcrumbsChevron.svg" height={8.75} width={5.4} priority alt="" />
+                  <div className={styles.inactiveLink}>
+                    <div className="inactive">{thirdTitle}</div>
+                  </div>
+                </>
+              )}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   );
