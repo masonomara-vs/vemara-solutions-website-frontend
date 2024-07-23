@@ -43,8 +43,6 @@ const WorkIndex = ({ clients, projectId, dataset }: { clients: SanityDocument[],
       <div className={styles.clientsWrapper}>
         <div className={`${styles.clientsContainerMobile} mobile`}>
 
-
-
           {clients.map((client, index) => {
             return (
               <motion.div
@@ -52,7 +50,7 @@ const WorkIndex = ({ clients, projectId, dataset }: { clients: SanityDocument[],
                 variants={fadeIn("up", "spring", 0, 0.8)}
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: true, amount: 0 }} // Adjust amount as needed
+                viewport={{ once: true, amount: 0 }}
               >
                 <div className={styles.clientLinkContainer}>
                   <div
@@ -66,7 +64,7 @@ const WorkIndex = ({ clients, projectId, dataset }: { clients: SanityDocument[],
                     <div className={`label`}>{client?.overview}</div>
                     <div className={styles.clientActionWrapper}>
                       <Link className={styles.clientAction} target="_top" href={`/work/${client.slug.current}`} >
-                        <span className={`callout`}>View more</span><Image height={12.87} width={12.87} src="clientActionArrow.svg" priority alt=""></Image>
+                        <span className={`callout`}>View more</span><Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt=""></Image>
                       </Link>
                     </div>
                   </div>
@@ -77,9 +75,6 @@ const WorkIndex = ({ clients, projectId, dataset }: { clients: SanityDocument[],
 
         </div>
         <div className={`${styles.clientsContainerDesktop} desktop`}>
-
-
-
           {clients.map((client, index) => {
             return (
               <motion.div
@@ -102,7 +97,7 @@ const WorkIndex = ({ clients, projectId, dataset }: { clients: SanityDocument[],
                     {/* <div className={`label`}>{index % 2 === 0 ? '0.0' : '0.1'}</div> */}
                     <div className={styles.clientActionWrapper}>
                       <Link className={styles.clientAction} target="_top" href={`/work/${client.slug.current}`} >
-                        <span className={`callout`}>View more</span><Image height={12.87} width={12.87} src="clientActionArrow.svg" priority alt=""></Image>
+                        <span className={`callout`}>View more</span><Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt=""></Image>
                       </Link>
                     </div>
                   </div>

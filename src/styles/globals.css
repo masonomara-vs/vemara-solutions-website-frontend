@@ -18,12 +18,12 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden !important;
-  background: var(--background);
+  background-color: var(--foreground);
 }
 
 body {
   color: var(--primary);
-  background: var(--background);
+  background: var(--foreground);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -186,7 +186,7 @@ a {
   letter-spacing: -0.02rem;
 }
 .subtitle {
-  font-size: 22px;
+  font-size: 20px;
   line-height: 135%;
   font-weight: 400;
   letter-spacing: -0.02rem;
@@ -287,12 +287,12 @@ a {
     font-weight: 600;
     letter-spacing: -0.02rem;
   }
-  /* .subtitle {
-    font-size: 28px;
+  .subtitle {
+    font-size: 22px;
     line-height: 135%;
     font-weight: 400;
     letter-spacing: -0.02rem;
-  } */
+  }
   .header {
     font-size: 36px;
     line-height: 120%;
@@ -303,14 +303,21 @@ a {
 
 #__next {
   width: 100%;
+  background-color: var(--background);
 }
 
 .headerblock {
-  height: 104px;
+  height: 47.5px;
   z-index: 1000;
+  position: relative;
+}
+.headerblockBreadcrumbs {
+  height: 92px;
+  z-index: 1000;
+  position: relative;
 }
 .headerbar {
-  height: 104px;
+  height: 48px;
   position: fixed;
   top: 0px;
   left: 0px;
@@ -320,10 +327,103 @@ a {
   transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 .headerbar.activefalse {
-  transform: translateY(-104px);
-  transition: all 400ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  transform: translateY(-48px);
 }
-.headerbar.activefalse.defaulttrue {
+.headerbar.defaulttrue,
+.headerbar.activetrue {
+  transform: translateY(0);
+}
+.headerbar:has(.breadcrumbsCheck) {
+  height: 92px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 1000;
   transform: translateY(0px);
   transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.headerbar.activefalse:has(.breadcrumbsCheck) {
+  transform: translateY(-92px);
+}
+.headerbar.defaulttrue:has(.breadcrumbsCheck),
+.headerbar.activetrue:has(.breadcrumbsCheck) {
+  transform: translateY(0);
+}
+@media screen and (min-width: 550px) {
+  .headerblock {
+    height: 58px;
+    z-index: 1000;
+    position: relative;
+  }
+  .headerblockBreadcrumbs {
+    height: 106px;
+    z-index: 1000;
+    position: relative;
+  }
+  .headerbar {
+    height: 58px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 1000;
+    transform: translateY(0px);
+    transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  .headerbar.activefalse {
+    transform: translateY(-58px);
+  }
+  .headerbar.defaulttrue,
+  .headerbar.activetrue {
+    transform: translateY(0);
+  }
+  .headerbar:has(.breadcrumbsCheck) {
+    height: 106px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 1000;
+    transform: translateY(0px);
+    transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  .headerbar.activefalse:has(.breadcrumbsCheck) {
+    transform: translateY(-106px);
+  }
+  .headerbar.defaulttrue:has(.breadcrumbsCheck),
+  .headerbar.activetrue:has(.breadcrumbsCheck) {
+    transform: translateY(0);
+  }
+}
+
+.buttonPrimaryForeground {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  padding: 13px 22px;
+  background-color: var(--background);
+  border-radius: 19.2px;
+  width: fit-content;
+  color: var(--foreground);
+  gap: 11px;
+  font-weight: 600;
+}
+.buttonSecondaryForeground {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  padding: 13px 22px;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  border-radius: 19.2px;
+  width: fit-content;
+  color: var(--background);
+  gap: 11px;
+  font-weight: 600;
+}
+.buttonFullWidth {
+  width: 100%;
 }
