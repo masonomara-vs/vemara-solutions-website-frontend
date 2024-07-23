@@ -126,7 +126,33 @@ export const fadeIn = (
       type,
       delay,
       duration,
-      ease: "cubic-bezier(0.25, 0.1, 0.25, 1)",
+      ease: [0.25, 0.1, 0.25, 1], // Proper easing type as an array
+    },
+    scale: 1,
+  },
+});
+
+export const textFadeUp = (
+  direction: any,
+  type: any,
+  delay: any,
+  duration: any
+) => ({
+  hidden: {
+    x: direction === "left" ? 25 : direction === "right" ? -25 : 0,
+    y: direction === "up" ? 12.5 : direction === "down" ? -25 : 0,
+    opacity: 0,
+    scale: 0.98,
+  },
+  show: {
+    x: 0,
+    y: 0,
+    opacity: 1,
+    transition: {
+      type,
+      delay,
+      duration,
+      ease: [0.25, 0.1, 0.25, 1], // Proper easing type as an array
     },
     scale: 1,
   },
