@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { fadeIn } from "../utils/motion";
 import Navbar from "@/components/Navbar";
 import LinkCard from "@/components/LinkCard";
+import Image from "next/image";
 
 const ContactIndex = ({}) => {
   return (
@@ -86,16 +87,27 @@ const ContactIndex = ({}) => {
           />
         </div>
         <div className={styles.officesWrapper}>
-            <h1>Vemara Solutions Offices</h1>
-            <h1>Asbury Park, NJ</h1>
-            <div className={styles.timeWrapper}>
-              <h1>Time</h1>
-              <h1>.</h1>
-              <h1>Open</h1>
-            </div>
-            <div className={styles.addressText}>1301 Corlies Ave, Neptune City NJ 07712</div>
-            <div className={styles.addressText}>(732) 455-4515</div>
+          <h1>Vemara Solutions Offices</h1>
+          <div className={styles.officeImage}>
+            <Image
+            //cant get this working
+              src={`/logo.png`}
+              alt="Vemara Solutions"
+              fill
+              style={{ objectFit: "contain" }}
+            />
           </div>
+          <h1>Asbury Park, NJ</h1>
+          <div className={styles.timeWrapper}>
+            <h1>Time</h1>
+            <h1>.</h1>
+            <h1>Open</h1>
+          </div>
+          <div className={styles.addressText}>
+            1301 Corlies Ave, Neptune City NJ 07712
+          </div>
+          <div className={styles.addressText}>(732) 455-4515</div>
+        </div>
       </div>
     </div>
   );
