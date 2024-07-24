@@ -2,12 +2,47 @@ import Navbar from '@/components/Navbar'
 import Head from 'next/head'
 import styles from '../styles/home.module.css'
 import { motion } from "framer-motion"
-import { textFadeUp } from '@/pages/utils/motion'
+import { fadeIn, fadeInButton, textFadeUp } from '@/pages/utils/motion'
 import Link from 'next/link'
 import Image from 'next/image'
+import { SanityDocument } from "next-sanity";
+import { client, sanityFetch } from "@/sanity/client";
+import imageUrlBuilder from "@sanity/image-url";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import TechnologyCarousel from '@/components/TechnologyCarousel'
 
 
-export default function Home() {
+const urlFor = (source: SanityImageSource, projectId: string, dataset: string) =>
+  projectId && dataset
+    ? imageUrlBuilder({ projectId, dataset }).image(source)
+    : null;
+
+export async function getStaticProps() {
+  const CLIENTS_QUERY = `*[
+    _type == "client"
+    && defined(slug.current)
+  ]{_id, name, slug, overview, primaryImage, logo, whiteLogo, position }|order(position desc)`;
+
+  const TECHNOLOGY_QUERY = `*[
+    _type == "technology"
+  ]{_id, name, description, image, category, position }|order(position desc)`;
+
+  const clients = await sanityFetch<SanityDocument[]>({ query: CLIENTS_QUERY });
+  const technology = await sanityFetch<SanityDocument[]>({ query: TECHNOLOGY_QUERY });
+  const { projectId, dataset } = client.config();
+
+  return {
+    props: {
+      clients,
+      technology,
+      projectId,
+      dataset,
+    },
+  };
+}
+
+
+export default function Home({ clients, projectId, dataset, technology }: { clients: SanityDocument[], projectId: string, dataset: string, technology: any }) {
   return (
     <>
       <Head>
@@ -17,6 +52,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar />
+
       <div className={styles.heroWrapper}>
         <div>
           <div className={styles.videoBackdrop}>
@@ -43,12 +79,26 @@ export default function Home() {
               viewport={{ once: true, amount: 0 }} className={`subtitle ${styles.subtitle}`}>Access industry-leading technology strategy, design, and development for digital products and solutions.</motion.p>
           </div>
           <div className={styles.heroButtonsWrapper}>
-            <Link className="buttonPrimaryForeground buttonFullWidth" target="_top" href={`/contact`} >
-              <span className={`callout`}>Schedule a call</span><Image height={12.87} width={12.87} src="clientActionArrowBlack.svg" priority alt=""></Image>
-            </Link>
-            <Link className="buttonSecondaryForeground buttonFullWidth" target="_top" href={`/contact`} >
-              <span className={`callout`}>Message us</span><Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt=""></Image>
-            </Link>
+            <motion.div
+              variants={fadeInButton("up", "spring", .3, 0.8)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0 }} // Adjust amount as needed
+            >
+              <Link className="buttonPrimaryForeground buttonFullWidth" target="_top" href={`/contact`} >
+                <span className={`callout`}>Schedule a call</span><Image height={12.87} width={12.87} src="clientActionArrowBlack.svg" priority alt=""></Image>
+              </Link>
+            </motion.div>
+            <motion.div
+              variants={fadeInButton("up", "spring", 0.4, 0.8)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0 }} // Adjust amount as needed
+            >
+              <Link className="buttonSecondaryForeground buttonFullWidth" target="_top" href={`/contact`} >
+                <span className={`callout`}>Message us</span><Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt=""></Image>
+              </Link>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -64,6 +114,31 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <div className={styles.techWrapper}>
+        <div className={styles.techContainer}>
+          <div className={styles.headerContainerCenter}>
+            <div className={styles.headerContainerCenterText}>
+              <span className={` ${styles.headerContainerHeader} header`}>Comprehensive tech stack expertise</span>
+              <span className={` ${styles.headerContainerBody} body`}>We work with a diverse range of clients across various industries, crafting creative, high-performing products that stand out.</span>
+            </div>
+            <div className={styles.headerButtonsWrapper}>
+              <motion.div
+                variants={fadeInButton("up", "spring", 0, 0.8)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0 }} // Adjust amount as needed
+              >
+                <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/contact`} >
+                  <span className={`callout`}>View all technologies</span><Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt=""></Image>
+                </Link>
+              </motion.div>
+            </div>
+          </div>
+          <TechnologyCarousel technology={technology} />
+        </div>
+      </div>
+
+
     </>
   )
 }

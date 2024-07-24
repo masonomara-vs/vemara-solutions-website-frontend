@@ -11,6 +11,7 @@
   flex-wrap: nowrap;
   gap: 17px;
   margin-bottom: 17px;
+  width: fit-content;
 }
 
 .carouselItem {
@@ -18,21 +19,29 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 17px;
+  padding: 12px 17px;
   background-color: var(--background);
   border-radius: 12px;
   border: 1px solid rgba(7, 8, 8, 0.1);
 }
 
 .techName {
-  font-size: 22px;
+  font-size: 24px;
   line-height: 120%;
   font-weight: 600;
   letter-spacing: -0.02rem;
 }
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 550px) {
   .techName {
-    font-size: 24px;
+    font-size: 26px;
+    line-height: 120%;
+    font-weight: 600;
+    letter-spacing: -0.02rem;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .techName {
+    font-size: 28px;
     line-height: 120%;
     font-weight: 600;
     letter-spacing: -0.02rem;

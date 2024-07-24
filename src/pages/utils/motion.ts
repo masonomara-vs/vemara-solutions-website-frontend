@@ -148,6 +148,32 @@ export const fadeIn = (
     scale: 1,
   },
 });
+export const fadeInButton = (
+  direction: any,
+  type: any,
+  delay: any,
+  duration: any
+) => ({
+  hidden: {
+    x: direction === "left" ? 24 : direction === "right" ? -24 : 0,
+    y: direction === "up" ? 24 : direction === "down" ? -24 : 0,
+    opacity: 0,
+    scale: 0.98,
+  },
+  show: {
+    x: 0,
+    y: 0,
+    opacity: 1,
+    transition: {
+      type,
+      delay,
+      duration,
+      bounce: 0,
+      ease: [0.17, 0.67, 0.83, 0.67], // Proper easing type as an array
+    },
+    scale: 1,
+  },
+});
 
 export const textFadeUp = (
   direction: any,
