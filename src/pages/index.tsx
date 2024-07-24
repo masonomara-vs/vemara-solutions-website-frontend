@@ -119,9 +119,7 @@ const WorkSection = ({ clients, projectId, dataset }: { clients: any, projectId:
           </motion.div>
         </div>
       </div>
-
       <WorkCarousel clients={clients} projectId={projectId} dataset={dataset} />
-
     </div>
   </div>
 )

@@ -1,5 +1,4 @@
 import Header from '@/components/Header';
-import React from 'react';
 import Link from "next/link";
 import { SanityDocument } from "next-sanity";
 import styles from "../../styles/work.module.css";
@@ -8,7 +7,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import Image from 'next/image';
 import { motion } from "framer-motion";
-import { fadeIn, staggerContainer } from '../utils/motion';
+import { fadeIn } from '../utils/motion';
 import Navbar from '@/components/Navbar';
 
 const urlFor = (source: SanityImageSource, projectId: string, dataset: string) =>
