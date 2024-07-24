@@ -47,19 +47,19 @@ export async function getStaticProps() {
 
 const HeroSection = () => (
   <div className={styles.heroWrapper}>
-    <div>
-      <div className={styles.videoBackdrop}>
-      </div>
-      <video
-        src={"opnsrc.mp4"}
-        autoPlay
-        playsInline
-        muted
-        loop
-        controls={false}
-        className={styles.video}
-      />
+
+    <div className={styles.videoBackdrop}>
     </div>
+    <video
+      src={"opnsrc.mp4"}
+      autoPlay
+      playsInline
+      muted
+      loop
+      controls={false}
+      className={styles.video}
+    />
+
     <div className={styles.heroContainer}>
       <div className={styles.heroContentContainer}>
         <motion.p variants={textFadeUp("up", "spring", 0, 0.6)}
@@ -118,7 +118,9 @@ const WorkSection = ({ clients, projectId, dataset }: { clients: any, projectId:
           </motion.div>
         </div>
       </div>
+
       <WorkCarousel clients={clients} projectId={projectId} dataset={dataset} />
+
     </div>
   </div>
 )
@@ -220,7 +222,10 @@ const TechSection = ({ technology }: { technology: any }) => (
           </motion.div>
         </div>
       </div>
+
+
       <TechnologyCarousel technology={technology} />
+
     </div>
   </div>
 )

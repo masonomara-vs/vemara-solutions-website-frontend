@@ -29,7 +29,7 @@ interface WorkCarouselProps {
 }
 
 const WorkCarousel: React.FC<WorkCarouselProps> = ({ clients, projectId, dataset }) => {
-  const baseVelocity = 0.5;
+  const baseVelocity = .33;
   const baseX = useMotionValue(0);
   const { scrollY } = useScroll();
   const scrollVelocity = useVelocity(scrollY);
@@ -52,8 +52,8 @@ const WorkCarousel: React.FC<WorkCarouselProps> = ({ clients, projectId, dataset
 
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
 
-    // Keep direction constant
-    moveBy += directionFactor.current * moveBy * velocityFactor.get();
+    velocityFactor.get() < 0 ? (moveBy += directionFactor.current * moveBy * velocityFactor.get() * -1) : (moveBy += directionFactor.current * moveBy * velocityFactor.get())
+
     baseX.set(baseX.get() + moveBy);
   });
 
@@ -73,13 +73,9 @@ const WorkCarousel: React.FC<WorkCarouselProps> = ({ clients, projectId, dataset
                 }}
               />
               <div className={styles.clientInformation}>
-                <div className={`intro`}>{client.name}</div>
-                <div className={`label`}>{client.overview}</div>
-                <div
-                  className={styles.clientActionWrapper}
-                  onMouseEnter={() => setHoveredAction(true)}
-                  onMouseLeave={() => setHoveredAction(false)}
-                >
+                <div className={`intro`}><span>{client?.name}</span></div>
+                <div className={`label`}><span>{client.overview}</span></div>
+                <div className={styles.clientActionWrapper}>
                   <Link className="buttonPrimaryBackground" target="_top" href={`/work/${client.slug.current}`}>
                     <span className={`callout`}>Read more</span>
                     <Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt="" />
@@ -97,8 +93,28 @@ const WorkCarousel: React.FC<WorkCarouselProps> = ({ clients, projectId, dataset
                 }}
               />
               <div className={styles.clientInformation}>
-                <div className={`intro`}>{client.name}</div>
-                <div className={`label`}>{client.overview}</div>
+                <div className={`intro`}><span>{client?.name}</span></div>
+                <div className={`label`}><span>{client.overview}</span></div>
+                <div className={styles.clientActionWrapper}>
+                  <Link className="buttonPrimaryBackground" target="_top" href={`/work/${client.slug.current}`}>
+                    <span className={`callout`}>Read more</span>
+                    <Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt="" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+          {clients.map((client) => (
+            <div className={styles.clientLinkContainer} key={client._id}>
+              <div
+                className={styles.clientLinkImage}
+                style={{
+                  backgroundImage: `url(${urlFor(client.primaryImage, projectId, dataset)?.url()})`,
+                }}
+              />
+              <div className={styles.clientInformation}>
+                <div className={`intro`}><span>{client?.name}</span></div>
+                <div className={`label`}><span>{client.overview}</span></div>
                 <div className={styles.clientActionWrapper}>
                   <Link className="buttonPrimaryBackground" target="_top" href={`/work/${client.slug.current}`}>
                     <span className={`callout`}>Read more</span>
