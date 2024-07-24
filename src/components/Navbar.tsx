@@ -43,74 +43,112 @@ export default function Navbar() {
         <div className={styles.topWrapper}>
           <div className={styles.topContainer}>
             <div className={styles.menuOpen} onClick={handleMenu}>
-              <Image src={`/menu-icon.png`}
+              <Image
+                src={`/menu-icon.png`}
                 alt="Open"
                 fill
-                style={{ objectFit: 'contain' }}
+                style={{ objectFit: "contain" }}
               />
             </div>
             <div className={styles.titleDesktopWrapper}>
               <Link href={"/"} target={"_top"} className={styles.titleWrapper}>
-                <Image src={`/logos/png/logo__side--white.png`}
+                <Image
+                  src={`/logos/png/logo__side--white.png`}
                   alt="Vemara Solutions"
                   fill
-                  style={{ objectFit: 'contain' }} />
+                  style={{ objectFit: "contain" }}
+                />
               </Link>
             </div>
             <div className={styles.desktopMenuLinks}>
-              <Link className={"button textButtonDark"} href={'/work'} target={"_top"} >
-                Work
-              </Link>
               <div className={"button textButtonDark"}>
-                Services
+                <Link
+                  href={"/work"}
+                  target={"_top"}
+                  className={styles.clientsWrapper}
+                >
+                  Work
+                </Link>
               </div>
               <div className={"button textButtonDark"}>
-                About
+                <Link
+                  href={"/services"}
+                  target={"_top"}
+                  className={styles.clientsWrapper}
+                >
+                  Services
+                </Link>
               </div>
               <div className={"button textButtonDark"}>
-                Careers
+                <Link
+                  href={"/about"}
+                  target={"_top"}
+                  className={styles.clientsWrapper}
+                >
+                  About
+                </Link>
               </div>
               <div className={"button textButtonDark"}>
-                Contact
+                <Link
+                  href={"/careers"}
+                  target={"_top"}
+                  className={styles.clientsWrapper}
+                >
+                  Careers
+                </Link>
+              </div>
+              <div className={"button textButtonDark"}>
+                <Link
+                  href={"/contact"}
+                  target={"_top"}
+                  className={styles.clientsWrapper}
+                >
+                  Contact
+                </Link>
               </div>
             </div>
             <div className={styles.desktopButtonLinks}>
-              <div className={"button buttonSecondaryDark buttonSecondaryDarkSmall"} >
-                <div>
-                  Message us
-                </div>
+              <div
+                className={
+                  "button buttonSecondaryDark buttonSecondaryDarkSmall"
+                }
+              >
+                <div>Message us</div>
               </div>
-              <div className={"button buttonPrimaryDark buttonPrimaryDarkSmall"}>
-                <div>
-                  Schedule a call
-                </div>
-
+              <div
+                className={"button buttonPrimaryDark buttonPrimaryDarkSmall"}
+              >
+                <div>Schedule a call</div>
               </div>
-
             </div>
-            <div className={`${styles.menuOpen} ${styles.menuFiller}`} onClick={handleMenu}>
-              <Image src={`/menu-icon.png`}
+            <div
+              className={`${styles.menuOpen} ${styles.menuFiller}`}
+              onClick={handleMenu}
+            >
+              <Image
+                src={`/menu-icon.png`}
                 alt="Open"
                 fill
-                style={{ objectFit: 'contain' }}
+                style={{ objectFit: "contain" }}
               />
             </div>
           </div>
         </div>
         <div className={styles.mobileButtonsWrapper}>
-          <div className={"button buttonSecondaryDark buttonSecondaryDarkSmall"} style={{ maxWidth: 'none' }}>
-            <div>
-              Message us
-            </div>
+          <div
+            className={"button buttonSecondaryDark buttonSecondaryDarkSmall"}
+            style={{ maxWidth: "none" }}
+          >
+            <div>Message us</div>
           </div>
-          <div className={"button buttonPrimaryDark buttonPrimaryDarkSmall"} style={{ maxWidth: 'none' }}>
-            <div>
-              Schedule a call
-            </div>
+          <div
+            className={"button buttonPrimaryDark buttonPrimaryDarkSmall"}
+            style={{ maxWidth: "none" }}
+          >
+            <div>Schedule a call</div>
           </div>
         </div>
       </div>
-
     </>
   );
 }

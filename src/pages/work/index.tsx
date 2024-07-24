@@ -56,12 +56,11 @@ const WorkIndex = ({ clients, projectId, dataset }: { clients: SanityDocument[],
                     }}
                   />
                   <div className={styles.clientInformation}>
-                    <div className={styles.clientName}>{client?.name}</div>
-                    <div className={styles.clientOverview}>{client?.overview}</div>
+                    <div className={`intro`}>{client?.name}</div>
+                    <div className={`label`}>{client?.overview}</div>
                     <div className={styles.clientActionWrapper}>
                       <Link className={styles.clientAction} target="_top" href={`/work/${client.slug.current}`} >
-                        <span>View more</span>
-                        <Image height={12.87} width={12.87} src="clientActionArrow.svg" priority alt="" />
+                        <span className={`callout`}>View more</span><Image height={12.87} width={12.87} src="clientActionArrow.svg" priority alt=""></Image>
                       </Link>
                     </div>
                   </div>
