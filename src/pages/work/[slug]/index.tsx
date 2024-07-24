@@ -1,15 +1,21 @@
-import { type SanityDocument } from "next-sanity";
-import imageUrlBuilder from "@sanity/image-url";
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import { client, sanityFetch } from "@/sanity/client";
-import Image from "next/image";
-import Breadcrumbs from "@/components/Breadcrumbs";
-import styles from "../../../styles/selectedclient.module.css";
+import { GetStaticPaths, GetStaticProps } from 'next';
+import { type SanityDocument } from 'next-sanity';
+import imageUrlBuilder from '@sanity/image-url';
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import { client, sanityFetch } from '@/sanity/client';
+import Image from 'next/image';
+import styles from '../../../styles/selectedWork.module.css';
+import Navbar from '@/components/Navbar';
+
+const urlFor = (source: SanityImageSource, projectId: string, dataset: string) =>
+  projectId && dataset
+    ? imageUrlBuilder({ projectId, dataset }).image(source)
+    : null;
 
 const CLIENT_QUERY = `*[
-    _type == "client" &&
-    slug.current == $slug
-  ][0]{
+  _type == "client" &&
+  slug.current == $slug
+][0]{
   ...,
   technology[]->{
     name
@@ -18,34 +24,70 @@ const CLIENT_QUERY = `*[
     name,
     description,
     _id
-  }
+  },
+  "logoMetadata": logo.asset->metadata.dimensions
 }`;
 
 const SOLUTION_CATEGORY_QUERY = `*[
-  _type == "solutionCategory"]{
-    name,
-    solutions[]->{
-      ...,
-    }
+  _type == "solutionCategory"
+]{
+  key,
+  name,
+  solutions[]->{
+    ...,
+  }
 }`;
 
-const { projectId, dataset } = client.config();
-const urlFor = (source: SanityImageSource) =>
-  projectId && dataset
-    ? imageUrlBuilder({ projectId, dataset }).image(source)
-    : null;
-
-export default async function ClientPage({
-  params,
-}: {
-  params: { slug: string };
-}) {
-  const client = await sanityFetch<SanityDocument>({
-    query: CLIENT_QUERY,
-    params,
+export const getStaticPaths: GetStaticPaths = async () => {
+  const clients = await sanityFetch<SanityDocument[]>({
+    query: `*[_type == "client"]{ "slug": slug.current }`,
   });
+
+  const paths = clients.map(client => ({
+    params: { slug: client.slug },
+  }));
+
+  return { paths, fallback: false };
+}
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const clientData = await sanityFetch<SanityDocument>({
+    query: CLIENT_QUERY,
+    params: { slug: params?.slug as string },
+  });
+
+  const solutionCategories = await sanityFetch<SanityDocument[]>({
+    query: SOLUTION_CATEGORY_QUERY,
+  });
+
+  const { projectId, dataset } = client.config();
+
+  return {
+    props: {
+      client: clientData,
+      solutionCategories,
+      projectId,
+      dataset,
+    },
+  };
+}
+
+type ClientPageProps = {
+  client: SanityDocument & { logoMetadata: { width: number, height: number } };
+  solutionCategories: SanityDocument[];
+  projectId: string;
+  dataset: string;
+};
+
+const WorkPage = ({
+  client,
+  solutionCategories,
+  projectId,
+  dataset,
+}: ClientPageProps) => {
   const {
     name,
+    shortName,
     summary,
     industry,
     logo,
@@ -59,138 +101,149 @@ export default async function ClientPage({
     solutions,
     technology,
     solutionImage,
+    logoMetadata
   } = client;
 
-  const solutionCategories = await sanityFetch<SanityDocument>({
-    query: SOLUTION_CATEGORY_QUERY,
-  });
+  const getPhotoUrl = (photo: SanityImageSource) =>
+    photo ? urlFor(photo, projectId, dataset)?.url() : null;
 
-  function getPhotoUrl(photo: any): string | null | undefined {
-    return photo ? urlFor(photo)?.url() : null;
-  }
+  const getClientSolutionIds = () =>
+    solutions.map((sol: { _id: string }) => sol._id);
 
-  function getClientSolutionIds(): any[] {
-    let ids: any[] = [];
-    solutions.map((sol: any) => ids.push(sol._id));
-    return ids;
-  }
+  const logoAspectRatio = logoMetadata ? logoMetadata.width / logoMetadata.height : 1;
+
+  const filteredAndSortedCategories = solutionCategories
+    .filter((category: any) =>
+      category.solutions.some((solution: any) => getClientSolutionIds().includes(solution._id))
+    )
+    .sort((a: any, b: any) => a.key - b.key);
 
   return (
-    <main className={styles.clientsWrapper}>
-      <Breadcrumbs
-        firstTitle="Home"
-        firstLink="/"
-        secondTitle="Work"
-        secondLink="/work"
-        thirdTitle={name}
-      />
-      <div className={styles.clientsWrapper}>
-        <Image
-          src={getPhotoUrl(logo) || "https://via.placeholder.com/550x310"}
-          alt={name || "Client"}
-          className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
-          height="180"
-          width="720"
-        />
-        <div className={styles.clientsWrapper}>
-          <div className="space-y-4">
-            <div className={styles.industryWrapper}>
-              {industry ? (
-                <div className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800 capitalize">
-                  Industry: {industry.replace("-", " ")}
-                </div>
-              ) : null}
-              <div className={styles.spacer}></div>
-              Technology:
+    <div>
+      <Navbar firstTitle='Home' firstLink="/" secondTitle="Work" secondLink='/work' thirdTitle={name} />
+      <div className={styles.wrapper}>
+
+        {/* logo section */}
+        <div className={styles.logoWrapper}>
+          <div className={styles.logoContainer} style={{ aspectRatio: logoAspectRatio }}>
+            <Image
+              src={getPhotoUrl(logo) || "https://via.placeholder.com/550x310"}
+              alt={name || "Client"}
+              fill
+              style={{ objectFit: "contain" }}
+            />
+          </div>
+        </div>
+
+        {/* details section */}
+        <div className={styles.detailsWrapper}>
+          <div className={styles.detailsContainer}>
+            {industry ? (
+              <div className={styles.details}>
+                <span className={"inactive"}>Industry:&nbsp;{industry.replace("-", " ")}</span>
+              </div>
+            ) : null}
+            <div className={`mobile ${styles.divider}`}></div>
+            <div className={styles.details}>
+              <span className={"inactive"}>Technology:&nbsp;</span>
               {technology
-                ? technology.map((tech: any) => (
-                  <div
-                    key={tech._id}
-                    className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800 capitalize"
-                  >
+                ? technology.map((tech: any, index: number) => (
+                  <span className={"inactive"} key={tech._id}>
                     {tech.name}
-                  </div>
+                    {index < technology.length - 1 && ",\u00A0"}
+                  </span>
                 ))
                 : null}
             </div>
-            <div className={styles.detailWrapper}>
-              {summary ? (
-                <dl className="grid grid-cols-2 gap-1 text-sm font-medium sm:gap-2 lg:text-base">
-                  <h1>{summary}</h1>
-                </dl>
-              ) : null}
+          </div>
+        </div>
+
+        {/* content section */}
+        <div className={styles.contentWrapper}>
+          <div className={styles.contentContainer}>
+            {summary && (
+              <div className={"header"}>{summary}</div>
+            )}
+            {primaryImage && (<div className={styles.contentImageWrapper}>
               <Image
                 src={
                   getPhotoUrl(primaryImage) ||
                   "https://via.placeholder.com/550x310"
                 }
                 alt={name || "Client"}
-                className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
-                height="310"
-                width="550"
+                fill
+                style={{ objectFit: "cover" }}
               />
-              {quote ? (
-                <dl className={styles.quoteWrapper}>
-                  <dt>{quote}</dt>
-                  <dl className={styles.quoteAuthorAndTitleWrapper}>
-                    <dt className={styles.authorText}>{quoteAuthor}</dt>
-                    <dt>{quoteAuthorTitle}</dt>
-                  </dl>
-                </dl>
-              ) : null}
-              {challenge ? (
-                <dl className="grid grid-cols-2 gap-1 text-sm font-medium sm:gap-2 lg:text-base">
-                  <dt>The challenge</dt>
-                  <dt>{challenge}</dt>
-                </dl>
-              ) : null}
+            </div>)}
+            {quote && (
+              <div className={styles.quoteWrapper}>
+                <div className={`location ${styles.quote}`}>{quote}</div>
+                <div className={`body ${styles.quoteAuthor}`}>{quoteAuthor}</div>
+                <div className={`inactive ${styles.quoteAuthorTitle}`}>{quoteAuthorTitle}</div>
+              </div>
+            )}
+            {challenge && (
+              <div className={styles.contentCopy}>
+                <h4 className='header'>{shortName || name}'s challenge</h4>
+                <p className='body'>{challenge}</p>
+              </div>
+            )}
+            {challengeImage && (<div className={styles.contentImageWrapper}>
               <Image
                 src={
                   getPhotoUrl(challengeImage) ||
                   "https://via.placeholder.com/550x310"
                 }
                 alt={name || "Client"}
-                className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
-                height="310"
-                width="550"
+                fill
+                style={{ objectFit: "cover" }}
               />
-              {solution ? (
-                <dl className="grid grid-cols-2 gap-1 text-sm font-medium sm:gap-2 lg:text-base">
-                  <dt>The solution</dt>
-                  <dt>{solution}</dt>
-                </dl>
-              ) : null}
+            </div>)}
+            {solution && (
+              <div className={styles.contentCopy}>
+                <h4 className='header'>{shortName || name}'s solution</h4>
+                <p className='body'>{solution}</p>
+              </div>
+            )}
+            {solutionImage && (<div className={styles.contentImageWrapper}>
               <Image
                 src={
                   getPhotoUrl(solutionImage) ||
                   "https://via.placeholder.com/550x310"
                 }
                 alt={name || "Client"}
-                className="mx-auto aspect-video overflow-hidden rounded-xl object-cover object-center sm:w-full"
-                height="310"
-                width="550"
+                fill
+                style={{ objectFit: "cover" }}
               />
-              Our role
-              {solutions
-                ? solutionCategories.map((category: any) => (
-                  <>
-                    <h1>{category.name}</h1>
-                    {category.solutions
-                      .filter((solution: any) =>
-                        getClientSolutionIds().includes(solution._id)
-                      )
-                      .map((categorySolution: any) => (
-                        <div className="inline-block rounded-lg bg-gray-100 px-3 py-1 text-sm dark:bg-gray-800 capitalize">
-                          {categorySolution.name}
-                        </div>
-                      ))}
-                  </>
-                ))
-                : null}
+            </div>)}
+            <div className={styles.contentCopy}>
+              <h4 className='header'>Our roles</h4>
+              <div className={styles.solutionsArraysWrapper}>
+
+                {filteredAndSortedCategories.map((category: any) => (
+                  <div className={styles.solutionsWrapper} key={category._id}>
+                    <h5 className="inactive" style={{ opacity: .6 }}>{category.name}</h5>
+                    <div className={styles.solutionsArrayWrapper}>
+                      {category.solutions
+                        .filter((solution: any) =>
+                          getClientSolutionIds().includes(solution._id)
+                        )
+                        .map((categorySolution: any) => (
+                          <div key={categorySolution._id} className={`${styles.solutionsButton} callout`}>
+                            {categorySolution.name}
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+                ))}
+
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </main>
+    </div >
   );
 }
+
+export default WorkPage;

@@ -1,0 +1,63 @@
+.carouselWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+.carouselContainer {
+  display: flex;
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 48px;
+  width: fit-content;
+}
+
+.clientLinkContainer {
+  width: 67vw;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  z-index: 1;
+  flex-direction: column;
+  gap: 17px;
+}
+@media screen and (min-width: 550px) {
+  .clientLinkContainer {
+    width: 33vw;
+  }
+}
+.clientLinkImage {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 12px;
+}
+@media screen and (min-width: 550px) {
+  .clientLinkImage {
+    aspect-ratio: 3/2;
+  }
+}
+.clientInformation {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 8px;
+  color: var(--foreground);
+  width: 100%;
+}
+.clientInformation > div {
+  width: 100%;
+}
+.clientInformation > div > span {
+  width: 100%;
+  white-space: wrap;
+}
+
+.clientActionWrapper {
+  margin-top: 12px;
+}

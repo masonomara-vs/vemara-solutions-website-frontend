@@ -12,81 +12,26 @@
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--foreground);
 }
 
 html,
 body {
   max-width: 100vw;
   overflow-x: hidden !important;
-  background: var(--background);
+  background-color: var(--foreground);
 }
 
 body {
   color: var(--primary);
-  background: var(--background);
+  background: var(--foreground);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   max-width: 100vw;
 }
-.activetrue {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-}
-.defaulttrue {
-  position: relative;
-}
-.header.activefalse.defaultfalse {
-  position: relative;
-  top: 0px;
-  left: 0px;
-}
-.header.activetrue.defaultfalse {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  animation: slideDown 0.1s ease-out;
-}
-@keyframes slideDown {
-  from {
-    top: -48px;
-  }
 
-  to {
-    top: 0px;
-  }
-}
-@keyframes slideUp {
-  from {
-    top: 0px;
-  }
-
-  to {
-    top: -48px;
-  }
-}
-.headerblock.activetrue {
-  height: 96px;
-  position: relative;
-}
-.headerblock.activetrue.defaulttrue {
-  height: 96px;
-  position: relative;
-  display: none;
-}
-@media screen and (min-width: 550px) {
-  .headerblock.activetrue {
-    height: 56px;
-    position: relative;
-  }
-  .headerblock.activetrue.defaulttrue {
-    height: 56px;
-    position: relative;
-    display: none;
-  }
-}
 main {
   width: 100%;
   max-width: 100vw;
@@ -109,68 +54,6 @@ a {
   height: 0px;
   width: 0px;
   pointer-events: none;
-}
-
-.titleDisplay {
-  font-family: "EditorialRegular" !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.025em !important;
-  font-size: calc(0.19 * (100vw - 40px));
-  line-height: 97%;
-}
-.titleLarge {
-  font-family: "EditorialRegular" !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.025em !important;
-  font-size: calc(0.171 * (100vw - 40px));
-  line-height: 97%;
-}
-.titleMedium {
-  line-height: 97%;
-  font-family: "EditorialRegular" !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.025em !important;
-  font-size: calc(0.114 * (100vw - 40px));
-}
-.titleSmall {
-  font-family: "EditorialRegular" !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.025em !important;
-  font-size: calc(0.109 * (100vw - 40px));
-  line-height: 97%;
-}
-.titleTiny {
-  font-family: "EditorialRegular" !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.025em !important;
-  font-size: calc(0.075 * (100vw - 40px));
-  line-height: 97%;
-}
-.titlePageTitle {
-  font-family: "EditorialRegular" !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.025em !important;
-  line-height: 97%;
-  font-size: calc(0.19 * (100vw - 40px));
-}
-.titlePageSubtitle {
-  font-family: "EditorialRegular" !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.025em !important;
-  line-height: 97%;
-  font-size: calc(0.15 * (100vw - 40px));
-}
-.titleBlogSmall {
-  font-family: "EditorialRegular" !important;
-  font-weight: 400 !important;
-  letter-spacing: -0.025em !important;
-  line-height: 115%;
-  font-size: 32px;
-}
-
-.italic {
-  font-family: "EditorialItalic" !important;
-  font-style: italic !important;
 }
 
 .mobile {
@@ -296,6 +179,7 @@ a {
   font-weight: 500;
   letter-spacing: -0.02rem;
   opacity: 0.6;
+  color: var(--foreground);
 }
 .title {
   font-size: 34px;
@@ -304,7 +188,7 @@ a {
   letter-spacing: -0.02rem;
 }
 .subtitle {
-  font-size: 22px;
+  font-size: 20px;
   line-height: 135%;
   font-weight: 400;
   letter-spacing: -0.02rem;
@@ -352,6 +236,12 @@ a {
   font-weight: 400;
   letter-spacing: -0.02rem;
 }
+.description {
+  font-size: 16px;
+  line-height: 145%;
+  font-weight: 400;
+  letter-spacing: -0.02rem;
+}
 .fieldLabel {
   font-size: 14px;
   line-height: 115%;
@@ -365,25 +255,25 @@ a {
   letter-spacing: -0.02rem;
 }
 @media screen and (min-width: 550px) {
-  .location {
+  /* .location {
     font-size: 22px;
     line-height: 120%;
     font-weight: 500;
     letter-spacing: -0.02rem;
     opacity: 0.6;
-  }
+  } */
   .title {
     font-size: 40px;
     line-height: 120%;
     font-weight: 600;
     letter-spacing: -0.02rem;
   }
-  .subtitle {
+  /* .subtitle {
     font-size: 25px;
     line-height: 135%;
     font-weight: 400;
     letter-spacing: -0.02rem;
-  }
+  } */
   .header {
     font-size: 32px;
     line-height: 120%;
@@ -392,13 +282,13 @@ a {
   }
 }
 @media screen and (min-width: 1000px) {
-  .location {
+  /* .location {
     font-size: 24px;
     line-height: 120%;
     font-weight: 500;
     letter-spacing: -0.02rem;
     opacity: 0.6;
-  }
+  } */
   .title {
     font-size: 48px;
     line-height: 120%;
@@ -406,7 +296,7 @@ a {
     letter-spacing: -0.02rem;
   }
   .subtitle {
-    font-size: 28px;
+    font-size: 22px;
     line-height: 135%;
     font-weight: 400;
     letter-spacing: -0.02rem;
@@ -416,5 +306,228 @@ a {
     line-height: 120%;
     font-weight: 600;
     letter-spacing: -0.02rem;
+  }
+}
+
+#__next {
+  width: 100%;
+  background-color: var(--background);
+}
+
+.headerblock {
+  height: 47.5px;
+  z-index: 1000;
+  position: relative;
+  background-color: transparent;
+}
+.headerblockBreadcrumbs {
+  height: 92px;
+  z-index: 1000;
+  position: relative;
+}
+.headerbar {
+  height: 48px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 1000;
+  transform: translateY(0px);
+  transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.headerbar.activefalse {
+  transform: translateY(-48px);
+}
+.headerbar.defaulttrue,
+.headerbar.activetrue {
+  transform: translateY(0);
+}
+.headerbar:has(.breadcrumbsCheck) {
+  height: 92px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  z-index: 1000;
+  transform: translateY(0px);
+  transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.headerbar.activefalse:has(.breadcrumbsCheck) {
+  transform: translateY(-92px);
+}
+.headerbar.defaulttrue:has(.breadcrumbsCheck),
+.headerbar.activetrue:has(.breadcrumbsCheck) {
+  transform: translateY(0);
+}
+@media screen and (min-width: 550px) {
+  .headerblock {
+    height: 58px;
+    z-index: 1000;
+    position: relative;
+  }
+  .headerblockBreadcrumbs {
+    height: 106px;
+    z-index: 1000;
+    position: relative;
+  }
+  .headerbar {
+    height: 58px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 1000;
+    transform: translateY(0px);
+    transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  .headerbar.activefalse {
+    transform: translateY(-58px);
+  }
+  .headerbar.defaulttrue,
+  .headerbar.activetrue {
+    transform: translateY(0);
+  }
+  .headerbar:has(.breadcrumbsCheck) {
+    height: 106px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    z-index: 1000;
+    transform: translateY(0px);
+    transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  .headerbar.activefalse:has(.breadcrumbsCheck) {
+    transform: translateY(-106px);
+  }
+  .headerbar.defaulttrue:has(.breadcrumbsCheck),
+  .headerbar.activetrue:has(.breadcrumbsCheck) {
+    transform: translateY(0);
+  }
+}
+
+.buttonPrimaryForeground {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 13px 26px 13px 23px;
+  background-color: var(--background);
+  border-radius: 19.2px;
+  width: fit-content;
+  gap: 13px;
+  font-weight: 600;
+  transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.buttonSecondaryForeground {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 13px 26px 13px 23px;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(6px);
+  border-radius: 19.2px;
+  width: fit-content;
+  color: var(--background);
+  gap: 13px;
+  font-weight: 600;
+  transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.buttonPrimaryBackground {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 13px 26px 13px 23px;
+  background-color: var(--foreground);
+  border-radius: 19.2px;
+  width: fit-content;
+  color: var(--background);
+  gap: 13px;
+  font-weight: 600;
+  transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.buttonSecondaryBackground {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 13px 26px 13px 23px;
+  background-color: rgba(7, 8, 8, 0.1);
+  backdrop-filter: blur(6px);
+  border-radius: 19.2px;
+  width: fit-content;
+  color: var(--foreground);
+  gap: 13px;
+  font-weight: 600;
+  transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.buttonSecondaryForeground span,
+.buttonPrimaryBackground span {
+  color: var(--background);
+}
+.buttonPrimaryForeground span,
+.buttonSecondaryForeground span,
+.buttonPrimaryBackground span,
+.buttonSecondaryBackground span {
+  white-space: nowrap;
+}
+
+.buttonTextBackground {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--foreground);
+  border-radius: 19.2px;
+  width: fit-content;
+  color: var(--background);
+  gap: 13px;
+  height: 32px;
+  font-weight: 600;
+  transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  background-color: transparent;
+  opacity: 1;
+}
+.buttonTextBackground span {
+  color: white;
+}
+
+@media screen and (min-width: 550px) {
+  .buttonPrimaryForeground img,
+  .buttonSecondaryForeground img,
+  .buttonPrimaryBackground img,
+  .buttonSecondaryBackground img {
+    transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  .buttonPrimaryForeground:hover img,
+  .buttonSecondaryForeground:hover img,
+  .buttonPrimaryBackground:hover img,
+  .buttonSecondaryBackground:hover img {
+    transform: translateX(25%) scaleX(125%);
+    transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  .buttonPrimaryForeground:hover {
+    background-color: #dfdfdf;
+  }
+  .buttonSecondaryForeground:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+  .buttonPrimaryBackground:hover {
+    background-color: #272828;
+  }
+  .buttonSecondaryBackground:hover {
+    background-color: rgba(7, 8, 8, 0.08);
+  }
+  .buttonTextBackground:hover {
+    opacity: 0.67;
+    transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+}
+
+.buttonFullWidth {
+  width: 100%;
+}
+@media screen and (min-width: 550px) {
+  .buttonFullWidth {
+    width: fit-content;
+    padding: 13px 39px 13px 36px;
   }
 }
