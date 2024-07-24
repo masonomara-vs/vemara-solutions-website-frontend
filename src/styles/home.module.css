@@ -129,7 +129,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 96px 0px 64px;
+  padding: 64px 0px 64px;
 }
 .workContainer {
   display: flex;
@@ -155,6 +155,7 @@
   align-items: center;
   justify-content: flex-start;
   padding: 0px 12px;
+  width: 100%;
 }
 @media screen and (min-width: 550px) {
   .headerContainerCenter {
