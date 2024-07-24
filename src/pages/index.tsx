@@ -8,9 +8,10 @@ import { SanityImageSource } from '@sanity/image-url/lib/types/types'
 import Navbar from '@/components/Navbar'
 import TechnologyCarousel from '@/components/TechnologyCarousel'
 import { client, sanityFetch } from '@/sanity/client'
-import { fadeIn, fadeInButton, grow, ringGrow, textFadeUp, textFadeUpSmall } from '@/pages/utils/motion'
+import { fadeIn, fadeInButton, grow, growDown, growRight, ringGrow, staggerContainer, textFadeUp, textFadeUpSmall } from '@/pages/utils/motion'
 import styles from '../styles/home.module.css'
 import WorkCarousel from '@/components/WorkCarousel'
+import ProcessCard from '@/components/ProcessCard'
 
 
 const urlFor = (source: SanityImageSource, projectId: string, dataset: string) =>
@@ -482,6 +483,47 @@ const TeamSection = () => (
   </div>
 )
 
+const ProcessSection = () => (
+  <div className={styles.processWrapper}>
+    <div className={styles.processContainer}>
+      <div className={styles.headerContainerCenter}>
+        <div className={styles.headerContainerCenterText}>
+          <motion.p variants={textFadeUp("up", "spring", 0, 0.6)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0 }} className={` ${styles.headerContainerHeader} header`}>Our process: simple, seamless, streamlined.</motion.p>
+        </div>
+
+      </div>
+      <div className={styles.processCardsWrapper}>
+
+        <div className={styles.processCardsContainer}>
+          <ProcessCard step="1" title="Introduction call" description="Tell us more about your business or project. We’ll cover your goals, users, timeline, budget, and specific needs." />
+          <ProcessCard step="2" title="Strategy and structure" description="In a matter of days, we'll finalize project specs, agree on the business context, and onboard your team." />
+          <ProcessCard step="3" title="Get started and track performance" description="Once milestones are set, we’ll begin driving towards your goals, tracking progress, reporting updates, and adapting as needed." />
+        </div>
+        <div style={{ zIndex: 2 }}>
+          <motion.div
+            variants={fadeInButton("up", "spring", .3, 0.8)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0 }}
+          >
+            <Link className="buttonPrimaryBackground" target="_top" href={`/contact`}>
+              <span className={`callout`}>Schedule a call</span><Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt=""></Image>
+            </Link>
+          </motion.div>
+        </div>
+
+        <motion.div variants={growDown} className={styles.processCardsPathHorizontal}></motion.div>
+        <motion.div variants={growRight} className={styles.processCardsPathVertical}></motion.div>
+
+      </div>
+    </div>
+  </div>
+
+)
+
 
 const Home = ({ clients, technology, solutions, mobileSolutions, projectId, dataset }: { clients: any, technology: any, projectId: any, solutions: any, mobileSolutions: any, dataset: any }) => (
   <div className={styles.rootWrapper}>
@@ -498,6 +540,7 @@ const Home = ({ clients, technology, solutions, mobileSolutions, projectId, data
     <TechSection technology={technology} />
     <ContextSection />
     <TeamSection />
+    <ProcessSection />
   </div>
 )
 

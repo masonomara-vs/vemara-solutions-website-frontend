@@ -597,3 +597,75 @@
     -webkit-box-orient: vertical;
   }
 }
+.processWrapper {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 64px 0px 96px;
+}
+.processContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: var(--max-width);
+  padding: 0px 16px;
+  height: 100%;
+}
+@media screen and (min-width: 550px) {
+  .processContainer {
+    padding: 0px 48px;
+    height: fit-content;
+  }
+}
+.processCardsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: center;
+  position: relative;
+}
+.processCardsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  align-items: center;
+  z-index: 1;
+}
+@media screen and (min-width: 550px) {
+  .processCardsContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 48px;
+    align-items: flex-start;
+    z-index: 1;
+  }
+}
+.processCardsPathHorizontal {
+  width: 2px;
+  height: calc(100% - 24px);
+  position: absolute;
+  background-color: #e7e7e7;
+  left: 19px;
+  top: 0px;
+  z-index: 0;
+}
+.processCardsPathVertical {
+  width: 50%;
+  height: 2px;
+  position: absolute;
+  background-color: #e7e7e7;
+  left: 19px;
+  bottom: 24px;
+  z-index: 0;
+}
+@media screen and (min-width: 550px) {
+  .processCardsPathHorizontal,
+  .processCardsPathVertical {
+    display: none;
+  }
+}

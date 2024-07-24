@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 0px;
+  width: 100%;
+  gap: 17px;
+}
+@media screen and (min-width: 550px) {
+  .container {
+    background-color: var(--background);
+    border: 1px solid #e7e7e7;
+    padding: 24px 24px 24px 24px;
+    border-radius: 12px;
+    gap: 17px;
+    flex: 1;
+  }
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+.iconContainer {
+  background-color: var(--foreground);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+}
