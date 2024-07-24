@@ -1,4 +1,3 @@
-// pages/work/index.tsx
 import Header from '@/components/Header';
 import React from 'react';
 import Link from "next/link";
@@ -60,11 +59,17 @@ const WorkIndex = ({ clients, projectId, dataset }: { clients: SanityDocument[],
                     }}
                   />
                   <div className={styles.clientInformation}>
-                    <div className={`intro`}>{client?.name}</div>
-                    <div className={`label`}>{client?.overview}</div>
-                    <div className={styles.clientActionWrapper}>
-                      <Link className={styles.clientAction} target="_top" href={`/work/${client.slug.current}`} >
-                        <span className={`callout`}>View more</span><Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt=""></Image>
+                    <div className={styles.clientInfoTextWrapper}>
+                      <div className={`intro`}><span>{client?.name}</span></div>
+                      <div className={`label`}><span>{client.overview}</span></div>
+                    </div>
+
+                    <div
+                      className={styles.clientActionWrapper}
+                    >
+                      <Link className="buttonPrimaryBackground" target="_top" href={`/work/${client.slug.current}`}>
+                        <span className={`callout`}>Read more</span>
+                        <Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt="" />
                       </Link>
                     </div>
                   </div>
@@ -92,12 +97,12 @@ const WorkIndex = ({ clients, projectId, dataset }: { clients: SanityDocument[],
                     }}
                   />
                   <div className={styles.clientInformation}>
-                    <div className={`intro`}>{client?.name}</div>
-                    <div className={`label`}>{client?.overview}</div>
-                    {/* <div className={`label`}>{index % 2 === 0 ? '0.0' : '0.1'}</div> */}
+                    <div className={`intro`}><span>{client?.name}</span></div>
+                    <div className={`label`}><span>{client.overview}</span></div>
                     <div className={styles.clientActionWrapper}>
-                      <Link className={styles.clientAction} target="_top" href={`/work/${client.slug.current}`} >
-                        <span className={`callout`}>View more</span><Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt=""></Image>
+                      <Link className="buttonPrimaryBackground" target="_top" href={`/work/${client.slug.current}`}>
+                        <span className={`callout`}>Read more</span>
+                        <Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt="" />
                       </Link>
                     </div>
                   </div>
