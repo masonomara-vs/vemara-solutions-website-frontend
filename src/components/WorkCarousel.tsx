@@ -1,24 +1,11 @@
-import React, { useCallback, useEffect, useState, useRef } from 'react'
-import useEmblaCarousel from 'embla-carousel-react'
-import { fadeIn } from '@/pages/utils/motion'
-import styles from '../styles/WorkCarousel.module.css'
-import AutoScroll from 'embla-carousel-auto-scroll'
-import imageUrlBuilder from "@sanity/image-url";
-import { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import { client, sanityFetch } from "@/sanity/client";
-import Link from 'next/link'
-import Image from 'next/image'
-import {
-  motion,
-  useScroll,
-  useSpring,
-  useTransform,
-  useMotionValue,
-  useVelocity,
-  useAnimationFrame
-} from "framer-motion";
-import { wrap } from "@motionone/utils";
-
+import React, { useCallback, useEffect, useState, useRef } from 'react';
+import { motion, useScroll, useSpring, useTransform, useMotionValue, useVelocity, useAnimationFrame } from 'framer-motion';
+import { wrap } from '@motionone/utils';
+import styles from '../styles/WorkCarousel.module.css';
+import imageUrlBuilder from '@sanity/image-url';
+import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const urlFor = (source: SanityImageSource, projectId: string, dataset: string) =>
   projectId && dataset
@@ -55,24 +42,17 @@ const WorkCarousel: React.FC<WorkCarouselProps> = ({ clients, projectId, dataset
   });
   const x = useTransform(baseX, (v) => `${wrap(-33, -66, v)}%`);
   const directionFactor = useRef<number>(1);
-  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
+  const [hoveredAction, setHoveredAction] = useState<boolean>(false);
 
   useAnimationFrame((t, delta) => {
-    if (isHovered) {
+    if (isHovered || hoveredAction) {
       return; // Pause motion when hovered
     }
 
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
 
-    // Only change direction if horizontal scroll is detected
-    if (scrollVelocity.get() === 0) {
-      if (velocityFactor.get() < 0) {
-        directionFactor.current = -1;
-      } else if (velocityFactor.get() > 0) {
-        directionFactor.current = 1;
-      }
-    }
-
+    // Keep direction constant
     moveBy += directionFactor.current * moveBy * velocityFactor.get();
     baseX.set(baseX.get() + moveBy);
   });
@@ -80,8 +60,7 @@ const WorkCarousel: React.FC<WorkCarouselProps> = ({ clients, projectId, dataset
   return (
     <div
       className={styles.carouselWrapper}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+
     >
       <div className={styles.carouselContainer}>
         <motion.div className={styles.carouselContainer} style={{ x }}>
@@ -96,7 +75,11 @@ const WorkCarousel: React.FC<WorkCarouselProps> = ({ clients, projectId, dataset
               <div className={styles.clientInformation}>
                 <div className={`intro`}>{client.name}</div>
                 <div className={`label`}>{client.overview}</div>
-                <div className={styles.clientActionWrapper}>
+                <div
+                  className={styles.clientActionWrapper}
+                  onMouseEnter={() => setHoveredAction(true)}
+                  onMouseLeave={() => setHoveredAction(false)}
+                >
                   <Link className="buttonPrimaryBackground" target="_top" href={`/work/${client.slug.current}`}>
                     <span className={`callout`}>Read more</span>
                     <Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt="" />
