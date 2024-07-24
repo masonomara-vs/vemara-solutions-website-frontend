@@ -2,7 +2,7 @@ import Navbar from '@/components/Navbar'
 import Head from 'next/head'
 import styles from '../styles/home.module.css'
 import { motion } from "framer-motion"
-import { fade, fadeIn, textFadeUp } from '@/pages/utils/motion'
+import { textFadeUp } from '@/pages/utils/motion'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -18,28 +18,31 @@ export default function Home() {
       </Head>
       <Navbar />
       <div className={styles.heroWrapper}>
-        <video
-          src={"opnsrc.mp4"}
-          autoPlay
-          playsInline
-          muted
-          loop
-          controls={false}
-          className={styles.video}
-        />
-
+        <div>
+          <div className={styles.videoBackdrop}>
+          </div>
+          <video
+            src={"opnsrc.mp4"}
+            autoPlay
+            playsInline
+            muted
+            loop
+            controls={false}
+            className={styles.video}
+          />
+        </div>
         <div className={styles.heroContainer}>
           <div className={styles.heroContentContainer}>
             <motion.p variants={textFadeUp("up", "spring", 0, 0.6)}
               initial="hidden"
               whileInView="show"
-              viewport={{ once: true, amount: 0 }} className={`title ${styles.title}`}>Drive your business towards your goals and new opportunities.</motion.p>
+              viewport={{ once: true, amount: 0 }} className={`title ${styles.title}`}>Drive your business towards goals and new opportunities.</motion.p>
             <motion.p variants={textFadeUp("up", "spring", .1, 0.6)}
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, amount: 0 }} className={`subtitle ${styles.subtitle}`}>Access industry-leading technology strategy, design, and development for digital products and solutions.</motion.p>
           </div>
-          <div className={styles.heroButtonWrapper}>
+          <div className={styles.heroButtonsWrapper}>
             <Link className="buttonPrimaryForeground buttonFullWidth" target="_top" href={`/contact`} >
               <span className={`callout`}>Schedule a call</span><Image height={12.87} width={12.87} src="clientActionArrowBlack.svg" priority alt=""></Image>
             </Link>
@@ -49,7 +52,18 @@ export default function Home() {
           </div>
         </div>
       </div>
-
+      <div className={styles.workWrapper}>
+        <div className={styles.workContainer}>
+          <div className={styles.headerContainerCenter}>
+            <span className={` ${styles.headerContainerHeader} header`}>Innovative and scalable solutions with industry-leading technology.</span>
+            <div className={styles.headerButtonsWrapper}>
+              <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/contact`} >
+                <span className={`callout`}>View all work</span><Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt=""></Image>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
