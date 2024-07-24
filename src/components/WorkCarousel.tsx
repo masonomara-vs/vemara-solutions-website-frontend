@@ -1,7 +1,6 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState, useRef } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import { fadeIn } from '@/pages/utils/motion'
-import { motion } from 'framer-motion'
 import styles from '../styles/WorkCarousel.module.css'
 import AutoScroll from 'embla-carousel-auto-scroll'
 import imageUrlBuilder from "@sanity/image-url";
@@ -9,86 +8,122 @@ import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { client, sanityFetch } from "@/sanity/client";
 import Link from 'next/link'
 import Image from 'next/image'
+import {
+  motion,
+  useScroll,
+  useSpring,
+  useTransform,
+  useMotionValue,
+  useVelocity,
+  useAnimationFrame
+} from "framer-motion";
+import { wrap } from "@motionone/utils";
 
 
-const urlFor = (source: SanityImageSource, projectId: string, dataset: string) =>
+const urlFor = (source: SanityImageSource, projectId: any, dataset: any) =>
   projectId && dataset
     ? imageUrlBuilder({ projectId, dataset }).image(source)
     : null;
 
+interface Client {
+  _id: string;
+  primaryImage: SanityImageSource;
+  name: string;
+  overview: string;
+  slug: {
+    current: string;
+  };
+}
 
-export function WorkCarousel({ clients, options }: { clients: any, options?: any }) {
-  const { projectId, dataset } = client.config();
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    ...options,
-    loop: true
-  }, [
-    AutoScroll({
-      playOnInit: true,
-      speed: .5,
-    })
-  ]);
-  const [isPlaying, setIsPlaying] = useState(false)
+interface WorkCarouselProps {
+  clients: Client[];
+  projectId: any;
+  dataset: any
+}
 
-  const toggleAutoplay = useCallback(() => {
-    const autoScroll = emblaApi?.plugins()?.autoScroll
-    if (!autoScroll) return
+const WorkCarousel: React.FC<WorkCarouselProps> = ({ clients, projectId, dataset }) => {
+  const baseVelocity = 0.5;
+  const baseX = useMotionValue(0);
+  const { scrollY } = useScroll();
+  const scrollVelocity = useVelocity(scrollY);
+  const smoothVelocity = useSpring(scrollVelocity, {
+    damping: 100,
+    stiffness: 800
+  });
+  const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
+    clamp: false
+  });
+  const x = useTransform(baseX, (v) => `${wrap(-33, -66, v)}%`);
+  const directionFactor = useRef<number>(1);
 
-    const playOrStop = autoScroll.isPlaying()
-      ? autoScroll.stop
-      : autoScroll.play
-    playOrStop()
-  }, [emblaApi])
+  useAnimationFrame((t, delta) => {
+    let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
 
-  useEffect(() => {
-    const autoScroll = emblaApi?.plugins()?.autoScroll
-    if (!autoScroll) return
+    if (velocityFactor.get() < 0) {
+      directionFactor.current = -1;
+    } else if (velocityFactor.get() > 0) {
+      directionFactor.current = 1;
+    }
 
-    setIsPlaying(autoScroll.isPlaying())
-    emblaApi
-      .on('autoScroll:play', () => setIsPlaying(true))
-      .on('autoScroll:stop', () => setIsPlaying(false))
-      .on('reInit', () => setIsPlaying(autoScroll.isPlaying()))
-  }, [emblaApi])
+    moveBy += directionFactor.current * moveBy * velocityFactor.get();
+    baseX.set(baseX.get() + moveBy);
+  });
 
   return (
-    <div className={styles.embla}>
-      <div className={styles.embla__viewport} ref={emblaRef}>
-        <div className={styles.embla__container}>
-          {clients.map((client: any, index: number) => (
-            <motion.div
-              key={client._id}
-              variants={fadeIn("up", "spring", 0, 0.8)}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0 }}
-            >
-              <div className={styles.clientLinkContainer}>
-                <div
-                  className={styles.clientLinkImage}
-                  style={{
-                    backgroundImage: `url(${urlFor(client?.primaryImage, projectId, dataset)?.url()})`,
-                  }}
-                />
-                <div className={styles.clientInformation}>
-                  <div className={`intro`}>{client?.name}</div>
-                  <div className={`label`}>{client?.overview}</div>
-                  <div className={styles.clientActionWrapper}>
-                    <Link className="buttonPrimaryBackground" target="_top" href={`/work/${client.slug.current}`} >
-                      <span className={`callout`}>Read more</span><Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt=""></Image>
-                    </Link>
-                  </div>
+    <div className={styles.carouselWrapper}>
+
+
+      <div className={styles.carouselContainer}>
+        <motion.div className={styles.carouselContainer} style={{ x }}>
+          {clients.map((client) => (
+
+            <div className={styles.clientLinkContainer} key={client._id}>
+              <div
+                className={styles.clientLinkImage}
+                style={{
+                  backgroundImage: `url(${urlFor(client.primaryImage, projectId, dataset)?.url()})`,
+                }}
+              />
+              <div className={styles.clientInformation}>
+                <div className={`intro`}>{client.name}</div>
+                <div className={`label`}>{client.overview}</div>
+                <div className={styles.clientActionWrapper}>
+                  <Link className="buttonPrimaryBackground" target="_top" href={`/work/${client.slug.current}`} >
+                    <span className={`callout`}>Read more</span>
+                    <Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt="" />
+                  </Link>
                 </div>
               </div>
-            </motion.div>
+            </div>
+
           ))}
-        </div>
-      </div>
-      <div className={styles.embla__controls}>
-        <button className={styles.embla__play} onClick={toggleAutoplay} type="button">
-          {isPlaying ? 'Stop' : 'Start'}
-        </button>
+          {clients.map((client) => (
+
+            <div className={styles.clientLinkContainer} key={client._id}>
+              <div
+                className={styles.clientLinkImage}
+                style={{
+                  backgroundImage: `url(${urlFor(client.primaryImage, projectId, dataset)?.url()})`,
+                }}
+              />
+              <div className={styles.clientInformation}>
+                <div className={`intro`}>{client.name}</div>
+                <div className={`label`}>{client.overview}</div>
+                <div className={styles.clientActionWrapper}>
+                  <Link className="buttonPrimaryBackground" target="_top" href={`/work/${client.slug.current}`} >
+                    <span className={`callout`}>Read more</span>
+                    <Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt="" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+          ))}
+        </motion.div>
+
       </div>
     </div>
-  )
-}
+  );
+};
+
+export default WorkCarousel;

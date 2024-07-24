@@ -10,7 +10,8 @@ import TechnologyCarousel from '@/components/TechnologyCarousel'
 import { client, sanityFetch } from '@/sanity/client'
 import { fadeIn, fadeInButton, grow, ringGrow, textFadeUp, textFadeUpSmall } from '@/pages/utils/motion'
 import styles from '../styles/home.module.css'
-import { WorkCarousel } from '@/components/WorkCarousel'
+import WorkCarousel from '@/components/WorkCarousel'
+
 
 const urlFor = (source: SanityImageSource, projectId: string, dataset: string) =>
   projectId && dataset ? imageUrlBuilder({ projectId, dataset }).image(source) : null
@@ -96,7 +97,7 @@ const HeroSection = () => (
   </div>
 )
 
-const WorkSection = ({ clients }: { clients: any }) => (
+const WorkSection = ({ clients, projectId, dataset }: { clients: any, projectId: any, dataset: any }) => (
   <div className={styles.workWrapper}>
     <div className={styles.workContainer}>
       <div className={styles.headerContainerCenter}>
@@ -117,7 +118,7 @@ const WorkSection = ({ clients }: { clients: any }) => (
           </motion.div>
         </div>
       </div>
-      <WorkCarousel clients={clients} />
+      <WorkCarousel clients={clients} projectId={projectId} dataset={dataset} />
     </div>
   </div>
 )
@@ -487,7 +488,7 @@ const Home = ({ clients, technology, solutions, mobileSolutions, projectId, data
     </Head>
     <Navbar />
     <HeroSection />
-    <WorkSection clients={clients} />
+    <WorkSection clients={clients} projectId={projectId} dataset={dataset} />
     <SolutionsSection solutions={solutions} mobileSolutions={mobileSolutions} />
     <TechSection technology={technology} />
     <ContextSection />
