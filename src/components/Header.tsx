@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from "../styles/Header.module.css"
 import { motion } from "framer-motion"
-import { fade, fadeIn, textFadeUp } from '@/pages/utils/motion'
+import { fade, fadeIn, textFadeUp, textFadeUpSmall } from '@/pages/utils/motion'
 
 export default function Header({ label, title, subtitle }: { label: string, title: string, subtitle?: string }) {
 
@@ -14,7 +14,7 @@ export default function Header({ label, title, subtitle }: { label: string, titl
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0 }} className={`title ${styles.title}`}>{title}</motion.p>
-          <motion.p variants={textFadeUp("up", "spring", .1, 0.6)}
+          <motion.p variants={textFadeUpSmall("up", "spring", .1, 1.2)}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0 }} className={`subtitle ${styles.subtitle}`}>{subtitle}</motion.p>

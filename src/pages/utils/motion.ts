@@ -148,6 +148,35 @@ export const fadeIn = (
     scale: 1,
   },
 });
+
+export const ringGrow = (
+  direction: any,
+  type: any,
+  delay: any,
+  duration: any
+) => ({
+  hidden: {
+    x: 0,
+    y: 0,
+    opacity: 0,
+    scale: 0.5,
+    originY: "100%",
+  },
+  show: {
+    x: 0,
+    y: 0,
+    opacity: 1,
+    transition: {
+      type,
+      delay,
+      duration,
+      bounce: 0,
+      ease: [0.17, 0.67, 0.83, 0.67], // Proper easing type as an array
+    },
+    scale: 1,
+  },
+});
+
 export const fadeInButton = (
   direction: any,
   type: any,
@@ -202,6 +231,33 @@ export const textFadeUp = (
     },
     scale: 1,
     skewY: 0,
+  },
+});
+export const textFadeUpSmall = (
+  direction: any,
+  type: any,
+  delay: any,
+  duration: any
+) => ({
+  hidden: {
+    x: 0,
+    y: 33,
+    opacity: 0,
+    scale: 0.95,
+    originY: "100%",
+  },
+  show: {
+    x: 0,
+    y: 0,
+    opacity: 1,
+    transition: {
+      bounce: 0,
+      type,
+      delay,
+      duration,
+      ease: [0.17, 0.67, 0.83, 0.67], // Proper easing type as an array
+    },
+    scale: 1,
   },
 });
 

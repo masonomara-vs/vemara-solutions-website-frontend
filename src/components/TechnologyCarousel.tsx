@@ -9,16 +9,30 @@ import {
 } from "framer-motion";
 import styles from '../styles/TechnologyCarousel.module.css';
 import { wrap } from "@motionone/utils";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
-const TechnologyCarousel = ({ technology }: { technology: any }) => {
-  const technologyA = [...technology.sort((a: any, b: any) => Math.random() - 0.5)];
-  const technologyB = [...technology.sort((a: any, b: any) => Math.random() - 0.5)];
-  const technologyC = [...technology.sort((a: any, b: any) => Math.random() - 0.5)];
+interface Technology {
+  _id: string;
+  name: string;
+}
 
-  const baseVelocityA = -.33;
-  const baseVelocityB = .33;
-  const baseVelocityC = -.33;
+const TechnologyCarousel = ({ technology }: { technology: Technology[] }) => {
+  const [sortedTechnologyA, setSortedTechnologyA] = useState<Technology[]>([]);
+  const [sortedTechnologyB, setSortedTechnologyB] = useState<Technology[]>([]);
+  const [sortedTechnologyC, setSortedTechnologyC] = useState<Technology[]>([]);
+
+  useEffect(() => {
+    const technologyA = [...technology.sort((a: any, b: any) => Math.random() - 0.5)];
+    const technologyB = [...technology.sort((a: any, b: any) => Math.random() - 0.5)];
+    const technologyC = [...technology.sort((a: any, b: any) => Math.random() - 0.5)];
+    setSortedTechnologyA(technologyA);
+    setSortedTechnologyB(technologyB);
+    setSortedTechnologyC(technologyC);
+  }, [technology]);
+
+  const baseVelocityA = -0.33;
+  const baseVelocityB = 0.33;
+  const baseVelocityC = -0.33;
 
   const baseXA = useMotionValue(0);
   const baseXB = useMotionValue(0);
@@ -69,79 +83,52 @@ const TechnologyCarousel = ({ technology }: { technology: any }) => {
   return (
     <div className={styles.carouselWrapper}>
       <motion.div className={styles.carouselContainer} style={{ x: xA }} >
-        {technologyA.map((tech: any, index: any) => (
-          <div
-            key={tech._id}
-            className={styles.carouselItem}
-          >
+        {sortedTechnologyA.map((tech: any) => (
+          <div key={tech._id} className={styles.carouselItem}>
             <span className={styles.techName}>{tech.name}</span>
           </div>
         ))}
-        {technologyA.map((tech: any, index: any) => (
-          <div
-            key={tech._id}
-            className={styles.carouselItem}
-          >
+        {sortedTechnologyA.map((tech: any) => (
+          <div key={tech._id} className={styles.carouselItem}>
             <span className={styles.techName}>{tech.name}</span>
           </div>
         ))}
-        {technologyA.map((tech: any, index: any) => (
-          <div
-            key={tech._id}
-            className={styles.carouselItem}
-          >
+        {sortedTechnologyA.map((tech: any) => (
+          <div key={tech._id} className={styles.carouselItem}>
             <span className={styles.techName}>{tech.name}</span>
           </div>
         ))}
       </motion.div>
       <motion.div className={styles.carouselContainer} style={{ x: xB }} >
-        {technologyB.map((tech: any, index: any) => (
-          <div
-            key={tech._id}
-            className={styles.carouselItem}
-          >
+        {sortedTechnologyB.map((tech: any) => (
+          <div key={tech._id} className={styles.carouselItem}>
             <span className={styles.techName}>{tech.name}</span>
           </div>
         ))}
-        {technologyB.map((tech: any, index: any) => (
-          <div
-            key={tech._id}
-            className={styles.carouselItem}
-          >
+        {sortedTechnologyB.map((tech: any) => (
+          <div key={tech._id} className={styles.carouselItem}>
             <span className={styles.techName}>{tech.name}</span>
           </div>
         ))}
-        {technologyB.map((tech: any, index: any) => (
-          <div
-            key={tech._id}
-            className={styles.carouselItem}
-          >
+        {sortedTechnologyB.map((tech: any) => (
+          <div key={tech._id} className={styles.carouselItem}>
             <span className={styles.techName}>{tech.name}</span>
           </div>
         ))}
       </motion.div>
       <motion.div className={styles.carouselContainer} style={{ x: xC }} >
-        {technologyC.map((tech: any, index: any) => (
-          <div
-            key={tech._id}
-            className={styles.carouselItem}
-          >
+        {sortedTechnologyC.map((tech: any) => (
+          <div key={tech._id} className={styles.carouselItem}>
             <span className={styles.techName}>{tech.name}</span>
           </div>
         ))}
-        {technologyC.map((tech: any, index: any) => (
-          <div
-            key={tech._id}
-            className={styles.carouselItem}
-          >
+        {sortedTechnologyC.map((tech: any) => (
+          <div key={tech._id} className={styles.carouselItem}>
             <span className={styles.techName}>{tech.name}</span>
           </div>
         ))}
-        {technologyC.map((tech: any, index: any) => (
-          <div
-            key={tech._id}
-            className={styles.carouselItem}
-          >
+        {sortedTechnologyC.map((tech: any) => (
+          <div key={tech._id} className={styles.carouselItem}>
             <span className={styles.techName}>{tech.name}</span>
           </div>
         ))}
