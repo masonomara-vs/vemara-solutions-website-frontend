@@ -34,7 +34,7 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
     return () => {
       window.removeEventListener("scroll", controlNavbar);
     };
-  }, [lastScrollY]);
+  }, [controlNavbar, lastScrollY]);
 
   const handleMenu = () => {
     setMenuOpen(!menuOpen);
