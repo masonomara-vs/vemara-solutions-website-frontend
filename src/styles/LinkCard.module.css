@@ -14,12 +14,13 @@
   @media screen and (min-width: 550px) {
     .linkContainer {
       max-width: var(--max-width);
-      height: 269px;
-      width: 302px;
+      height: 100%;
+      width: 410px;
     }
   }
 .linkDescription {
     display: flex;
+    max-height: 75px;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
@@ -36,6 +37,20 @@
     border-radius: 19.2px;
     width: fit-content;
     color: var(--background);
+    gap: 11px;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+  .link2Action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    padding: 13px 22px;
+    background-color:lightgray;
+    border-radius: 19.2px;
+    width: fit-content;
+    color: var(--foreground);
     gap: 11px;
     font-weight: 600;
     margin-top: 8px;
