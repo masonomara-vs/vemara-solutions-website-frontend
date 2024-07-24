@@ -1,7 +1,7 @@
 
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion';
 import { Analytics } from '@vercel/analytics/react';
 import { Inter } from "next/font/google";
 import Footer from "@/components/Footer";

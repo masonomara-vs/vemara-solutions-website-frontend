@@ -1,7 +1,6 @@
-import React from 'react'
 import styles from "../styles/Header.module.css"
 import { motion } from "framer-motion"
-import { fade, fadeIn, textFadeUp, textFadeUpSmall } from '@/pages/utils/motion'
+import { fade, textFadeUp, textFadeUpSmall } from '@/pages/utils/motion'
 
 export default function Header({ label, title, subtitle }: { label: string, title: string, subtitle?: string }) {
 

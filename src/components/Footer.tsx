@@ -1,7 +1,6 @@
-import React from "react";
 import styles from "../styles/Footer.module.css";
 import { motion } from "framer-motion";
-import { fade, fadeIn, fadeInButton, textFadeUp } from "@/pages/utils/motion";
+import { fadeInButton } from "@/pages/utils/motion";
 import Link from "next/link";
 import Image from "next/image";
 

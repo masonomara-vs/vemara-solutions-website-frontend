@@ -1,8 +1,5 @@
 import Header from "@/components/Header";
-import React from "react";
 import styles from "../../styles/contactUs.module.css";
-import { motion } from "framer-motion";
-import { fadeIn } from "../utils/motion";
 import Navbar from "@/components/Navbar";
 import LinkCard from "@/components/LinkCard";
 import Image from "next/image";
