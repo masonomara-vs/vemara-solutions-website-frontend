@@ -9,11 +9,15 @@ export default function LinkCard({
   description,
   buttonTitle,
   buttonLink,
+  button2Title,
+  button2Link
 }: {
   title: string;
   description: string;
   buttonTitle: string;
   buttonLink: string;
+  button2Title?: string;
+  button2Link?: string;
 }) {
   return (
     <div className={styles.linkCardWrapper}>
@@ -32,6 +36,13 @@ export default function LinkCard({
               {buttonTitle} -&gt;
             </Link>
           </div>
+          {button2Title ? 
+          <div className={styles.link2Action}>
+          <Link href={button2Link ?? ''} target={"_top"}>
+            {button2Title} -&gt;
+          </Link>
+        </div>
+        : null}
         </div>
       </motion.div>
     </div>
