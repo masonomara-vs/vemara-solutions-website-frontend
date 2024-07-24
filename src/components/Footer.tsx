@@ -151,7 +151,7 @@ export default function Footer() {
           </Link>
           <Link
             target="_top"
-            href={`7324554515`}
+            href={`tel:7324554515`}
           >
              <Image
               height={12.87}
