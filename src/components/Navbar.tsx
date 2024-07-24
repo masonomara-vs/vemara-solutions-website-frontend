@@ -39,6 +39,7 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
   const handleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+  
 
   return (
     <>
