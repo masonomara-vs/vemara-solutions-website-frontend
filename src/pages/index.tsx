@@ -8,7 +8,7 @@ import { SanityImageSource } from '@sanity/image-url/lib/types/types'
 import Navbar from '@/components/Navbar'
 import TechnologyCarousel from '@/components/TechnologyCarousel'
 import { client, sanityFetch } from '@/sanity/client'
-import { fadeIn, fadeInButton, ringGrow, textFadeUp, textFadeUpSmall } from '@/pages/utils/motion'
+import { fadeIn, fadeInButton, grow, ringGrow, textFadeUp, textFadeUpSmall } from '@/pages/utils/motion'
 import styles from '../styles/home.module.css'
 
 const urlFor = (source: SanityImageSource, projectId: string, dataset: string) =>
@@ -170,8 +170,8 @@ const ContextSection = () => (
           whileInView="show"
           viewport={{ once: true, amount: 0 }} className={styles.contextRingD} />
       </div>
-      <div className={styles.headerContainerCenter}>
-        <div className={styles.headerContainerCenterText}>
+      <div className={styles.headerContainerLeft}>
+        <div className={styles.headerContainerLeftText}>
           <motion.p variants={textFadeUp("up", "spring", 0, 0.6)}
             initial="hidden"
             whileInView="show"
@@ -189,135 +189,94 @@ const ContextSection = () => (
             </Link>
           </motion.div>
         </div>
-        <div className={styles.contextContentWrapper}>
-          <div className={`${styles.contextContent} desktop`}>
-            <div className={styles.contextContentDivider} />
-            <motion.div variants={textFadeUpSmall("up", "spring", 0, 1.2)}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0 }}>
-              <div className={styles.contextContentCard}>
-                <div className={`${styles.contextContentCardTitle} label`}>
-                  Product Development
-                </div>
-                <div className={`${styles.contextContentCardBody} body`}>
-                  Our in-house expertise in software development, mobile app development, and website and custom solutions sets us apart.
-                </div>
+
+      </div>
+      <div className={styles.contextContentWrapper}>
+        <div className={`${styles.contextContent} mobile`}>
+          <motion.div variants={textFadeUpSmall("up", "spring", 0, 1.2)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0 }} className={styles.contextContentDivider} />
+          <motion.div variants={textFadeUpSmall("up", "spring", 0, 1.2)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0 }}>
+            <div className={styles.contextContentCard}>
+              <div className={`${styles.contextContentCardTitle} label`}>
+                Product Development
               </div>
-            </motion.div>
-            <div className={styles.contextContentDivider} />
-            <motion.div variants={textFadeUpSmall("up", "spring", .1, 1.2)}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0 }}>
-              <div className={styles.contextContentCard}>
-                <div className={`${styles.contextContentCardTitle} label`}>
-                  Product Design
-                </div>
-                <div className={`${styles.contextContentCardBody} body`}>
-                  From initial UX/UI design to visual and product design, we create designs and systems for tangible and intuitive interfaces.
-                </div>
+              <div className={`${styles.contextContentCardBody} description`}>
+                Our in-house expertise in software development, mobile app development, and website and custom solutions sets us apart.
               </div>
-            </motion.div>
-            <div className={styles.contextContentDivider} />
-            <motion.div variants={textFadeUpSmall("up", "spring", .2, 1.2)}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0 }}>
-              <div className={styles.contextContentCard}>
-                <div className={`${styles.contextContentCardTitle} label`}>
-                  Product Vision
-                </div>
-                <div className={`${styles.contextContentCardBody} body`}>
-                  We develop clear roadmaps and strategies from user and foundational research to ensure you engage with your audience.                  </div>
+            </div>
+          </motion.div>
+          <motion.div variants={textFadeUpSmall("up", "spring", 0, 1.2)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0 }} className={styles.contextContentDivider} />
+          <motion.div variants={textFadeUpSmall("up", "spring", 0, 1.2)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0 }}>
+            <div className={styles.contextContentCard}>
+              <div className={`${styles.contextContentCardTitle} label`}>
+                Product Design
               </div>
-            </motion.div>
-            <div className={styles.contextContentDivider} />
-            <motion.div variants={textFadeUpSmall("up", "spring", .3, 1.2)}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0 }}>
-              <div className={styles.contextContentCard}>
-                <div className={`${styles.contextContentCardTitle} label`}>
-                  Technology Strategy
-                </div>
-                <div className={`${styles.contextContentCardBody} body`}>
-                  We ensure your technology supports your current and future resources and goals by optimizing workflows.                  </div>
+              <div className={`${styles.contextContentCardBody} description`}>
+                From initial UX/UI design to visual and product design, we create designs and systems for tangible and intuitive interfaces.
               </div>
-            </motion.div>
-            <div className={styles.contextContentDivider} />
-          </div>
-          <div className={`${styles.contextContent} mobile`}>
-            <div className={styles.contextContentDivider} />
-            <motion.div variants={textFadeUpSmall("up", "spring", 0, 1.2)}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0 }}>
-              <div className={styles.contextContentCard}>
-                <div className={`${styles.contextContentCardTitle} label`}>
-                  Product Development
-                </div>
-                <div className={`${styles.contextContentCardBody} body`}>
-                  Our in-house expertise in software development, mobile app development, and website and custom solutions sets us apart.
-                </div>
+            </div>
+          </motion.div>
+          <motion.div variants={textFadeUpSmall("up", "spring", 0, 1.2)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0 }} className={styles.contextContentDivider} />
+          <motion.div variants={textFadeUpSmall("up", "spring", 0, 1.2)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0 }}>
+            <div className={styles.contextContentCard}>
+              <div className={`${styles.contextContentCardTitle} label`}>
+                Product Vision
               </div>
-            </motion.div>
-            <div className={styles.contextContentDivider} />
-            <motion.div variants={textFadeUpSmall("up", "spring", 0, 1.2)}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0 }}>
-              <div className={styles.contextContentCard}>
-                <div className={`${styles.contextContentCardTitle} label`}>
-                  Product Design
-                </div>
-                <div className={`${styles.contextContentCardBody} body`}>
-                  From initial UX/UI design to visual and product design, we create designs and systems for tangible and intuitive interfaces.
-                </div>
+              <div className={`${styles.contextContentCardBody} description`}>
+                We develop clear roadmaps and strategies from user and foundational research to ensure you engage with your audience.
               </div>
-            </motion.div>
-            <div className={styles.contextContentDivider} />
-            <motion.div variants={textFadeUpSmall("up", "spring", 0, 1.2)}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0 }}>
-              <div className={styles.contextContentCard}>
-                <div className={`${styles.contextContentCardTitle} label`}>
-                  Product Vision
-                </div>
-                <div className={`${styles.contextContentCardBody} body`}>
-                  We develop clear roadmaps and strategies from user and foundational research to ensure you engage with your audience.                  </div>
+            </div>
+          </motion.div>
+          <motion.div variants={textFadeUpSmall("up", "spring", 0, 1.2)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0 }} className={styles.contextContentDivider} />
+          <motion.div variants={textFadeUpSmall("up", "spring", 0, 1.2)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0 }}>
+            <div className={styles.contextContentCard}>
+              <div className={`${styles.contextContentCardTitle} label`}>
+                Technology Strategy
               </div>
-            </motion.div>
-            <div className={styles.contextContentDivider} />
-            <motion.div variants={textFadeUpSmall("up", "spring", 0, 1.2)}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0 }}>
-              <div className={styles.contextContentCard}>
-                <div className={`${styles.contextContentCardTitle} label`}>
-                  Technology Strategy
-                </div>
-                <div className={`${styles.contextContentCardBody} body`}>
-                  We ensure your technology supports your current and future resources and goals by optimizing workflows.                  </div>
+              <div className={`${styles.contextContentCardBody} description`}>
+                We ensure your technology supports your current and future resources and goals by optimizing workflows.
               </div>
-            </motion.div>
-            <div className={styles.contextContentDivider} />
-          </div>
-          <div className={`${styles.contextRings} desktop`}>
-            <motion.div variants={ringGrow("up", "spring", 0, 2.4)} initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0 }} className={styles.contextRingA} />
-            <motion.div variants={ringGrow("up", "spring", 0, 1.6)} initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0 }} className={styles.contextRingB} />
-            <motion.div variants={ringGrow("up", "spring", 0, 1.6)} initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0 }} className={styles.contextRingC} />
-            <motion.div variants={ringGrow("up", "spring", .0, .8)} initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0 }} className={styles.contextRingD} />
-          </div>
+            </div>
+            <div className={styles.contextContentDivider} style={{ marginTop: 20 }} />
+          </motion.div>
+
+        </div>
+        <div className={`${styles.contextRings} desktop`}>
+          <motion.div variants={ringGrow("up", "spring", 0, 2.4)} initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0 }} className={styles.contextRingA} />
+          <motion.div variants={ringGrow("up", "spring", 0, 1.6)} initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0 }} className={styles.contextRingB} />
+          <motion.div variants={ringGrow("up", "spring", 0, 1.6)} initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0 }} className={styles.contextRingC} />
+          <motion.div variants={ringGrow("up", "spring", .0, .8)} initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0 }} className={styles.contextRingD} />
         </div>
       </div>
     </div>
