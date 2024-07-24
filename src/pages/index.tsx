@@ -10,6 +10,7 @@ import TechnologyCarousel from '@/components/TechnologyCarousel'
 import { client, sanityFetch } from '@/sanity/client'
 import { fadeIn, fadeInButton, grow, ringGrow, textFadeUp, textFadeUpSmall } from '@/pages/utils/motion'
 import styles from '../styles/home.module.css'
+import { WorkCarousel } from '@/components/WorkCarousel'
 
 const urlFor = (source: SanityImageSource, projectId: string, dataset: string) =>
   projectId && dataset ? imageUrlBuilder({ projectId, dataset }).image(source) : null
@@ -95,7 +96,7 @@ const HeroSection = () => (
   </div>
 )
 
-const WorkSection = () => (
+const WorkSection = ({ clients }: { clients: any }) => (
   <div className={styles.workWrapper}>
     <div className={styles.workContainer}>
       <div className={styles.headerContainerCenter}>
@@ -116,6 +117,7 @@ const WorkSection = () => (
           </motion.div>
         </div>
       </div>
+      <WorkCarousel clients={clients} />
     </div>
   </div>
 )
@@ -146,7 +148,7 @@ const SolutionsSection = ({ solutions, mobileSolutions }: { solutions: any, mobi
       <div className={`${styles.solutionCardsWrapperDesktop}`}>
         {solutions.map((solution: any, index: number) => (
           <motion.div
-            variants={fadeIn("up", "spring", index == 2 ? 0.1 : index == 3 ? 0.2 : index == 4 ? 0.3 : index == 5 ? 0.4 : index == 6 ? 0.5 : 0, 0.8)}
+            variants={fadeIn("up", "spring", index == 1 ? 0.1 : index == 2 ? 0.2 : index == 3 ? 0.3 : index == 4 ? 0.0 : index == 5 ? 0.1 : index == 6 ? 0.2 : index == 7 ? 0.3 : 0, 0.8)}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0 }}
@@ -485,7 +487,7 @@ const Home = ({ clients, technology, solutions, mobileSolutions, projectId, data
     </Head>
     <Navbar />
     <HeroSection />
-    <WorkSection />
+    <WorkSection clients={clients} />
     <SolutionsSection solutions={solutions} mobileSolutions={mobileSolutions} />
     <TechSection technology={technology} />
     <ContextSection />
