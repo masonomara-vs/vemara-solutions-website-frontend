@@ -23,12 +23,22 @@ export async function getStaticProps() {
     _type == "technology"
   ]{_id, name, description, image, category, position}|order(position desc)`
 
+  const SOLUTIONS_QUERY = `*[
+    _type == "solution" && featured == true
+  ]{_id, name, description, position}|order(position asc)`
+
+  const MOBILE_SOLUTIONS_QUERY = `*[
+    _type == "solution" && featured == true
+  ]{_id, name, description, position}|order(position asc)[0...6]`
+
   const clients = await sanityFetch<SanityDocument[]>({ query: CLIENTS_QUERY })
   const technology = await sanityFetch<SanityDocument[]>({ query: TECHNOLOGY_QUERY })
+  const solutions = await sanityFetch<SanityDocument[]>({ query: SOLUTIONS_QUERY })
+  const mobileSolutions = await sanityFetch<SanityDocument[]>({ query: MOBILE_SOLUTIONS_QUERY })
   const { projectId, dataset } = client.config()
 
   return {
-    props: { clients, technology, projectId, dataset },
+    props: { clients, technology, mobileSolutions, solutions, projectId, dataset },
   }
 }
 
@@ -110,6 +120,65 @@ const WorkSection = () => (
   </div>
 )
 
+const SolutionsSection = ({ solutions, mobileSolutions }: { solutions: any, mobileSolutions: any }) => (
+  <div className={styles.solutionsWrapper}>
+    <div className={styles.solutionsContainer}>
+      <div className={styles.headerContainerLeft}>
+        <div className={styles.headerContainerLeftText}>
+          <motion.p variants={textFadeUp("up", "spring", 0, 0.6)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0 }} className={` ${styles.headerContainerHeader} header`}>From strategy to service, delivering reliable results.</motion.p>
+        </div>
+        <div className={styles.headerButtonsWrapper}>
+          <motion.div
+            variants={fadeInButton("up", "spring", .1, 0.8)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0 }}
+          >
+            <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/contact`} >
+              <span className={`callout`}>View all solutions</span><Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt=""></Image>
+            </Link>
+          </motion.div>
+        </div>
+      </div>
+      <div className={`${styles.solutionCardsWrapperDesktop}`}>
+        {solutions.map((solution: any, index: number) => (
+          <motion.div
+            variants={fadeIn("up", "spring", index == 2 ? 0.1 : index == 3 ? 0.2 : index == 4 ? 0.3 : index == 5 ? 0.4 : index == 6 ? 0.5 : 0, 0.8)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0 }}
+            key={index}
+          >
+            <div className={styles.solutionCard}>
+              <h3 className="label">{solution.name}</h3>
+              <p className="description">{solution.description}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+      <div className={`${styles.solutionCardsWrapperMobile}`}>
+        {mobileSolutions.map((solution: any, index: number) => (
+          <motion.div
+            variants={fadeIn("up", "spring", 0, 0.8)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0 }}
+            key={index}
+          >
+            <div className={styles.solutionCard}>
+              <h3 className="label">{solution.name}</h3>
+              <p className="description">{solution.description}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  </div>
+)
+
 const TechSection = ({ technology }: { technology: any }) => (
   <div className={styles.techWrapper}>
     <div className={styles.techContainer}>
@@ -179,7 +248,7 @@ const ContextSection = () => (
         </div>
         <div className={styles.headerButtonsWrapper}>
           <motion.div
-            variants={fadeInButton("up", "spring", .3, 0.8)}
+            variants={fadeInButton("up", "spring", .1, 0.8)}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0 }}
@@ -406,7 +475,7 @@ const TeamSection = () => (
 )
 
 
-const Home = ({ clients, technology, projectId, dataset }: { clients: any, technology: any, projectId: any, dataset: any }) => (
+const Home = ({ clients, technology, solutions, mobileSolutions, projectId, dataset }: { clients: any, technology: any, projectId: any, solutions: any, mobileSolutions: any, dataset: any }) => (
   <div className={styles.rootWrapper}>
     <Head>
       <title>Vemara Solutions</title>
@@ -417,6 +486,7 @@ const Home = ({ clients, technology, projectId, dataset }: { clients: any, techn
     <Navbar />
     <HeroSection />
     <WorkSection />
+    <SolutionsSection solutions={solutions} mobileSolutions={mobileSolutions} />
     <TechSection technology={technology} />
     <ContextSection />
     <TeamSection />

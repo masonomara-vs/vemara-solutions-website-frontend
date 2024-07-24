@@ -463,6 +463,12 @@ a {
 .buttonPrimaryBackground span {
   color: var(--background);
 }
+.buttonPrimaryForeground span,
+.buttonSecondaryForeground span,
+.buttonPrimaryBackground span,
+.buttonSecondaryBackground span {
+  white-space: nowrap;
+}
 @media screen and (min-width: 550px) {
   .buttonPrimaryForeground img,
   .buttonSecondaryForeground img,
