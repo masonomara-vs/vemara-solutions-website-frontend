@@ -14,12 +14,13 @@
   @media screen and (min-width: 550px) {
     .linkContainer {
       max-width: var(--max-width);
-      height: 269px;
-      width: 302px;
+      height: 100%;
+      width: 410px;
     }
   }
 .linkDescription {
     display: flex;
+    max-height: 75px;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
@@ -40,7 +41,6 @@
     font-weight: 600;
     margin-top: 8px;
   }
-
   .link2Action {
     display: flex;
     justify-content: center;

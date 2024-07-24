@@ -6,8 +6,24 @@ import { fadeIn } from "../utils/motion";
 import Navbar from "@/components/Navbar";
 import LinkCard from "@/components/LinkCard";
 import Image from "next/image";
+import { SanityDocument } from "next-sanity";
+import { client, sanityFetch } from "@/sanity/client";
 
-const CareersIndex = ({}) => {
+export async function getStaticProps() {
+  const JOBS_QUERY = `*[
+    _type == "jobs"
+  ]{_id, title, slug, overview, benefits, jobType, niceToHave, responsibilities, qualifications }`;
+
+  const jobs = await sanityFetch<SanityDocument[]>({ query: JOBS_QUERY });
+
+  return {
+    props: {
+      jobs,
+    },
+  };
+}
+
+const CareersIndex = ({ jobs }: { jobs: SanityDocument[] }) => {
   return (
     <div>
       <Navbar firstTitle="Home" firstLink="/" secondTitle="Careers" />
@@ -18,74 +34,49 @@ const CareersIndex = ({}) => {
       />
       <div className={styles.contactUsWrapper}>
         <div className={`${styles.contactUsContainerMobile} mobile`}>
-          <LinkCard
-            title={"Let's get started"}
-            description={
-              "Looking to work with tech consultants who have expert development capabilities and creative design skills? We’re eager to connect with you."
-            }
-            buttonTitle={"Schedule a call"}
-            buttonLink={"/contact/schedule-a-call"}
-          />
-          <LinkCard
-            title={"Join our team"}
-            description={
-              "If you think you’re a good fit for our innovative team, we’d love to hear from you."
-            }
-            buttonTitle={"View job openings"}
-            buttonLink={"/careers"}
-            button2Title={"Learn more"}
-          />
-          <LinkCard
-            title={"Press and media inquiries"}
-            description={
-              "For press information, including images, media, speaking engagements, questions, and articles."
-            }
-            buttonTitle={"Press inquiries"}
-            buttonLink={"/contact/press-and-media"}
-          />
-          <LinkCard
-            title={"General inquiries"}
-            description={
-              "For any support, introductions, general interest, getting started on a project, or any other inquiries."
-            }
-            buttonTitle={"Message us"}
-            buttonLink={"/contact/message-us"}
-          />
+          {jobs.map((job) => {
+            return (
+              <motion.div
+                key={job._id}
+                variants={fadeIn("up", "spring", 0, 0.8)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0 }}
+              >
+                <LinkCard
+                  title={job.title}
+                  description={job.overview}
+                  buttonTitle={"Apply now"}
+                  buttonLink={`/careers/job-application/${job.slug}`}
+                  button2Title={"Learn more"}
+                  button2Link={`/careers/job-oppurtunities/${job.slug}`}
+                />
+              </motion.div>
+            );
+          })}
         </div>
 
         <div className={`${styles.contactUsContainerDesktop} desktop`}>
-          <LinkCard
-            title={"Let's get started"}
-            description={
-              "Looking to work with tech consultants who have expert development capabilities and creative design skills? We’re eager to connect with you."
-            }
-            buttonTitle={"Schedule a call"}
-            buttonLink={"/contact/schedule-a-call"}
-          />
-          <LinkCard
-            title={"Join our team"}
-            description={
-              "If you think you’re a good fit for our innovative team, we’d love to hear from you."
-            }
-            buttonTitle={"View job openings"}
-            buttonLink={"/careers"}
-          />
-          <LinkCard
-            title={"Press and media inquiries"}
-            description={
-              "For press information, including images, media, speaking engagements, questions, and articles."
-            }
-            buttonTitle={"Press inquiries"}
-            buttonLink={"/contact/press-and-media"}
-          />
-          <LinkCard
-            title={"General inquiries"}
-            description={
-              "For any support, introductions, general interest, getting started on a project, or any other inquiries."
-            }
-            buttonTitle={"Message us"}
-            buttonLink={"/contact/message-us"}
-          />
+          {jobs.map((job) => {
+            return (
+              <motion.div
+                key={job._id}
+                variants={fadeIn("up", "spring", 0, 0.8)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0 }}
+              >
+                <LinkCard
+                  title={job.title}
+                  description={job.overview}
+                  buttonTitle={"Apply now"}
+                  buttonLink={`/careers/job-application/${job.slug}`}
+                  button2Title={"Learn more"}
+                  button2Link={`/careers/job-oppurtunities/${job.slug}`}
+                />
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </div>
