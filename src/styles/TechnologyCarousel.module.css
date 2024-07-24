@@ -1,0 +1,40 @@
+.carouselWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.carouselContainer {
+  display: flex;
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 17px;
+  margin-bottom: 17px;
+}
+
+.carouselItem {
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 17px;
+  background-color: var(--background);
+  border-radius: 12px;
+  border: 1px solid rgba(7, 8, 8, 0.1);
+}
+
+.techName {
+  font-size: 22px;
+  line-height: 120%;
+  font-weight: 600;
+  letter-spacing: -0.02rem;
+}
+@media screen and (min-width: 750px) {
+  .techName {
+    font-size: 24px;
+    line-height: 120%;
+    font-weight: 600;
+    letter-spacing: -0.02rem;
+  }
+}
