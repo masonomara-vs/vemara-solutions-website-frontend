@@ -4,10 +4,8 @@ import imageUrlBuilder from '@sanity/image-url';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 import { client, sanityFetch } from '@/sanity/client';
 import Image from 'next/image';
-import Breadcrumbs from '@/components/Breadcrumbs';
 import styles from '../../../styles/selectedWork.module.css';
-import { motion } from "framer-motion";
-import { staggerContainer } from '@/pages/utils/motion';
+import Navbar from '@/components/Navbar';
 
 const urlFor = (source: SanityImageSource, projectId: string, dataset: string) =>
   projectId && dataset
@@ -121,11 +119,8 @@ const WorkPage = ({
     .sort((a: any, b: any) => a.key - b.key);
 
   return (
-    <motion.div variants={staggerContainer(0.1, 0.2)}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0 }}>
-
+    <div>
+      <Navbar firstTitle='Home' firstLink="/" secondTitle="Work" secondLink='/work' thirdTitle={name} />
       <div className={styles.wrapper}>
 
         {/* logo section */}
@@ -247,7 +242,7 @@ const WorkPage = ({
           </div>
         </div>
       </div>
-    </motion.div >
+    </div >
   );
 }
 

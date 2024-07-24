@@ -106,6 +106,22 @@ export const textVariant2 = {
   },
 };
 
+export const fade = (type: any, delay: any, duration: any, opacity: any) => ({
+  hidden: {
+    opacity: 0,
+  },
+  show: {
+    opacity: opacity,
+    transition: {
+      type,
+      delay,
+      duration,
+      bounce: 0,
+      ease: [0.17, 0.67, 0.83, 0.67], // Proper easing type as an array
+    },
+  },
+});
+
 export const fadeIn = (
   direction: any,
   type: any,
@@ -113,8 +129,8 @@ export const fadeIn = (
   duration: any
 ) => ({
   hidden: {
-    x: direction === "left" ? 25 : direction === "right" ? -25 : 0,
-    y: direction === "up" ? 12.5 : direction === "down" ? -25 : 0,
+    x: direction === "left" ? 100 : direction === "right" ? -100 : 0,
+    y: direction === "up" ? 100 : direction === "down" ? -100 : 0,
     opacity: 0,
     scale: 0.98,
   },
@@ -126,7 +142,8 @@ export const fadeIn = (
       type,
       delay,
       duration,
-      ease: [0.25, 0.1, 0.25, 1], // Proper easing type as an array
+      bounce: 0,
+      ease: [0.17, 0.67, 0.83, 0.67], // Proper easing type as an array
     },
     scale: 1,
   },
@@ -139,22 +156,26 @@ export const textFadeUp = (
   duration: any
 ) => ({
   hidden: {
-    x: direction === "left" ? 25 : direction === "right" ? -25 : 0,
-    y: direction === "up" ? 12.5 : direction === "down" ? -25 : 0,
+    x: 0,
+    y: 100,
     opacity: 0,
     scale: 0.98,
+    skewY: 2,
+    originY: "100%",
   },
   show: {
     x: 0,
     y: 0,
     opacity: 1,
     transition: {
+      bounce: 0,
       type,
       delay,
       duration,
-      ease: [0.25, 0.1, 0.25, 1], // Proper easing type as an array
+      ease: [0.17, 0.67, 0.83, 0.67], // Proper easing type as an array
     },
     scale: 1,
+    skewY: 0,
   },
 });
 
