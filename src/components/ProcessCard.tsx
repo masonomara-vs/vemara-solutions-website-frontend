@@ -23,6 +23,7 @@ export default function ProcessCard({ step, title, description }: { step: any, t
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0 }}
+      className={styles.wrapper}
     >
       <div className={styles.container}>
         <motion.div
