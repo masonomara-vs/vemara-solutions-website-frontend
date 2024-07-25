@@ -69,7 +69,7 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
 
             <div className={styles.menuOpen} onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
               <Image
-                src={`/menu-icon.png`}
+                src={`/close-icon.png`}
                 alt="Open"
                 fill
                 style={{ objectFit: "contain" }}
