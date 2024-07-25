@@ -146,6 +146,7 @@ const SolutionsSection = ({ solutions, mobileSolutions }: { solutions: any, mobi
             </Link>
           </motion.div>
         </div>
+        
       </div>
       <div className={`${styles.solutionCardsWrapperDesktop}`}>
         {solutions.map((solution: any, index: number) => (
