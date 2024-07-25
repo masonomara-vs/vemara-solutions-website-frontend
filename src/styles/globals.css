@@ -422,6 +422,34 @@ body:has(.heroCheck) {
   letter-spacing: -0.02rem;
   color: rgba(255, 255, 255, 0.6);
 }
+.inputForeground {
+  height: 48px;
+  padding: 11.5px 13px;
+  border-radius: 8px;
+  box-shadow: none !important;
+  stroke: none !important;
+  outline: none !important;
+  border: none !important;
+  background: rgba(7, 8, 8, 0.1) !important;
+  background-color: rgba(7, 8, 8, 0.06) !important;
+  backdrop-filter: blur(6);
+  font-size: 17px;
+  line-height: 145%;
+  font-weight: 400;
+  letter-spacing: -0.02rem;
+  color: var(--foreground);
+  width: 100%;
+}
+.inputForeground:focus {
+  outline: 1px solid rgba(7, 8, 8, 0.2) !important;
+}
+.inputBainputForegroundckground::placeholder {
+  font-size: 17px;
+  line-height: 145%;
+  font-weight: 400;
+  letter-spacing: -0.02rem;
+  color: rgba(7, 8, 8, 0.6);
+}
 
 .buttonPrimaryForeground {
   display: flex;
@@ -438,6 +466,7 @@ body:has(.heroCheck) {
   stroke: none !important;
   outline: none !important;
   border: none !important;
+  cursor: pointer !important;
 }
 .buttonSecondaryForeground {
   display: flex;
@@ -452,6 +481,10 @@ body:has(.heroCheck) {
   gap: 13px;
   font-weight: 600;
   transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  stroke: none !important;
+  outline: none !important;
+  border: none !important;
+  cursor: pointer !important;
 }
 .buttonPrimaryBackground {
   display: flex;
@@ -465,6 +498,10 @@ body:has(.heroCheck) {
   gap: 13px;
   font-weight: 600;
   transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  stroke: none !important;
+  outline: none !important;
+  border: none !important;
+  cursor: pointer !important;
 }
 .buttonSecondaryBackground {
   display: flex;
@@ -479,6 +516,10 @@ body:has(.heroCheck) {
   gap: 13px;
   font-weight: 600;
   transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  stroke: none !important;
+  outline: none !important;
+  border: none !important;
+  cursor: pointer !important;
 }
 
 .buttonSecondaryForeground span,
@@ -553,4 +594,76 @@ body:has(.heroCheck) {
     width: fit-content;
     padding: 13px 39px 13px 36px;
   }
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 18px;
+  min-width: 18px;
+  height: 18px;
+  background-color: rgba(7, 8, 8, 0.08);
+  border-radius: 5px;
+  /* border: 1px solid rgba(7, 8, 8, 0.2); */
+  cursor: pointer;
+}
+@media screen and (min-width: 550px) {
+  input[type="checkbox"]:hover {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 18px;
+    min-width: 18px;
+    height: 18px;
+    background-color: rgba(7, 8, 8, 0.06);
+    border-radius: 5px;
+    outline: 1px solid rgba(7, 8, 8, 0.2);
+    cursor: pointer;
+  }
+}
+
+input[type="checkbox"]:checked {
+  background-color: rgba(7, 8, 8, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input[type="checkbox"]:checked:after {
+  content: "\2714";
+  color: var(--background);
+  margin-top: 1px;
+}
+.textBoxForeground {
+  padding: 11.5px 13px;
+  border-radius: 8px;
+  box-shadow: none !important;
+  stroke: none !important;
+  outline: none !important;
+  border: none !important;
+  background: rgba(7, 8, 8, 0.1) !important;
+  background-color: rgba(7, 8, 8, 0.06) !important;
+  backdrop-filter: blur(6);
+  font-size: 17px;
+  line-height: 145%;
+  font-weight: 400;
+  letter-spacing: -0.02rem;
+  color: var(--foreground);
+  width: 100%;
+  font: inherit;
+}
+.textBoxForeground:focus {
+  outline: 1px solid rgba(7, 8, 8, 0.2) !important;
+}
+.textBoxForegroundckground::placeholder {
+  font-size: 17px;
+  line-height: 145%;
+  font-weight: 400;
+  letter-spacing: -0.02rem;
+  color: rgba(7, 8, 8, 0.6);
+}
+.dull {
+  opacity: .5;
+  font-weight: 400;
 }
