@@ -39,17 +39,23 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const { projectId, dataset } = client.config();
 
+  if (!jobsData) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {
-      jobs: jobsData,
+      job: jobsData,
       projectId,
       dataset,
     },
   };
-}
+};
 
 type JobsPageProps = {
-  job: SanityDocument & { logoMetadata: { width: number, height: number } };
+  job: SanityDocument & { logoMetadata: { width: number, height: number } } | null;
   projectId: string;
   dataset: string;
 };
@@ -59,6 +65,10 @@ const JobsPage = ({
   projectId,
   dataset,
 }: JobsPageProps) => {
+  if (!job) {
+    return <div>Job not found.</div>;
+  }
+
   const {
     title,
     slug,
@@ -81,6 +91,7 @@ const JobsPage = ({
     <div>
       {/* <Navbar firstTitle='Home' firstLink="/" secondTitle="Work" secondLink='/work' thirdTitle={title} />
       <div className={styles.wrapper}>
+
 
         <div className={styles.logoWrapper}>
           <div className={styles.logoContainer} style={{ aspectRatio: logoAspectRatio }}>
