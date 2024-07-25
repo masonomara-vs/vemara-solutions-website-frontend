@@ -1,40 +1,41 @@
 .careersWrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 96px;
-    padding: 0px 0px 96px;
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    margin-top: 16px;
-  }
-  .jobsContainerMobile {
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
+  padding: 0px 0px 96px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+  background-color: var(--background);
+}
+.jobsContainerMobile {
+  max-width: var(--max-width);
+  display: flex;
+  padding: 0px 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 20px;
+  width: 100%;
+}
+.jobsContainerDesktop {
+  display: none;
+}
+@media screen and (min-width: 550px) {
+  .jobsContainerDesktop {
     max-width: var(--max-width);
     display: flex;
     padding: 0px 16px;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 20px;
+    gap: 96px;
     width: 100%;
+    padding: 0px 48px;
+    column-gap: 24px;
   }
-  .jobsContainerDesktop {
+  .jobsContainerMobile {
     display: none;
   }
-  @media screen and (min-width: 550px) {
-    .jobsContainerDesktop {
-      max-width: var(--max-width);
-      display: flex;
-      padding: 0px 16px;
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: flex-start;
-      gap: 96px;
-      width: 100%;
-      padding: 0px 48px;
-      column-gap: 24px;
-    }
-    .jobsContainerMobile {
-      display: none;
-    }
-  }
+}

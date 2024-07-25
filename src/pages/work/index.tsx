@@ -68,7 +68,7 @@ const WorkIndex = ({ clients, projectId, dataset }: { clients: SanityDocument[],
                     >
                       <Link className="buttonPrimaryBackground" target="_top" href={`/work/${client.slug.current}`}>
                         <span className={`callout`}>Read more</span>
-                        <Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt="" />
+                        <Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt="" />
                       </Link>
                     </div>
                   </div>
@@ -101,7 +101,7 @@ const WorkIndex = ({ clients, projectId, dataset }: { clients: SanityDocument[],
                     <div className={styles.clientActionWrapper}>
                       <Link className="buttonPrimaryBackground" target="_top" href={`/work/${client.slug.current}`}>
                         <span className={`callout`}>Read more</span>
-                        <Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt="" />
+                        <Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt="" />
                       </Link>
                     </div>
                   </div>
