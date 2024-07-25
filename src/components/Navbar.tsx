@@ -8,6 +8,10 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
   const [show, setShow] = useState(true);
   const [reg, setReg] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [servicesDropdownOpen, setServicesMenuShow] = useState(false);
+  const [aboutDropdownOpen, setAboutMenuShow] = useState(false);
+  const [contactDropdownOpen, setContactMenuShow] = useState(false);
+
 
   useEffect(() => {
     const controlNavbar = () => {
@@ -65,28 +69,79 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
                     target={"_top"}
                     className={styles.clientsWrapper}
                   >
-                    Work
+                    <span>Work</span>
                   </Link>
                 </div>
-                <div className={"buttonTextBackground"} style={{ fontSize: 15, paddingLeft: 8, paddingRight: 8 }}>
+                <div className={"buttonTextBackground"} style={{ fontSize: 15, paddingLeft: 8, paddingRight: 3 }} onMouseOver={() => setServicesMenuShow(true)} onMouseLeave={() => setServicesMenuShow(false)}>
                   <Link
                     href={"/services"}
                     target={"_top"}
                     className={styles.clientsWrapper}
                   >
-                    Services
+                    <span>Services</span>
                   </Link>
+                  <Image src="/breadcrumbsChevronBackground.svg" height={8.75} width={5.4} priority alt="" style={{ rotate: "90deg" }} />
+                  <div className={`${styles.dropdownWrapper} ${servicesDropdownOpen ? styles.dropdownWrapperOpen : ''}`}>
+                    <div className={styles.dropdownContainer}>
 
+
+                      <Link href={"/services"}
+                        target={"_top"} className={`${styles.linkHoverEffect}, ${styles.linkHoverEffectMain}`}>
+                        <div className={`${styles.dropdownTitleDiv} callout`} style={{ marginBottom: 5 }}>Services Overview<Image height={12.87} width={12.87} src="/clientActionArrowBlack.svg" priority alt="" style={{ opacity: 1 }}></Image></div>
+                        <div className="fieldlabel" style={{ fontWeight: 400, lineHeight: "145%" }}>Working within a variety of business contexts for your needs.</div>
+                      </Link>
+                      <div className={styles.verticalDivider} />
+                      <div className={styles.dropdownMiniMenu}>
+                        <Link href={"/services"}
+                          target={"_top"} className={styles.linkHoverEffect}>
+                          <div className={`${styles.dropdownTitleDiv} callout`}>Solutions</div>
+                        </Link>
+                        <Link href={"/services"}
+                          target={"_top"} className={styles.linkHoverEffect}>
+                          <div className={`${styles.dropdownTitleDiv} callout`}>Technology</div>
+                        </Link>
+                        <Link href={"/services"}
+                          target={"_top"} className={styles.linkHoverEffect}>
+                          <div className={`${styles.dropdownTitleDiv} callout`}>Contexts</div>
+                        </Link>
+
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className={"buttonTextBackground"} style={{ fontSize: 15, paddingLeft: 8, paddingRight: 8 }}>
+                <div className={"buttonTextBackground"} style={{ fontSize: 15, paddingLeft: 8, paddingRight: 3 }} onMouseOver={() => setAboutMenuShow(true)} onMouseLeave={() => setAboutMenuShow(false)}>
                   <Link
                     href={"/about"}
                     target={"_top"}
                     className={styles.clientsWrapper}
                   >
-                    About
+                    <span>About</span>
                   </Link>
-                  <Image src="/breadcrumbsChevron.svg" height={8.75} width={5.4} priority alt="" style={{ rotate: "90deg" }} />
+                  <Image src="/breadcrumbsChevronBackground.svg" height={8.75} width={5.4} priority alt="" style={{ rotate: "90deg" }} />
+                  <div className={`${styles.dropdownWrapper} ${aboutDropdownOpen ? styles.dropdownWrapperOpen : ''}`}>
+                    <div className={styles.dropdownContainer}>
+
+
+                      <Link href={"/services"}
+                        target={"_top"} className={`${styles.linkHoverEffect}, ${styles.linkHoverEffectMain}`}>
+                        <div className={`${styles.dropdownTitleDiv} callout`} style={{ marginBottom: 5 }}>About Overview<Image height={12.87} width={12.87} src="/clientActionArrowBlack.svg" priority alt="" style={{ opacity: 1 }}></Image></div>
+                        <div className="fieldlabel" style={{ fontWeight: 400, lineHeight: "145%" }}>Working within a variety of business contexts for your needs.</div>
+                      </Link>
+                      <div className={styles.verticalDivider} style={{ height: 105 }} />
+                      <div className={styles.dropdownMiniMenu}>
+                        <Link href={"/services"}
+                          target={"_top"} className={styles.linkHoverEffect}>
+                          <div className={`${styles.dropdownTitleDiv} callout`}>About Us</div>
+                        </Link>
+                        <Link href={"/services"}
+                          target={"_top"} className={styles.linkHoverEffect}>
+                          <div className={`${styles.dropdownTitleDiv} callout`}>Leadership Team</div>
+                        </Link>
+
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
                 <div className={"buttonTextBackground"} style={{ fontSize: 15, paddingLeft: 8, paddingRight: 8 }}>
                   <Link
@@ -94,18 +149,50 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
                     target={"_top"}
                     className={styles.clientsWrapper}
                   >
-                    Careers
+                    <span>Careers</span>
                   </Link>
                 </div>
-                <div className={"buttonTextBackground"} style={{ fontSize: 15, paddingLeft: 8, paddingRight: 8 }}>
+                <div className={"buttonTextBackground"} style={{ fontSize: 15, paddingLeft: 8, paddingRight: 3 }} onMouseOver={() => setContactMenuShow(true)} onMouseLeave={() => setContactMenuShow(false)}>
                   <Link
                     href={"/contact"}
                     target={"_top"}
                     className={styles.clientsWrapper}
                   >
-                    Contact
+                    <span>Contact</span>
                   </Link>
+                  <Image src="/breadcrumbsChevronBackground.svg" height={8.75} width={5.4} priority alt="" style={{ rotate: "90deg" }} />
+                  <div className={`${styles.dropdownWrapper} ${contactDropdownOpen ? styles.dropdownWrapperOpen : ''}`}>
+                    <div className={styles.dropdownContainer}>
+
+
+                      <Link href={"/services"}
+                        target={"_top"} className={`${styles.linkHoverEffect}, ${styles.linkHoverEffectMain}`}>
+                        <div className={`${styles.dropdownTitleDiv} callout`} style={{ marginBottom: 5 }}>Contact Us<Image height={12.87} width={12.87} src="/clientActionArrowBlack.svg" priority alt="" style={{ opacity: 1 }}></Image></div>
+                        <div className="fieldlabel" style={{ fontWeight: 400, lineHeight: "145%" }}>We like to partner with businesses driving their goals forward.</div>
+                      </Link>
+                      <div className={styles.verticalDivider} style={{ height: 152 }} />
+                      <div className={styles.dropdownMiniMenu}>
+                        <Link href={"/services"}
+                          target={"_top"} className={styles.linkHoverEffect}>
+                          <div className={`${styles.dropdownTitleDiv} callout`}>Schedule a call</div>
+                        </Link>
+                        <Link href={"/services"}
+                          target={"_top"} className={styles.linkHoverEffect}>
+                          <div className={`${styles.dropdownTitleDiv} callout`} >Job openings</div>
+                        </Link>
+                        <Link href={"/services"}
+                          target={"_top"} className={styles.linkHoverEffect}>
+                          <div className={`${styles.dropdownTitleDiv} callout`}>Press & media</div>
+                        </Link>
+                        <Link href={"/services"}
+                          target={"_top"} className={styles.linkHoverEffect}>
+                          <div className={`${styles.dropdownTitleDiv} callout`}>Message us</div>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+
               </div>
               <div className={styles.desktopButtonLinks}>
                 <Link className="buttonSecondaryForeground" target="_top" href={`/contact`} style={{ paddingTop: 10, paddingBottom: 10, borderRadius: 17.6 }}>
@@ -133,7 +220,7 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
                 <div className="active">{firstTitle}</div>
               </Link>
 
-              <Image src="/breadcrumbsChevron.svg" height={8.75} width={5.4} priority alt="" />
+              <Image src="/breadcrumbsChevronForeground.svg" height={8.75} width={5.4} priority alt="" />
               {secondLink ? (
                 <Link href={secondLink} target="_top" className={styles.activeLink}>
                   <div className="active">{secondTitle}</div>
@@ -146,7 +233,7 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
 
               {thirdTitle && (
                 <>
-                  <Image src="/breadcrumbsChevron.svg" height={8.75} width={5.4} priority alt="" />
+                  <Image src="/breadcrumbsChevronForeground.svg" height={8.75} width={5.4} priority alt="" />
                   <div className={styles.inactiveLink}>
                     <div className="inactive">{thirdTitle}</div>
                   </div>
