@@ -79,10 +79,9 @@ const JobsPage = ({
 
   return (
     <div>
-      <Navbar firstTitle='Home' firstLink="/" secondTitle="Work" secondLink='/work' thirdTitle={title} />
+      {/* <Navbar firstTitle='Home' firstLink="/" secondTitle="Work" secondLink='/work' thirdTitle={title} />
       <div className={styles.wrapper}>
 
-        {/* logo section */}
         <div className={styles.logoWrapper}>
           <div className={styles.logoContainer} style={{ aspectRatio: logoAspectRatio }}>
             <Image
@@ -94,7 +93,7 @@ const JobsPage = ({
           </div>
         </div>
 
-        {/* details section */}
+
         <div className={styles.detailsWrapper}>
           <div className={styles.detailsContainer}>
             {overview ? (
@@ -117,7 +116,7 @@ const JobsPage = ({
           </div>
         </div>
 
-        {/* content section */}
+    
         <div className={styles.contentWrapper}>
           <div className={styles.contentContainer}>
             {summary && (
@@ -200,7 +199,7 @@ const JobsPage = ({
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div >
   );
 }
