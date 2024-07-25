@@ -55,9 +55,9 @@ const ContactIndex = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0 }}
           >
-            <h4 className="label">Let's get started</h4>
+            <h4 className="label">Let‘s get started</h4>
             <div className="description">
-              Looking to work with tech consultants who have expert development capabilities and creative design skills? We’re eager to connect with you.
+              Looking to work with tech consultants who have expert development capabilities and creative design skills? We‘re eager to connect with you.
             </div>
             <div className={styles.linkContainerButtonWrapper}>
               <Link className="buttonPrimaryBackground" target="_top" href="/contact/schedule-a-call">
@@ -129,7 +129,7 @@ const ContactIndex = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0 }}
           >
-            <h4 className="label">Let's get started</h4>
+            <h4 className="label">Let‘s get started</h4>
             <div className="description">
               Looking to work with tech consultants who have expert development capabilities and creative design skills? We’re eager to connect with you.
             </div>
