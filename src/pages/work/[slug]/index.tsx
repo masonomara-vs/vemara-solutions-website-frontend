@@ -6,6 +6,8 @@ import { client, sanityFetch } from '@/sanity/client';
 import Image from 'next/image';
 import styles from '../../../styles/selectedWork.module.css';
 import Navbar from '@/components/Navbar';
+import { motion } from "framer-motion";
+import { fadeIn, fade } from '../../../../utils/motion';
 
 const urlFor = (source: SanityImageSource, projectId: string, dataset: string) =>
   projectId && dataset
@@ -124,7 +126,9 @@ const WorkPage = ({
       <div className={styles.wrapper}>
 
         {/* logo section */}
-        <div className={styles.logoWrapper}>
+        <motion.div variants={fade("spring", 0, 0.4, 0.6)} initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0 }} className={styles.logoWrapper}>
           <div className={styles.logoContainer} style={{ aspectRatio: logoAspectRatio }}>
             <Image
               src={getPhotoUrl(logo) || "https://via.placeholder.com/550x310"}
@@ -133,7 +137,7 @@ const WorkPage = ({
               style={{ objectFit: "contain" }}
             />
           </div>
-        </div>
+        </motion.div>
 
         {/* details section */}
         <div className={styles.detailsWrapper}>
