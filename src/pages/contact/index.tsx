@@ -4,7 +4,7 @@ import Navbar from "@/components/Navbar";
 import LinkCard from "@/components/LinkCard";
 import Image from "next/image";
 
-const ContactIndex = ({}) => {
+const ContactIndex = ({ }) => {
   return (
     <div>
       <Navbar firstTitle="Home" firstLink="/" secondTitle="Contact Us" />
@@ -87,7 +87,7 @@ const ContactIndex = ({}) => {
           <h1>Vemara Solutions Offices</h1>
           <div className={styles.officeImage}>
             <Image
-            //cant get this working
+              //cant get this working
               src={`/logo.png`}
               alt="Vemara Solutions"
               fill
