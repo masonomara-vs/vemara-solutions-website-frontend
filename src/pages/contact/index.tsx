@@ -14,12 +14,21 @@ const ContactIndex = () => {
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
-      const options = { timeZone: "America/New_York", hour: "numeric", minute: "2-digit", hour12: true };
+      const options: Intl.DateTimeFormatOptions = {
+        timeZone: "America/New_York",
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true
+      };
       const timeString = new Intl.DateTimeFormat("en-US", options).format(now);
       setCurrentTime(timeString);
 
       // Get the current hour in EST
-      const hourOptions = { timeZone: "America/New_York", hour: "numeric", hour12: false };
+      const hourOptions: Intl.DateTimeFormatOptions = {
+        timeZone: "America/New_York",
+        hour: "numeric",
+        hour12: false
+      };
       const currentHour = new Intl.DateTimeFormat("en-US", hourOptions).format(now);
       const currentMinute = now.getMinutes();
       const currentTimeInMinutes = parseInt(currentHour) * 60 + currentMinute;
@@ -55,7 +64,7 @@ const ContactIndex = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0 }}
           >
-            <h4 className="label">Let's get started</h4>
+            <h4 className="label">Let‘s get started</h4>
             <div className="description">
               Looking to work with tech consultants who have expert development capabilities and creative design skills? We’re eager to connect with you.
             </div>
@@ -129,7 +138,7 @@ const ContactIndex = () => {
             whileInView="show"
             viewport={{ once: true, amount: 0 }}
           >
-            <h4 className="label">Let's get started</h4>
+            <h4 className="label">Let‘s get started</h4>
             <div className="description">
               Looking to work with tech consultants who have expert development capabilities and creative design skills? We’re eager to connect with you.
             </div>
