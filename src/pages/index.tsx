@@ -379,7 +379,7 @@ const TeamSection = () => (
             </div>
             <div className={styles.bioContent}>
               <h3 className={`${styles.bioName} label`}>
-                Mason O'Mara
+                Mason O‘Mara
               </h3>
               <span className={`${styles.bioTitle} inactive`}>
                 Managing Partner, Head of Product

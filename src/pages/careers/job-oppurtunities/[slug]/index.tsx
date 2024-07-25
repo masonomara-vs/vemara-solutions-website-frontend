@@ -143,7 +143,7 @@ const JobsPage = ({
             )}
             {challenge && (
               <div className={styles.contentCopy}>
-                <h4 className='header'>{shortName || name}'s challenge</h4>
+                <h4 className='header'>{shortName || name}‘s challenge</h4>
                 <p className='body'>{challenge}</p>
               </div>
             )}
@@ -160,7 +160,7 @@ const JobsPage = ({
             </div>)}
             {solution && (
               <div className={styles.contentCopy}>
-                <h4 className='header'>{shortName || name}'s solution</h4>
+                <h4 className='header'>{shortName || name}‘s solution</h4>
                 <p className='body'>{solution}</p>
               </div>
             )}

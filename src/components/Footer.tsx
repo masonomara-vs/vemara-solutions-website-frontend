@@ -45,7 +45,7 @@ export default function Footer() {
               style={{ objectFit: "cover" }} />
           </div>
           <span className="header" style={{ color: "white" }}>
-            We're excited to see what comes next.
+            We‘re excited to see what comes next.
           </span>
           <div className={styles.ctaButtonsWrapper}>
 
