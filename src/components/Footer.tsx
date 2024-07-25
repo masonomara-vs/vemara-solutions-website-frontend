@@ -41,6 +41,7 @@ export default function Footer() {
             <Image
               src="/jump.gif"
               alt="Vemara Solutions"
+              unoptimized
               fill
               style={{ objectFit: "cover" }} />
           </div>
@@ -54,7 +55,7 @@ export default function Footer() {
             </Link>
 
 
-            <Link className="buttonSecondaryForeground" target="_top" href={`/contact/careers`} >
+            <Link className="buttonSecondaryForeground" target="_top" href={`/careers`} >
               <span className={`callout`}>Explore jobs</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
             </Link>
 
@@ -147,7 +148,7 @@ export default function Footer() {
               <Image
                 height={14.63}
                 width={14.63}
-                src="/logos/png/phone.png"
+                src="/phone.png"
                 priority
                 alt=""
               ></Image>

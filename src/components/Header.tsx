@@ -1,13 +1,15 @@
 import styles from "../styles/Header.module.css"
 import { motion } from "framer-motion"
-import { fade, textFadeUp, textFadeUpSmall } from '../../utils/motion'
+import { fade, fadeIn, textFadeUp, textFadeUpSmall } from '../../utils/motion'
 
 export default function Header({ label, title, subtitle }: { label: string, title: string, subtitle?: string }) {
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        <motion.h1 variants={fade("spring", 0, 0.4, 0.6)} className={`location ${styles.location}`}>{label}</motion.h1>
+        <motion.h1 variants={fade("spring", 0, 0.4, 0.6)} initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0 }} className={`location ${styles.location}`}>{label}</motion.h1>
         <div className={styles.contentContainer}>
           <motion.p variants={textFadeUp("up", "spring", 0, 0.6)}
             initial="hidden"
