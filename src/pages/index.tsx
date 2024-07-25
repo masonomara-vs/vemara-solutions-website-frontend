@@ -146,7 +146,7 @@ const SolutionsSection = ({ solutions, mobileSolutions }: { solutions: any, mobi
             </Link>
           </motion.div>
         </div>
-        
+
       </div>
       <div className={`${styles.solutionCardsWrapperDesktop}`}>
         {solutions.map((solution: any, index: number) => (
@@ -528,19 +528,19 @@ const Home = ({ clients, technology, solutions, mobileSolutions, projectId, data
   <div className={styles.rootWrapper}>
     <Head>
       <title>Vemara Solutions - Innovative Technology Consulting</title>
-      <meta name="description" content="Vemara Solutions offers innovative digital solutions to enhance your business's online presence. From web development to mobile app design, we have you covered." />
+      <meta name="description" content="Drive your business towards goals and new opportunities. Access industry-leading technology strategy, design, and development for digital products and solutions." />
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       <link rel="icon" href="/icon.ico" />
       <link rel="shortcut icon" href="/icon.ico" />
       <meta charSet="UTF-8" />
       <meta name="theme-color" content="#070808" />
       <meta property="og:title" content="Vemara Solutions - Innovative Technology Consulting" />
-      <meta property="og:description" content="Discover how Vemara Solutions can transform your digital presence with our expert web and mobile app development services." />
+      <meta property="og:description" content="Drive your business towards goals and new opportunities. Access industry-leading technology strategy, design, and development for digital products and solutions." />
       <meta property="og:image" content="/og-image.png" />
       <meta property="og:url" content="https://www.vemarasolutions.com" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="Vemara Solutions - Innovative Technology Consulting" />
-      <meta name="twitter:description" content="Vemara Solutions offers innovative digital solutions to enhance your business's online presence." />
+      <meta name="twitter:description" content="Drive your business towards goals and new opportunities. Access industry-leading technology strategy, design, and development for digital products and solutions." />
       <meta name="twitter:image" content="/twitter-image.png" />
       <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       <link rel="manifest" href="/manifest.json" />
