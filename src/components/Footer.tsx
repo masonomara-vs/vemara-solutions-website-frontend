@@ -45,16 +45,16 @@ export default function Footer() {
               style={{ objectFit: "cover" }} />
           </div>
           <span className="header" style={{ color: "white" }}>
-            We're excited to see what comes next.
+            We‘re excited to see what comes next.
           </span>
           <div className={styles.ctaButtonsWrapper}>
 
-            <Link className="buttonPrimaryForeground" target="_top" href={`/contact`} >
+            <Link className="buttonPrimaryForeground" target="_top" href={`/contact/schedule-a-call`} >
               <span className={`callout`}>Schedule a call</span><Image height={12.87} width={12.87} src="/clientActionArrowBlack.svg" priority alt=""></Image>
             </Link>
 
 
-            <Link className="buttonSecondaryForeground" target="_top" href={`/contact`} >
+            <Link className="buttonSecondaryForeground" target="_top" href={`/contact/careers`} >
               <span className={`callout`}>Explore jobs</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
             </Link>
 
@@ -74,7 +74,7 @@ export default function Footer() {
             </div>
             <span className="label" style={{ color: "white" }}>Discover Vemara Solutions</span>
             <div className={styles.menuLinkWrapper}>
-              <Link href={"/home"} target={"_top"} className="buttonTextBackground">
+              <Link href={"/"} target={"_top"} className="buttonTextBackground">
                 <span className="callout">Home</span>
               </Link>
               <Link href={"/work"} target={"_top"} className="buttonTextBackground">
@@ -95,7 +95,7 @@ export default function Footer() {
             </div>
 
             <div className={styles.policyLinkWrapper}>
-              <div className={styles.policyLinkRow}>
+              {/* <div className={styles.policyLinkRow}>
                 <Link href={"/contact"} target={"_top"} className="buttonTextBackground">
                   <span className="active">Privacy Policy</span>
                 </Link>
@@ -103,7 +103,7 @@ export default function Footer() {
                 <Link href={"/contact"} target={"_top"} className="buttonTextBackground">
                   <span className="active">Sitemap</span>
                 </Link>
-              </div>
+              </div> */}
               <div className="description" style={{ color: "rgba(255,255,255,.6)" }}>
                 2024 Vemara Solutions. All Rights Reserved.
               </div>
@@ -130,11 +130,11 @@ export default function Footer() {
             </span>
             <div className={styles.contactUsButtonsWrapper}>
 
-              <Link className="buttonPrimaryForeground" target="_top" href={`/contact`} >
+              <Link className="buttonPrimaryForeground" target="_top" href={`/contact/schedule-a-call`} >
                 <span className={`callout`}>Schedule a call</span><Image height={12.87} width={12.87} src="/clientActionArrowBlack.svg" priority alt=""></Image>
               </Link>
 
-              <Link className="buttonSecondaryForeground" target="_top" href={`/contact`} >
+              <Link className="buttonSecondaryForeground" target="_top" href={`/contact/message-us`} >
                 <span className={`callout`}>Message us</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
               </Link>
 

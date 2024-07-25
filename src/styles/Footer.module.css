@@ -23,6 +23,12 @@
     justify-content: space-between;
   }
 }
+@media screen and (min-width: 1131px) {
+  .desktopFooterWrapper {
+    flex-wrap: nowrap;
+    flex-direction: row;
+  }
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -98,6 +104,11 @@
     width: 321px;
   }
 }
+@media screen and (min-width: 1131px) {
+  .menuContainer {
+    width: 100%;
+  }
+}
 .menuLinkWrapper {
   display: flex;
   flex-direction: column;
@@ -115,12 +126,17 @@
     height: 112px;
   }
 }
+
 .policyLinkRow {
   display: flex;
   flex-direction: row;
   gap: 17px;
   align-items: center;
   justify-content: flex-start;
+  margin-top: 48px;
+  margin-bottom: 8px;
+}
+.policyLinkWrapper {
   margin-top: 48px;
   margin-bottom: 8px;
 }

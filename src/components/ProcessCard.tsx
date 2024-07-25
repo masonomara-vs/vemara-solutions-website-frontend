@@ -1,4 +1,4 @@
-import { fadeIn, fadeInIcon } from "@/pages/utils/motion";
+import { fadeIn, fadeInIcon } from "../../utils/motion";
 import { motion } from 'framer-motion';
 import styles from "../styles/ProcessCard.module.css";
 import Image from "next/image";
@@ -23,6 +23,7 @@ export default function ProcessCard({ step, title, description }: { step: any, t
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, amount: 0 }}
+      className={styles.wrapper}
     >
       <div className={styles.container}>
         <motion.div

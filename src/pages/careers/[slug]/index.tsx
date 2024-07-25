@@ -39,17 +39,23 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   const { projectId, dataset } = client.config();
 
+  if (!jobsData) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {
-      jobs: jobsData,
+      job: jobsData,
       projectId,
       dataset,
     },
   };
-}
+};
 
 type JobsPageProps = {
-  job: SanityDocument & { logoMetadata: { width: number, height: number } };
+  job: SanityDocument & { logoMetadata: { width: number, height: number } } | null;
   projectId: string;
   dataset: string;
 };
@@ -59,6 +65,10 @@ const JobsPage = ({
   projectId,
   dataset,
 }: JobsPageProps) => {
+  if (!job) {
+    return <div>Job not found.</div>;
+  }
+
   const {
     title,
     slug,
@@ -79,10 +89,10 @@ const JobsPage = ({
 
   return (
     <div>
-      <Navbar firstTitle='Home' firstLink="/" secondTitle="Work" secondLink='/work' thirdTitle={title} />
+      {/* <Navbar firstTitle='Home' firstLink="/" secondTitle="Work" secondLink='/work' thirdTitle={title} />
       <div className={styles.wrapper}>
 
-        {/* logo section */}
+
         <div className={styles.logoWrapper}>
           <div className={styles.logoContainer} style={{ aspectRatio: logoAspectRatio }}>
             <Image
@@ -94,7 +104,7 @@ const JobsPage = ({
           </div>
         </div>
 
-        {/* details section */}
+
         <div className={styles.detailsWrapper}>
           <div className={styles.detailsContainer}>
             {overview ? (
@@ -117,7 +127,7 @@ const JobsPage = ({
           </div>
         </div>
 
-        {/* content section */}
+    
         <div className={styles.contentWrapper}>
           <div className={styles.contentContainer}>
             {summary && (
@@ -143,7 +153,7 @@ const JobsPage = ({
             )}
             {challenge && (
               <div className={styles.contentCopy}>
-                <h4 className='header'>{shortName || name}'s challenge</h4>
+                <h4 className='header'>{shortName || name}‘s challenge</h4>
                 <p className='body'>{challenge}</p>
               </div>
             )}
@@ -160,7 +170,7 @@ const JobsPage = ({
             </div>)}
             {solution && (
               <div className={styles.contentCopy}>
-                <h4 className='header'>{shortName || name}'s solution</h4>
+                <h4 className='header'>{shortName || name}‘s solution</h4>
                 <p className='body'>{solution}</p>
               </div>
             )}
@@ -200,7 +210,7 @@ const JobsPage = ({
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div >
   );
 }

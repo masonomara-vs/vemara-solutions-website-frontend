@@ -8,7 +8,7 @@ import { SanityImageSource } from '@sanity/image-url/lib/types/types'
 import Navbar from '@/components/Navbar'
 import TechnologyCarousel from '@/components/TechnologyCarousel'
 import { client, sanityFetch } from '@/sanity/client'
-import { fadeIn, fadeInButton, growDown, growRight, ringGrow, textFadeUp, textFadeUpSmall } from '@/pages/utils/motion'
+import { fadeIn, fadeInButton, growDown, growRight, ringGrow, textFadeUp, textFadeUpSmall } from '../../utils/motion'
 import styles from '../styles/home.module.css'
 import WorkCarousel from '@/components/WorkCarousel'
 import ProcessCard from '@/components/ProcessCard'
@@ -79,7 +79,7 @@ const HeroSection = () => (
           whileInView="show"
           viewport={{ once: true, amount: 0 }} // Adjust amount as needed
         >
-          <Link className="buttonPrimaryForeground buttonFullWidth" target="_top" href={`/contact`} >
+          <Link className="buttonPrimaryForeground buttonFullWidth" target="_top" href={`/contact/schedule-a-call`} >
             <span className={`callout`}>Schedule a call</span><Image height={12.87} width={12.87} src="/clientActionArrowBlack.svg" priority alt=""></Image>
           </Link>
         </motion.div>
@@ -89,7 +89,7 @@ const HeroSection = () => (
           whileInView="show"
           viewport={{ once: true, amount: 0 }} // Adjust amount as needed
         >
-          <Link className="buttonSecondaryForeground buttonFullWidth" target="_top" href={`/contact`} >
+          <Link className="buttonSecondaryForeground buttonFullWidth" target="_top" href={`/contact/message-us`} >
             <span className={`callout`}>Message us</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
           </Link>
         </motion.div>
@@ -113,7 +113,7 @@ const WorkSection = ({ clients, projectId, dataset }: { clients: any, projectId:
             whileInView="show"
             viewport={{ once: true, amount: 0 }} // Adjust amount as needed
           >
-            <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/contact`} >
+            <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/work`} >
               <span className={`callout`}>View all work</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
             </Link>
           </motion.div>
@@ -141,12 +141,12 @@ const SolutionsSection = ({ solutions, mobileSolutions }: { solutions: any, mobi
             whileInView="show"
             viewport={{ once: true, amount: 0 }}
           >
-            <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/contact`} >
+            <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/services/solutions`} >
               <span className={`callout`}>View all solutions</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
             </Link>
           </motion.div>
         </div>
-        
+
       </div>
       <div className={`${styles.solutionCardsWrapperDesktop}`}>
         {solutions.map((solution: any, index: number) => (
@@ -215,7 +215,7 @@ const TechSection = ({ technology }: { technology: any }) => (
             whileInView="show"
             viewport={{ once: true, amount: 0 }}
           >
-            <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/contact`}>
+            <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/services/technologies`}>
               <span className={`callout`}>View all technologies</span>
               <Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt="" />
             </Link>
@@ -261,7 +261,7 @@ const ContextSection = () => (
             whileInView="show"
             viewport={{ once: true, amount: 0 }}
           >
-            <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/contact`} >
+            <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/services/contexts`} >
               <span className={`callout`}>Learn more</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
             </Link>
           </motion.div>
@@ -379,7 +379,7 @@ const TeamSection = () => (
             </div>
             <div className={styles.bioContent}>
               <h3 className={`${styles.bioName} label`}>
-                Mason O'Mara
+                Mason O‘Mara
               </h3>
               <span className={`${styles.bioTitle} inactive`}>
                 Managing Partner, Head of Product
@@ -462,7 +462,7 @@ const TeamSection = () => (
             whileInView="show"
             viewport={{ once: true, amount: 0 }}
           >
-            <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/contact`} >
+            <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/contact/schedule-a-call`} >
               <span className={`callout`}>Schedule a call</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
             </Link>
           </motion.div>
@@ -472,7 +472,7 @@ const TeamSection = () => (
             whileInView="show"
             viewport={{ once: true, amount: 0 }}
           >
-            <Link className="buttonSecondaryBackground buttonFullWidth" target="_top" href={`/contact`} >
+            <Link className="buttonSecondaryBackground buttonFullWidth" target="_top" href={`/about/leadership-team`} >
               <span className={`callout`}>View our leadership team</span><Image height={12.87} width={12.87} src="/clientActionArrowBlack.svg" priority alt=""></Image>
             </Link>
           </motion.div>
@@ -508,7 +508,7 @@ const ProcessSection = () => (
             whileInView="show"
             viewport={{ once: true, amount: 0 }}
           >
-            <Link className="buttonPrimaryBackground" target="_top" href={`/contact`}>
+            <Link className="buttonPrimaryBackground" target="_top" href={`/contact/schedule-a-call`}>
               <span className={`callout`}>Schedule a call</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
             </Link>
           </motion.div>
@@ -528,19 +528,19 @@ const Home = ({ clients, technology, solutions, mobileSolutions, projectId, data
   <div className={styles.rootWrapper}>
     <Head>
       <title>Vemara Solutions - Innovative Technology Consulting</title>
-      <meta name="description" content="Vemara Solutions offers innovative digital solutions to enhance your business's online presence. From web development to mobile app design, we have you covered." />
+      <meta name="description" content="Drive your business towards goals and new opportunities. Access industry-leading technology strategy, design, and development for digital products and solutions." />
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       <link rel="icon" href="/icon.ico" />
       <link rel="shortcut icon" href="/icon.ico" />
       <meta charSet="UTF-8" />
       <meta name="theme-color" content="#070808" />
       <meta property="og:title" content="Vemara Solutions - Innovative Technology Consulting" />
-      <meta property="og:description" content="Discover how Vemara Solutions can transform your digital presence with our expert web and mobile app development services." />
+      <meta property="og:description" content="Drive your business towards goals and new opportunities. Access industry-leading technology strategy, design, and development for digital products and solutions." />
       <meta property="og:image" content="/og-image.png" />
       <meta property="og:url" content="https://www.vemarasolutions.com" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="Vemara Solutions - Innovative Technology Consulting" />
-      <meta name="twitter:description" content="Vemara Solutions offers innovative digital solutions to enhance your business's online presence." />
+      <meta name="twitter:description" content="Drive your business towards goals and new opportunities. Access industry-leading technology strategy, design, and development for digital products and solutions." />
       <meta name="twitter:image" content="/twitter-image.png" />
       <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       <link rel="manifest" href="/manifest.json" />
@@ -550,7 +550,7 @@ const Home = ({ clients, technology, solutions, mobileSolutions, projectId, data
       <link rel="manifest" href="/site.webmanifest" />
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#070808" />
       <meta name="msapplication-TileColor" content="#070808" />
-      <meta name="theme-color" content="#ffffff" />
+      <meta name="theme-color" content="#070808" />
     </Head>
     <Navbar />
     <HeroSection />

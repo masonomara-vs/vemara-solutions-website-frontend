@@ -1,7 +1,7 @@
 import Header from "@/components/Header";
 import styles from "../../styles/contactUs.module.css";
 import { motion } from "framer-motion";
-import { fadeIn } from "../utils/motion";
+import { fadeIn } from "../../../utils/motion";
 import Navbar from "@/components/Navbar";
 import LinkCard from "@/components/LinkCard";
 import { SanityDocument } from "next-sanity";
@@ -47,7 +47,7 @@ const CareersIndex = ({ jobs }: { jobs: SanityDocument[] }) => {
                   buttonTitle={"Apply now"}
                   buttonLink={`/careers/job-application`}
                   button2Title={"Learn more"}
-                  button2Link={`/careers/job-oppurtunities/${job.slug}`}
+                  button2Link={`/careers/${job.slug}`}
                 />
               </motion.div>
             );
@@ -68,9 +68,9 @@ const CareersIndex = ({ jobs }: { jobs: SanityDocument[] }) => {
                   title={job.title}
                   description={job.overview}
                   buttonTitle={"Apply now"}
-                  buttonLink={`/careers/job-application/${job.slug}`}
+                  buttonLink={`/careers/job-application`}
                   button2Title={"Learn more"}
-                  button2Link={`/careers/job-oppurtunities/${job.slug}`}
+                  button2Link={`/careers/${job.slug}`}
                 />
               </motion.div>
             );
