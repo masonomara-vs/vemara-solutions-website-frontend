@@ -3,6 +3,8 @@ import styles from "../styles/Navbar.module.css";
 import Link from "next/link";
 import Image from "next/image";
 
+
+
 export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink, thirdTitle, thirdLink }: { firstTitle?: string, firstLink?: string, secondTitle?: string, secondLink?: string, thirdTitle?: string, thirdLink?: string }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [show, setShow] = useState(true);
@@ -11,6 +13,7 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
   const [servicesDropdownOpen, setServicesMenuShow] = useState(false);
   const [aboutDropdownOpen, setAboutMenuShow] = useState(false);
   const [contactDropdownOpen, setContactMenuShow] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
 
   useEffect(() => {
@@ -46,10 +49,66 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
 
   return (
     <>
+      <div className={`${styles.mobileMenuWrapper} ${mobileMenuOpen ? styles.mobileMenuWrapperOpen : ''}`}>
+        <div className={styles.topWrapper}>
+          <div className={styles.topContainer}>
+            <Link href={"/"} target={"_top"} className={styles.titleDesktopWrapper}>
+              <div className={styles.titleWrapper}>
+                <Image
+                  src={`/logos/png/logo__side--white.png`}
+                  alt="Vemara Solutions"
+                  fill
+                  style={{ objectFit: "contain" }}
+                />
+              </div>
+            </Link>
+
+
+            <div className={styles.menuOpen} onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+              <Image
+                src={`/menu-icon.png`}
+                alt="Open"
+                fill
+                style={{ objectFit: "contain" }}
+              />
+            </div>
+          </div>
+        </div>
+        <div>
+
+          <div className={styles.ctaButtonsWrapper}>
+
+            <Link className="buttonPrimaryForeground" target="_top" href={`/contact`} >
+              <span className={`callout`}>Schedule a call</span><Image height={12.87} width={12.87} src="/clientActionArrowBlack.svg" priority alt=""></Image>
+            </Link>
+
+
+            <Link className="buttonSecondaryForeground" target="_top" href={`/contact`} >
+              <span className={`callout`}>Message us</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
+            </Link>
+
+          </div>
+          <div className={styles.policyLinkWrapper}>
+            <div className={styles.policyLinkRow}>
+              <Link href={"/contact"} target={"_top"} className="buttonTextBackground">
+                <span className="active">Privacy Policy</span>
+              </Link>
+              <div className={styles.policyDivider} />
+              <Link href={"/contact"} target={"_top"} className="buttonTextBackground">
+                <span className="active">Sitemap</span>
+              </Link>
+            </div>
+            <div className="description" style={{ color: "rgba(255,255,255,.6)" }}>
+              2024 Vemara Solutions. All Rights Reserved.
+            </div>
+          </div>
+        </div>
+      </div>
       {firstLink ? (<div className={`headerblockBreadcrumbs`}></div>) :
         (<div className={`headerblock`}></div>)}
       <div className={`headerbar active${show} default${reg}`}>
         <div className={`${styles.wrapper}`}>
+
           <div className={styles.topWrapper}>
             <div className={styles.topContainer}>
               <Link href={"/"} target={"_top"} className={styles.titleDesktopWrapper}>
@@ -202,7 +261,7 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
                   <span className={`callout`} style={{ fontSize: 15 }}>Schedule a call</span><Image height={11.29} width={11.29} src="/clientActionArrowBlack.svg" priority alt=""></Image>
                 </Link>
               </div>
-              <div className={styles.menuOpen} onClick={handleMenu}>
+              <div className={styles.menuOpen} onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
                 <Image
                   src={`/menu-icon.png`}
                   alt="Open"
@@ -242,7 +301,7 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
             </div>
           </div>
         )}
-      </div>
+      </div >
     </>
   );
 }
