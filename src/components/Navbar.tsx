@@ -10,9 +10,12 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
   const [show, setShow] = useState(true);
   const [reg, setReg] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [servicesDropdownOpen, setServicesMenuShow] = useState(false);
-  const [aboutDropdownOpen, setAboutMenuShow] = useState(false);
-  const [contactDropdownOpen, setContactMenuShow] = useState(false);
+  const [servicesDropdownOpen, setServicesMenuOpen] = useState(false);
+  const [aboutDropdownOpen, setAboutMenuOpen] = useState(false);
+  const [contactDropdownOpen, setContactMenuOpen] = useState(false);
+  const [servicesMobileDropdownOpen, setServicesMobileMenuOpen] = useState(false);
+  const [aboutMobileDropdownOpen, setAboutMobileMenuOpen] = useState(false);
+  const [contactMobileDropdownOpen, setContactMobileMenuOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
 
@@ -74,8 +77,87 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
             </div>
           </div>
         </div>
-        <div>
+        <div className={styles.mobileMenuContainer}>
 
+          <div className={styles.mobileLinkWrapper}>
+            <Link href={"/"} target={"_top"} className={`${styles.mobileLinkButton} buttonTextBackground`}>
+              <span className="callout">Home</span>
+            </Link>
+            <Link href={"/work"} target={"_top"} className={`${styles.mobileLinkButton} buttonTextBackground`}>
+              <span className="callout">Work</span>
+            </Link>
+            <div onClick={() => setServicesMobileMenuOpen(!servicesMobileDropdownOpen)} className={`${styles.mobileLinkButton} buttonTextBackground`}>
+              <span className="callout">Services</span>
+              <Image src="/breadcrumbsChevronBackground.svg" height={11.6375} width={7.182} priority alt="" className={styles.mobileLinkChevron} style={{ transform: servicesMobileDropdownOpen ? "rotate(-90deg)" : "rotate(90deg)" }} />
+            </div>
+            <div className={`${styles.mobileLinkSubwrapper} ${servicesMobileDropdownOpen ? styles.mobileLinkSubwrapperOpenServices : ''}`} >
+              <Link href={"/services/"}
+                target={"_top"} className={styles.mobileSublink}>
+                <div className={` callout`}>Services overview</div>
+              </Link>
+              <Link href={"/services/solutions"}
+                target={"_top"} className={styles.mobileSublink}>
+                <div className={` callout`}>Solutions</div>
+              </Link>
+              <Link href={"/services/technology"}
+                target={"_top"} className={styles.mobileSublink}>
+                <div className={` callout`}>Technology</div>
+              </Link>
+              <Link href={"/services/contexts"}
+                target={"_top"} className={styles.mobileSublink}>
+                <div className={` callout`}>Contexts</div>
+              </Link>
+            </div>
+            <div onClick={() => setAboutMobileMenuOpen(!aboutMobileDropdownOpen)} className={`${styles.mobileLinkButton} buttonTextBackground`}>
+              <span className="callout">About</span>
+              <Image src="/breadcrumbsChevronBackground.svg" height={11.6375} width={7.182} priority alt="" className={styles.mobileLinkChevron} style={{ transform: aboutMobileDropdownOpen ? "rotate(-90deg)" : "rotate(90deg)" }}
+              />
+            </div>
+            <div className={`${styles.mobileLinkSubwrapper} ${aboutMobileDropdownOpen ? styles.mobileLinkSubwrapperOpenAbout : ''}`}>
+              <Link href={"/about"}
+                target={"_top"} className={styles.mobileSublink}>
+                <div className={` callout`}>About overview</div>
+              </Link>
+              <Link href={"/about/about-us"}
+                target={"_top"} className={styles.mobileSublink}>
+                <div className={` callout`}>About us</div>
+              </Link>
+              <Link href={"/about/leadership-team"}
+                target={"_top"} className={styles.mobileSublink}>
+                <div className={` callout`}>Leadership team</div>
+              </Link>
+
+            </div>
+            <Link href={"/careers"} target={"_top"} className={`${styles.mobileLinkButton} buttonTextBackground`}>
+              <span className="callout">Careers</span>
+            </Link>
+            <div onClick={() => setContactMobileMenuOpen(!contactMobileDropdownOpen)} className={`${styles.mobileLinkButton} buttonTextBackground`}>
+              <span className="callout">Contact</span>
+              <Image src="/breadcrumbsChevronBackground.svg" height={11.6375} width={7.182} priority alt="" className={styles.mobileLinkChevron} style={{ transform: contactMobileDropdownOpen ? "rotate(-90deg)" : "rotate(90deg)" }} />
+            </div>
+            <div className={`${styles.mobileLinkSubwrapper} ${contactMobileDropdownOpen ? styles.mobileLinkSubwrapperOpenContact : ''}`}>
+              <Link href={"/contact/"}
+                target={"_top"} className={styles.mobileSublink}>
+                <div className={` callout`}>Contact us</div>
+              </Link>
+              <Link href={"/contact/schedule-a-call"}
+                target={"_top"} className={styles.mobileSublink}>
+                <div className={` callout`}>Schedule a call</div>
+              </Link>
+              <Link href={"/careers/"}
+                target={"_top"} className={styles.mobileSublink}>
+                <div className={` callout`}>Job openings</div>
+              </Link>
+              <Link href={"/contact/press-and-media"}
+                target={"_top"} className={styles.mobileSublink}>
+                <div className={` callout`}>Press & media</div>
+              </Link>
+              <Link href={"/contact/message-us"}
+                target={"_top"} className={styles.mobileSublink}>
+                <div className={` callout`}>Message us</div>
+              </Link>
+            </div>
+          </div>
           <div className={styles.ctaButtonsWrapper}>
 
             <Link className="buttonPrimaryForeground" target="_top" href={`/contact/schedule-a-call`} >
@@ -131,7 +213,7 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
                     <span>Work</span>
                   </Link>
                 </div>
-                <div className={"buttonTextBackground"} style={{ fontSize: 15, paddingLeft: 8, paddingRight: 3 }} onMouseOver={() => setServicesMenuShow(true)} onMouseLeave={() => setServicesMenuShow(false)}>
+                <div className={"buttonTextBackground"} style={{ fontSize: 15, paddingLeft: 8, paddingRight: 3 }} onMouseOver={() => setServicesMenuOpen(true)} onMouseLeave={() => setServicesMenuOpen(false)}>
                   <Link
                     href={"/services"}
                     target={"_top"}
@@ -146,7 +228,7 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
 
                       <Link href={"/services"}
                         target={"_top"} className={`${styles.linkHoverEffect}, ${styles.linkHoverEffectMain}`}>
-                        <div className={`${styles.dropdownTitleDiv} callout`} style={{ marginBottom: 5 }}>Services Overview<Image height={12.87} width={12.87} src="/clientActionArrowBlack.svg" priority alt="" style={{ opacity: 1 }}></Image></div>
+                        <div className={`${styles.dropdownTitleDiv} callout`} style={{ marginBottom: 5 }}>Services overview<Image height={12.87} width={12.87} src="/clientActionArrowBlack.svg" priority alt="" style={{ opacity: 1 }}></Image></div>
                         <div className="fieldlabel" style={{ fontWeight: 400, lineHeight: "145%" }}>Working within a variety of business contexts for your needs.</div>
                       </Link>
                       <div className={styles.verticalDivider} />
@@ -168,7 +250,7 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
                     </div>
                   </div>
                 </div>
-                <div className={"buttonTextBackground"} style={{ fontSize: 15, paddingLeft: 8, paddingRight: 3 }} onMouseOver={() => setAboutMenuShow(true)} onMouseLeave={() => setAboutMenuShow(false)}>
+                <div className={"buttonTextBackground"} style={{ fontSize: 15, paddingLeft: 8, paddingRight: 3 }} onMouseOver={() => setAboutMenuOpen(true)} onMouseLeave={() => setAboutMenuOpen(false)}>
                   <Link
                     href={"/about"}
                     target={"_top"}
@@ -183,18 +265,18 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
 
                       <Link href={"/about"}
                         target={"_top"} className={`${styles.linkHoverEffect}, ${styles.linkHoverEffectMain}`}>
-                        <div className={`${styles.dropdownTitleDiv} callout`} style={{ marginBottom: 5 }}>About Overview<Image height={12.87} width={12.87} src="/clientActionArrowBlack.svg" priority alt="" style={{ opacity: 1 }}></Image></div>
+                        <div className={`${styles.dropdownTitleDiv} callout`} style={{ marginBottom: 5 }}>About overview<Image height={12.87} width={12.87} src="/clientActionArrowBlack.svg" priority alt="" style={{ opacity: 1 }}></Image></div>
                         <div className="fieldlabel" style={{ fontWeight: 400, lineHeight: "145%" }}>Working within a variety of business contexts for your needs.</div>
                       </Link>
                       <div className={styles.verticalDivider} style={{ height: 105 }} />
                       <div className={styles.dropdownMiniMenu}>
                         <Link href={"/about/about-us"}
                           target={"_top"} className={styles.linkHoverEffect}>
-                          <div className={`${styles.dropdownTitleDiv} callout`}>About Us</div>
+                          <div className={`${styles.dropdownTitleDiv} callout`}>About us</div>
                         </Link>
                         <Link href={"/about/leadership-team"}
                           target={"_top"} className={styles.linkHoverEffect}>
-                          <div className={`${styles.dropdownTitleDiv} callout`}>Leadership Team</div>
+                          <div className={`${styles.dropdownTitleDiv} callout`}>Leadership team</div>
                         </Link>
 
                       </div>
@@ -211,7 +293,7 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
                     <span>Careers</span>
                   </Link>
                 </div>
-                <div className={"buttonTextBackground"} style={{ fontSize: 15, paddingLeft: 8, paddingRight: 3 }} onMouseOver={() => setContactMenuShow(true)} onMouseLeave={() => setContactMenuShow(false)}>
+                <div className={"buttonTextBackground"} style={{ fontSize: 15, paddingLeft: 8, paddingRight: 3 }} onMouseOver={() => setContactMenuOpen(true)} onMouseLeave={() => setContactMenuOpen(false)}>
                   <Link
                     href={"/contact"}
                     target={"_top"}
