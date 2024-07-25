@@ -1,57 +1,55 @@
 .linkContainer {
-    max-width: var(--max-width);
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
-    height: '100%';
-    width: '100%';
-    border: 1px solid lightgray;
-    padding: 24px;
-    border-radius: 19.2px;
-    gap: 10px;
+  max-width: var(--max-width);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  height: fit-content;
+  width: 100%;
+  border: 1px solid lightgray;
+  padding: 24px;
+  border-radius: 19.2px;
+  gap: 9px;
+}
+@media screen and (min-width: 550px) {
+  .linkContainer {
+    width: calc((100% - 24px) / 2);
   }
-  @media screen and (min-width: 550px) {
-    .linkContainer {
-      max-width: var(--max-width);
-      height: 100%;
-      width: 410px;
-    }
-  }
+}
 .linkDescription {
-    display: flex;
-    max-height: 75px;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 12px;
-    color: var(--foreground);
-  }
-  .linkAction {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 48px;
-    padding: 13px 22px;
-    background-color: var(--foreground);
-    border-radius: 19.2px;
-    width: fit-content;
-    color: var(--background);
-    gap: 11px;
-    font-weight: 600;
-    margin-top: 8px;
-  }
-  .link2Action {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 48px;
-    padding: 13px 22px;
-    background-color:lightgray;
-    border-radius: 19.2px;
-    width: fit-content;
-    color: var(--foreground);
-    gap: 11px;
-    font-weight: 600;
-    margin-top: 8px;
-  }
+  display: flex;
+  max-height: 75px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 12px;
+  color: var(--foreground);
+}
+.linkAction {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  padding: 13px 22px;
+  background-color: var(--foreground);
+  border-radius: 19.2px;
+  width: fit-content;
+  color: var(--background);
+  gap: 11px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+.link2Action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  padding: 13px 22px;
+  background-color: lightgray;
+  border-radius: 19.2px;
+  width: fit-content;
+  color: var(--foreground);
+  gap: 11px;
+  font-weight: 600;
+  margin-top: 8px;
+}

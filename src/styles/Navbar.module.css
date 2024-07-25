@@ -476,6 +476,7 @@
   z-index: 10000;
   transition: opacity 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
+
 .mobileMenuWrapperOpen {
   position: fixed;
   pointer-events: all;
@@ -487,7 +488,12 @@
   left: 0;
   transition: opacity 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
-
+@media screen and (min-width: 550px) {
+  .mobileMenuWrapper,
+  .mobileMenuWrapperOpen {
+    display: none;
+  }
+}
 .ctaButtonsWrapper {
   z-index: 1;
   width: 100%;
