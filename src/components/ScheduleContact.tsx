@@ -60,7 +60,7 @@ const Contact: FC = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        <motion.form onSubmit={handleSubmit(onSubmit)} className={styles.contactFormWrapper} variants={fade("spring", 0, 0.3, 0.6)} initial="hidden"
+        <motion.form onSubmit={handleSubmit(onSubmit)} className={styles.contactFormWrapper} variants={fade("spring", 0, 0, 0.6)} initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0 }} >
           <div className={styles.inputWrapper}>
