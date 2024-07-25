@@ -1,5 +1,5 @@
 import Header from "@/components/Header";
-import styles from "../../styles/contactUs.module.css";
+import styles from "../../styles/contact.module.css";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../../utils/motion";
 import Navbar from "@/components/Navbar";
