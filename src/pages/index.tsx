@@ -47,7 +47,7 @@ export async function getStaticProps() {
 
 
 const HeroSection = () => (
-  <div className={styles.heroWrapper}>
+  <div className={`${styles.heroWrapper} heroCheck`}>
 
     <div className={styles.videoBackdrop}>
     </div>
@@ -80,7 +80,7 @@ const HeroSection = () => (
           viewport={{ once: true, amount: 0 }} // Adjust amount as needed
         >
           <Link className="buttonPrimaryForeground buttonFullWidth" target="_top" href={`/contact`} >
-            <span className={`callout`}>Schedule a call</span><Image height={12.87} width={12.87} src="clientActionArrowBlack.svg" priority alt=""></Image>
+            <span className={`callout`}>Schedule a call</span><Image height={12.87} width={12.87} src="/clientActionArrowBlack.svg" priority alt=""></Image>
           </Link>
         </motion.div>
         <motion.div
@@ -90,7 +90,7 @@ const HeroSection = () => (
           viewport={{ once: true, amount: 0 }} // Adjust amount as needed
         >
           <Link className="buttonSecondaryForeground buttonFullWidth" target="_top" href={`/contact`} >
-            <span className={`callout`}>Message us</span><Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt=""></Image>
+            <span className={`callout`}>Message us</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
           </Link>
         </motion.div>
       </div>
@@ -114,7 +114,7 @@ const WorkSection = ({ clients, projectId, dataset }: { clients: any, projectId:
             viewport={{ once: true, amount: 0 }} // Adjust amount as needed
           >
             <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/contact`} >
-              <span className={`callout`}>View all work</span><Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt=""></Image>
+              <span className={`callout`}>View all work</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
             </Link>
           </motion.div>
         </div>
@@ -142,7 +142,7 @@ const SolutionsSection = ({ solutions, mobileSolutions }: { solutions: any, mobi
             viewport={{ once: true, amount: 0 }}
           >
             <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/contact`} >
-              <span className={`callout`}>View all solutions</span><Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt=""></Image>
+              <span className={`callout`}>View all solutions</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
             </Link>
           </motion.div>
         </div>
@@ -216,7 +216,7 @@ const TechSection = ({ technology }: { technology: any }) => (
           >
             <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/contact`}>
               <span className={`callout`}>View all technologies</span>
-              <Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt="" />
+              <Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt="" />
             </Link>
           </motion.div>
         </div>
@@ -261,7 +261,7 @@ const ContextSection = () => (
             viewport={{ once: true, amount: 0 }}
           >
             <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/contact`} >
-              <span className={`callout`}>Learn more</span><Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt=""></Image>
+              <span className={`callout`}>Learn more</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
             </Link>
           </motion.div>
         </div>
@@ -462,7 +462,7 @@ const TeamSection = () => (
             viewport={{ once: true, amount: 0 }}
           >
             <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/contact`} >
-              <span className={`callout`}>Schedule a call</span><Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt=""></Image>
+              <span className={`callout`}>Schedule a call</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
             </Link>
           </motion.div>
           <motion.div
@@ -472,7 +472,7 @@ const TeamSection = () => (
             viewport={{ once: true, amount: 0 }}
           >
             <Link className="buttonSecondaryBackground buttonFullWidth" target="_top" href={`/contact`} >
-              <span className={`callout`}>View our leadership team</span><Image height={12.87} width={12.87} src="clientActionArrowBlack.svg" priority alt=""></Image>
+              <span className={`callout`}>View our leadership team</span><Image height={12.87} width={12.87} src="/clientActionArrowBlack.svg" priority alt=""></Image>
             </Link>
           </motion.div>
         </div>
@@ -508,7 +508,7 @@ const ProcessSection = () => (
             viewport={{ once: true, amount: 0 }}
           >
             <Link className="buttonPrimaryBackground" target="_top" href={`/contact`}>
-              <span className={`callout`}>Schedule a call</span><Image height={12.87} width={12.87} src="clientActionArrowWhite.svg" priority alt=""></Image>
+              <span className={`callout`}>Schedule a call</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
             </Link>
           </motion.div>
         </div>

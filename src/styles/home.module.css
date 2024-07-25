@@ -7,6 +7,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   padding: 48px 0px 48px;
+  background-color: var(--background);
 }
 @media screen and (min-width: 550px) {
   .heroWrapper {
@@ -17,6 +18,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: var(--background);
   }
 }
 .video {
@@ -131,6 +133,7 @@
   align-items: center;
   justify-content: center;
   padding: 64px 0px 64px;
+  background-color: var(--background);
 }
 .workContainer {
   display: flex;
@@ -224,6 +227,7 @@
   flex-direction: column;
   gap: 10px;
   width: fit-content;
+  background-color: var(--background);
 }
 @media screen and (min-width: 550px) {
   .headerButtonsWrapper {
@@ -231,6 +235,7 @@
     flex-direction: row-reverse;
     gap: 10px;
     width: fit-content;
+    background-color: var(--background);
   }
 }
 .techWrapper {
@@ -240,6 +245,7 @@
   align-items: center;
   justify-content: center;
   padding: 64px 0px 64px;
+  background-color: var(--background);
 }
 .techContainer {
   display: flex;
@@ -266,6 +272,7 @@
   align-items: center;
   justify-content: center;
   padding: 64px 0px 64px;
+  background-color: var(--background);
 }
 .contextContainer {
   display: flex;
@@ -403,6 +410,7 @@
   align-items: center;
   justify-content: center;
   padding: 64px 0px 64px;
+  background-color: var(--background);
 }
 .teamContainer {
   display: flex;
@@ -428,6 +436,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: var(--background);
 }
 @media screen and (min-width: 550px) {
   .teamBiosWrapper {
@@ -435,6 +444,7 @@
     gap: 32px;
     align-items: center;
     justify-content: center;
+    background-color: var(--background);
   }
 }
 .bioContainer {
@@ -481,12 +491,14 @@
   flex-direction: row;
   gap: 64px;
   width: 100%;
+  background-color: var(--background);
 }
 
 @media screen and (min-width: 1150px) {
   .contextContentWrapper {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    background-color: var(--background);
   }
 }
 .contextContent {
@@ -520,6 +532,7 @@
   align-items: center;
   justify-content: center;
   padding: 64px 0px 64px;
+  background-color: var(--background);
 }
 .solutionsContainer {
   display: flex;
@@ -604,6 +617,7 @@
   align-items: center;
   justify-content: center;
   padding: 64px 0px 96px;
+  background-color: var(--background);
 }
 .processContainer {
   display: flex;
@@ -628,6 +642,7 @@
   gap: 48px;
   align-items: center;
   position: relative;
+  background-color: var(--background);
 }
 .processCardsContainer {
   display: flex;

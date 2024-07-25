@@ -4,6 +4,7 @@
   justify-content: center;
   padding: 40px 0px 48px;
   width: 100%;
+  background-color: var(--background);
 }
 .container {
   display: flex;
@@ -22,6 +23,7 @@
     justify-content: center;
     width: 100%;
     padding: 40px 0px 80px;
+    background-color: var(--background);
   }
   .container {
     padding: 0px 48px;

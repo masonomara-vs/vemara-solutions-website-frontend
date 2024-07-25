@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   margin-top: 0px;
+  background-color: var(--background);
 }
 .logoWrapper {
   width: 100%;
