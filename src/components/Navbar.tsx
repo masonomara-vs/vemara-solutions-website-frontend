@@ -76,6 +76,7 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
                   >
                     Services
                   </Link>
+
                 </div>
                 <div className={"buttonTextBackground"} style={{ fontSize: 15, paddingLeft: 8, paddingRight: 8 }}>
                   <Link
@@ -85,6 +86,7 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
                   >
                     About
                   </Link>
+                  <Image src="/breadcrumbsChevron.svg" height={8.75} width={5.4} priority alt="" style={{ rotate: "90deg" }} />
                 </div>
                 <div className={"buttonTextBackground"} style={{ fontSize: 15, paddingLeft: 8, paddingRight: 8 }}>
                   <Link
