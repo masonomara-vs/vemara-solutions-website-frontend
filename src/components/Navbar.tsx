@@ -34,11 +34,12 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
     return () => {
       window.removeEventListener("scroll", controlNavbar);
     };
-  }, [lastScrollY]);
+  }, [controlNavbar, lastScrollY]);
 
   const handleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
 
   return (
     <>
@@ -59,7 +60,7 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
                 </div>
               </Link>
               <div className={styles.desktopMenuLinks}>
-                <div className={"button textButtonDark"}>
+                <div className={"buttonTextBackground"} style={{ fontSize: 15, paddingLeft: 8, paddingRight: 8 }}>
                   <Link
                     href={"/work"}
                     target={"_top"}
@@ -68,7 +69,7 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
                     Work
                   </Link>
                 </div>
-                <div className={"button textButtonDark"}>
+                <div className={"buttonTextBackground"} style={{ fontSize: 15, paddingLeft: 8, paddingRight: 8 }}>
                   <Link
                     href={"/services"}
                     target={"_top"}
@@ -77,7 +78,7 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
                     Services
                   </Link>
                 </div>
-                <div className={"button textButtonDark"}>
+                <div className={"buttonTextBackground"} style={{ fontSize: 15, paddingLeft: 8, paddingRight: 8 }}>
                   <Link
                     href={"/about"}
                     target={"_top"}
@@ -86,7 +87,7 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
                     About
                   </Link>
                 </div>
-                <div className={"button textButtonDark"}>
+                <div className={"buttonTextBackground"} style={{ fontSize: 15, paddingLeft: 8, paddingRight: 8 }}>
                   <Link
                     href={"/careers"}
                     target={"_top"}
@@ -95,7 +96,7 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
                     Careers
                   </Link>
                 </div>
-                <div className={"button textButtonDark"}>
+                <div className={"buttonTextBackground"} style={{ fontSize: 15, paddingLeft: 8, paddingRight: 8 }}>
                   <Link
                     href={"/contact"}
                     target={"_top"}
@@ -106,12 +107,12 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
                 </div>
               </div>
               <div className={styles.desktopButtonLinks}>
-                <div className={"button buttonSecondaryDark buttonSecondaryDarkSmall"}>
-                  <div>Message us</div>
-                </div>
-                <div className={"button buttonPrimaryDark buttonPrimaryDarkSmall"}>
-                  <div>Schedule a call</div>
-                </div>
+                <Link className="buttonSecondaryForeground" target="_top" href={`/contact`} style={{ paddingTop: 10, paddingBottom: 10, borderRadius: 17.6 }}>
+                  <span className={`callout`} style={{ fontSize: 15 }}>Message us</span><Image height={11.29} width={11.29} src="/clientActionArrowWhite.svg" priority alt=""></Image>
+                </Link>
+                <Link className="buttonPrimaryForeground" target="_top" href={`/contact`} style={{ paddingTop: 10, paddingBottom: 10, borderRadius: 17.6 }} >
+                  <span className={`callout`} style={{ fontSize: 15 }}>Schedule a call</span><Image height={11.29} width={11.29} src="/clientActionArrowBlack.svg" priority alt=""></Image>
+                </Link>
               </div>
               <div className={styles.menuOpen} onClick={handleMenu}>
                 <Image
