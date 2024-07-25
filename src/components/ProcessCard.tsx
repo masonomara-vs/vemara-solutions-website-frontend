@@ -1,4 +1,4 @@
-import { fadeIn, fadeInIcon } from "@/pages/utils/motion";
+import { fadeIn, fadeInIcon } from "../../utils/motion";
 import { motion } from 'framer-motion';
 import styles from "../styles/ProcessCard.module.css";
 import Image from "next/image";

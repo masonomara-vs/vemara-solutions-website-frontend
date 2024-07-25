@@ -7,7 +7,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import Image from 'next/image';
 import { motion } from "framer-motion";
-import { fadeIn } from '../utils/motion';
+import { fadeIn } from '../../../utils/motion';
 import Navbar from '@/components/Navbar';
 
 const urlFor = (source: SanityImageSource, projectId: string, dataset: string) =>

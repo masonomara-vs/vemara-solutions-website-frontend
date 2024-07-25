@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import fetch from "isomorphic-unfetch";
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+const subscribeUser = async (req: NextApiRequest, res: NextApiResponse) => {
   const { email } = req.body;
 
   console.log({ email });
@@ -33,7 +33,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     if (response.status >= 400) {
       return res.status(400).json({
-        error: `There was an error subscribing to the newsletter. Hit me up at peter@peterlunch.com and I'll add you the old-fashioned way :(.`,
+        error: `There was an error subscribing to the newsletter. Email us at connect@vemarasolutions.com and we will add you the old-fashioned way.`,
       });
     }
 
@@ -42,3 +42,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(500).json({ error: error.message || error.toString() });
   }
 };
+
+export default subscribeUser;

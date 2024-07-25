@@ -1,7 +1,7 @@
 import styles from "../styles/LinkCard.module.css";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { fadeIn } from "@/pages/utils/motion";
+import { fadeIn } from "../../utils/motion";
 
 export default function LinkCard({
   title,
