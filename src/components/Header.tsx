@@ -19,6 +19,6 @@ export default function Header({ label, title, subtitle }: { label: string, titl
             viewport={{ once: true, amount: 0 }} className={`subtitle ${styles.subtitle}`}>{subtitle}</motion.p>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
