@@ -41,6 +41,7 @@ export default function Footer() {
             <Image
               src="/jump.gif"
               alt="Vemara Solutions"
+              unoptimized
               fill
               style={{ objectFit: "cover" }} />
           </div>
