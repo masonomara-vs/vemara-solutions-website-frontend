@@ -79,7 +79,7 @@ const HeroSection = () => (
           whileInView="show"
           viewport={{ once: true, amount: 0 }} // Adjust amount as needed
         >
-          <Link className="buttonPrimaryForeground buttonFullWidth" target="_top" href={`/contact`} >
+          <Link className="buttonPrimaryForeground buttonFullWidth" target="_top" href={`/contact/schedule-a-call`} >
             <span className={`callout`}>Schedule a call</span><Image height={12.87} width={12.87} src="/clientActionArrowBlack.svg" priority alt=""></Image>
           </Link>
         </motion.div>
@@ -89,7 +89,7 @@ const HeroSection = () => (
           whileInView="show"
           viewport={{ once: true, amount: 0 }} // Adjust amount as needed
         >
-          <Link className="buttonSecondaryForeground buttonFullWidth" target="_top" href={`/contact`} >
+          <Link className="buttonSecondaryForeground buttonFullWidth" target="_top" href={`/contact/message-us`} >
             <span className={`callout`}>Message us</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
           </Link>
         </motion.div>
@@ -113,7 +113,7 @@ const WorkSection = ({ clients, projectId, dataset }: { clients: any, projectId:
             whileInView="show"
             viewport={{ once: true, amount: 0 }} // Adjust amount as needed
           >
-            <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/contact`} >
+            <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/work`} >
               <span className={`callout`}>View all work</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
             </Link>
           </motion.div>
@@ -141,7 +141,7 @@ const SolutionsSection = ({ solutions, mobileSolutions }: { solutions: any, mobi
             whileInView="show"
             viewport={{ once: true, amount: 0 }}
           >
-            <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/contact`} >
+            <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/services/solutions`} >
               <span className={`callout`}>View all solutions</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
             </Link>
           </motion.div>
@@ -215,7 +215,7 @@ const TechSection = ({ technology }: { technology: any }) => (
             whileInView="show"
             viewport={{ once: true, amount: 0 }}
           >
-            <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/contact`}>
+            <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/services/technologies`}>
               <span className={`callout`}>View all technologies</span>
               <Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt="" />
             </Link>
@@ -261,7 +261,7 @@ const ContextSection = () => (
             whileInView="show"
             viewport={{ once: true, amount: 0 }}
           >
-            <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/contact`} >
+            <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/services/contexts`} >
               <span className={`callout`}>Learn more</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
             </Link>
           </motion.div>
@@ -462,7 +462,7 @@ const TeamSection = () => (
             whileInView="show"
             viewport={{ once: true, amount: 0 }}
           >
-            <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/contact`} >
+            <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/contact/schedule-a-call`} >
               <span className={`callout`}>Schedule a call</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
             </Link>
           </motion.div>
@@ -472,7 +472,7 @@ const TeamSection = () => (
             whileInView="show"
             viewport={{ once: true, amount: 0 }}
           >
-            <Link className="buttonSecondaryBackground buttonFullWidth" target="_top" href={`/contact`} >
+            <Link className="buttonSecondaryBackground buttonFullWidth" target="_top" href={`/about/leadership-team`} >
               <span className={`callout`}>View our leadership team</span><Image height={12.87} width={12.87} src="/clientActionArrowBlack.svg" priority alt=""></Image>
             </Link>
           </motion.div>
@@ -508,7 +508,7 @@ const ProcessSection = () => (
             whileInView="show"
             viewport={{ once: true, amount: 0 }}
           >
-            <Link className="buttonPrimaryBackground" target="_top" href={`/contact`}>
+            <Link className="buttonPrimaryBackground" target="_top" href={`/contact/schedule-a-call`}>
               <span className={`callout`}>Schedule a call</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
             </Link>
           </motion.div>
@@ -550,7 +550,7 @@ const Home = ({ clients, technology, solutions, mobileSolutions, projectId, data
       <link rel="manifest" href="/site.webmanifest" />
       <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#070808" />
       <meta name="msapplication-TileColor" content="#070808" />
-      <meta name="theme-color" content="#ffffff" />
+      <meta name="theme-color" content="#070808" />
     </Head>
     <Navbar />
     <HeroSection />

@@ -78,18 +78,18 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
 
           <div className={styles.ctaButtonsWrapper}>
 
-            <Link className="buttonPrimaryForeground" target="_top" href={`/contact`} >
+            <Link className="buttonPrimaryForeground" target="_top" href={`/contact/schedule-a-call`} >
               <span className={`callout`}>Schedule a call</span><Image height={12.87} width={12.87} src="/clientActionArrowBlack.svg" priority alt=""></Image>
             </Link>
 
 
-            <Link className="buttonSecondaryForeground" target="_top" href={`/contact`} >
+            <Link className="buttonSecondaryForeground" target="_top" href={`/contact/message-us`} >
               <span className={`callout`}>Message us</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
             </Link>
 
           </div>
           <div className={styles.policyLinkWrapper}>
-            <div className={styles.policyLinkRow}>
+            {/* <div className={styles.policyLinkRow}>
               <Link href={"/contact"} target={"_top"} className="buttonTextBackground">
                 <span className="active">Privacy Policy</span>
               </Link>
@@ -97,7 +97,7 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
               <Link href={"/contact"} target={"_top"} className="buttonTextBackground">
                 <span className="active">Sitemap</span>
               </Link>
-            </div>
+            </div> */}
             <div className="description" style={{ color: "rgba(255,255,255,.6)" }}>
               2024 Vemara Solutions. All Rights Reserved.
             </div>
@@ -151,15 +151,15 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
                       </Link>
                       <div className={styles.verticalDivider} />
                       <div className={styles.dropdownMiniMenu}>
-                        <Link href={"/services"}
+                        <Link href={"/services/solutions"}
                           target={"_top"} className={styles.linkHoverEffect}>
                           <div className={`${styles.dropdownTitleDiv} callout`}>Solutions</div>
                         </Link>
-                        <Link href={"/services"}
+                        <Link href={"/services/technology"}
                           target={"_top"} className={styles.linkHoverEffect}>
                           <div className={`${styles.dropdownTitleDiv} callout`}>Technology</div>
                         </Link>
-                        <Link href={"/services"}
+                        <Link href={"/services/contexts"}
                           target={"_top"} className={styles.linkHoverEffect}>
                           <div className={`${styles.dropdownTitleDiv} callout`}>Contexts</div>
                         </Link>
@@ -181,18 +181,18 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
                     <div className={styles.dropdownContainer}>
 
 
-                      <Link href={"/services"}
+                      <Link href={"/about"}
                         target={"_top"} className={`${styles.linkHoverEffect}, ${styles.linkHoverEffectMain}`}>
                         <div className={`${styles.dropdownTitleDiv} callout`} style={{ marginBottom: 5 }}>About Overview<Image height={12.87} width={12.87} src="/clientActionArrowBlack.svg" priority alt="" style={{ opacity: 1 }}></Image></div>
                         <div className="fieldlabel" style={{ fontWeight: 400, lineHeight: "145%" }}>Working within a variety of business contexts for your needs.</div>
                       </Link>
                       <div className={styles.verticalDivider} style={{ height: 105 }} />
                       <div className={styles.dropdownMiniMenu}>
-                        <Link href={"/services"}
+                        <Link href={"/about/about-us"}
                           target={"_top"} className={styles.linkHoverEffect}>
                           <div className={`${styles.dropdownTitleDiv} callout`}>About Us</div>
                         </Link>
-                        <Link href={"/services"}
+                        <Link href={"/about/leadership-team"}
                           target={"_top"} className={styles.linkHoverEffect}>
                           <div className={`${styles.dropdownTitleDiv} callout`}>Leadership Team</div>
                         </Link>
@@ -224,26 +224,26 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
                     <div className={styles.dropdownContainer}>
 
 
-                      <Link href={"/services"}
+                      <Link href={"/contact"}
                         target={"_top"} className={`${styles.linkHoverEffect}, ${styles.linkHoverEffectMain}`}>
                         <div className={`${styles.dropdownTitleDiv} callout`} style={{ marginBottom: 5 }}>Contact Us<Image height={12.87} width={12.87} src="/clientActionArrowBlack.svg" priority alt="" style={{ opacity: 1 }}></Image></div>
                         <div className="fieldlabel" style={{ fontWeight: 400, lineHeight: "145%" }}>We like to partner with businesses driving their goals forward.</div>
                       </Link>
                       <div className={styles.verticalDivider} style={{ height: 152 }} />
                       <div className={styles.dropdownMiniMenu}>
-                        <Link href={"/services"}
+                        <Link href={"/contact/schedule-a-call"}
                           target={"_top"} className={styles.linkHoverEffect}>
                           <div className={`${styles.dropdownTitleDiv} callout`}>Schedule a call</div>
                         </Link>
-                        <Link href={"/services"}
+                        <Link href={"/contact/job-openings"}
                           target={"_top"} className={styles.linkHoverEffect}>
                           <div className={`${styles.dropdownTitleDiv} callout`} >Job openings</div>
                         </Link>
-                        <Link href={"/services"}
+                        <Link href={"/contact/press-and-media"}
                           target={"_top"} className={styles.linkHoverEffect}>
                           <div className={`${styles.dropdownTitleDiv} callout`}>Press & media</div>
                         </Link>
-                        <Link href={"/services"}
+                        <Link href={"/contact/message-us"}
                           target={"_top"} className={styles.linkHoverEffect}>
                           <div className={`${styles.dropdownTitleDiv} callout`}>Message us</div>
                         </Link>
@@ -254,10 +254,10 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
 
               </div>
               <div className={styles.desktopButtonLinks}>
-                <Link className="buttonSecondaryForeground" target="_top" href={`/contact`} style={{ paddingTop: 10, paddingBottom: 10, borderRadius: 17.6 }}>
+                <Link className="buttonSecondaryForeground" target="_top" href={`/contact/message-us`} style={{ paddingTop: 10, paddingBottom: 10, borderRadius: 17.6 }}>
                   <span className={`callout`} style={{ fontSize: 15 }}>Message us</span><Image height={11.29} width={11.29} src="/clientActionArrowWhite.svg" priority alt=""></Image>
                 </Link>
-                <Link className="buttonPrimaryForeground" target="_top" href={`/contact`} style={{ paddingTop: 10, paddingBottom: 10, borderRadius: 17.6 }} >
+                <Link className="buttonPrimaryForeground" target="_top" href={`/contact/schedule-a-call`} style={{ paddingTop: 10, paddingBottom: 10, borderRadius: 17.6 }} >
                   <span className={`callout`} style={{ fontSize: 15 }}>Schedule a call</span><Image height={11.29} width={11.29} src="/clientActionArrowBlack.svg" priority alt=""></Image>
                 </Link>
               </div>
