@@ -184,7 +184,8 @@ export const ringGrow = (
   direction: any,
   type: any,
   delay: any,
-  duration: any
+  duration: any,
+  opacity?: any
 ) => ({
   hidden: {
     x: 0,
@@ -196,7 +197,7 @@ export const ringGrow = (
   show: {
     x: 0,
     y: 0,
-    opacity: 1,
+    opacity: opacity || 1,
     transition: {
       type,
       delay,
