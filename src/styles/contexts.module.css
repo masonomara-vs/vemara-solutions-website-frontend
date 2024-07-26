@@ -1,0 +1,129 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 96px;
+  padding: 0px 0px 96px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16px;
+  background-color: var(--background);
+}
+.container {
+  max-width: var(--max-width);
+  display: flex;
+  padding: 0px 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 48px;
+  row-gap: 64px;
+  width: 100%;
+}
+.contextWrapper {
+  flex: 1;
+}
+@media screen and (min-width: 550px) {
+  .container {
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    row-gap: 32px;
+    padding: 0px 48px;
+  }
+}
+@media screen and (min-width: 1390px) {
+  .container {
+    align-items: center;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    padding: 0px 48px;
+  }
+}
+.contextWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+  height: 100%;
+}
+@media screen and (min-width: 550px) {
+  .contextWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 24px;
+
+    border-radius: 12px;
+    max-width: 960px;
+  }
+}
+.contextCardInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  padding: 0px 8px;
+  text-align: center;
+}
+@media screen and (min-width: 550px) {
+  .contextCardInfo {
+    padding: 0px 16px;
+  }
+}
+.contextRings {
+  width: 100%;
+  max-width: 67%;
+  min-width: 250px;
+  aspect-ratio: 1 /1;
+  height: auto;
+  position: relative;
+}
+.contextRingA {
+  width: 100%;
+  padding-top: calc(100% - 4px);
+  aspect-ratio: 1 / 1;
+  border: 2px solid var(--foreground);
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  border-radius: 1000000px;
+  max-height: 100%;
+}
+.contextRingB {
+  width: 75%;
+  padding-top: calc(75% - 4px);
+  aspect-ratio: 1 / 1;
+  border: 2px solid var(--foreground);
+  position: absolute;
+  bottom: 0px;
+  left: 12.5%;
+  border-radius: 1000000px;
+}
+.contextRingC {
+  width: 50%;
+  padding-top: calc(50% - 4px);
+  aspect-ratio: 1 / 1;
+  border: 2px solid var(--foreground);
+  position: absolute;
+  bottom: 0px;
+  left: 25%;
+  border-radius: 1000000px;
+}
+.contextRingD {
+  width: 25%;
+  padding-top: calc(25% - 4px);
+  aspect-ratio: 1 / 1;
+  border: 2px solid var(--foreground);
+  position: absolute;
+  bottom: 0px;
+  left: 37.5%;
+  border-radius: 1000000px;
+}

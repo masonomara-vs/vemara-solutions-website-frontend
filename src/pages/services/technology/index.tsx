@@ -2,8 +2,41 @@ import Header from '@/components/Header'
 import Navbar from '@/components/Navbar'
 import Head from 'next/head'
 import React from 'react'
+import { SanityDocument } from 'next-sanity'
+import { client, sanityFetch } from '@/sanity/client'
+import styles from "../../../styles/technology.module.css"
+import { motion } from "framer-motion"
+import { fade, fadeIn, fadeInButton, textFadeUp, textFadeUpSmall } from '../../../../utils/motion'
 
-export default function index() {
+export async function getStaticProps() {
+  const TECHNOLOGY_QUERY = `*[
+    _type == "technology"
+  ]{_id, name, description, image, category, position}|order(position desc)`
+
+  const technology = await sanityFetch<SanityDocument[]>({ query: TECHNOLOGY_QUERY })
+  const { projectId, dataset } = client.config()
+
+  return {
+    props: { technology, projectId, dataset },
+  }
+}
+
+const TechnologyMap = ({ technology }: { technology: any }) => {
+  return (
+    <>
+      {technology.map((tech: any) => (
+        <motion.div key={tech._id} variants={textFadeUpSmall("up", "spring", 0, 1.2)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0 }} className={styles.techItem}>
+          <span className={styles.techName}>{tech.name}</span>
+        </motion.div>
+      ))}
+    </>
+  )
+}
+
+export default function TechnologyPage({ technology }: { technology: any }) {
   return (
     <div>
       <Head>
@@ -36,7 +69,13 @@ export default function index() {
       <Header
         label="Technology"
         title="Leveraging our expertise in industry-leading technology."
-        subtitle="We work with a wide range of clients across various industries. This enables us to produce creative, high-performing products that stand out." />
+        subtitle="We work with a wide range of clients across various industries. This enables us to produce creative, high-performing products that stand out."
+      />
+      <div className={styles.wrapper}>
+        <div className={styles.container}>
+          <TechnologyMap technology={technology} />
+        </div>
+      </div>
     </div>
   )
 }

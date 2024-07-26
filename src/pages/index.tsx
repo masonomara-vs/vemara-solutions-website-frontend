@@ -14,36 +14,65 @@ import WorkCarousel from '@/components/WorkCarousel'
 import ProcessCard from '@/components/ProcessCard'
 
 
-const urlFor = (source: SanityImageSource, projectId: string, dataset: string) =>
-  projectId && dataset ? imageUrlBuilder({ projectId, dataset }).image(source) : null
+interface Client {
+  _id: string;
+  name: string;
+  slug: string;
+  overview: string;
+  primaryImage: any;
+  logo: any;
+  whiteLogo: any;
+  position: number;
+}
+
+interface Technology {
+  _id: string;
+  name: string;
+  description: string;
+  image: any;
+  category: string;
+  position: number;
+}
+
+interface Solution {
+  _id: string;
+  name: string;
+  description: string;
+  position: number;
+}
+
+interface Props {
+  clients: Client[];
+  technology: Technology[];
+  solutions: Solution[];
+  mobileSolutions: Solution[];
+  projectId: string;
+  dataset: string;
+}
+
 
 export async function getStaticProps() {
-  const CLIENTS_QUERY = `*[
-    _type == "client" && defined(slug.current)
-  ]{_id, name, slug, overview, primaryImage, logo, whiteLogo, position}|order(position desc)`
+  try {
+    const CLIENTS_QUERY = `*[_type == "client" && defined(slug.current)]{_id, name, slug, overview, primaryImage, logo, whiteLogo, position}|order(position desc)`;
+    const TECHNOLOGY_QUERY = `*[_type == "technology"]{_id, name, description, image, category, position}|order(position desc)`;
+    const SOLUTIONS_QUERY = `*[_type == "solution" && featured == true]{_id, name, description, position}|order(position asc)`;
+    const MOBILE_SOLUTIONS_QUERY = `*[_type == "solution" && featured == true]{_id, name, description, position}|order(position asc)[0...6]`;
 
-  const TECHNOLOGY_QUERY = `*[
-    _type == "technology"
-  ]{_id, name, description, image, category, position}|order(position desc)`
+    const clients = await sanityFetch<SanityDocument[]>({ query: CLIENTS_QUERY });
+    const technology = await sanityFetch<SanityDocument[]>({ query: TECHNOLOGY_QUERY });
+    const solutions = await sanityFetch<SanityDocument[]>({ query: SOLUTIONS_QUERY });
+    const mobileSolutions = await sanityFetch<SanityDocument[]>({ query: MOBILE_SOLUTIONS_QUERY });
+    const { projectId, dataset } = client.config();
 
-  const SOLUTIONS_QUERY = `*[
-    _type == "solution" && featured == true
-  ]{_id, name, description, position}|order(position asc)`
-
-  const MOBILE_SOLUTIONS_QUERY = `*[
-    _type == "solution" && featured == true
-  ]{_id, name, description, position}|order(position asc)[0...6]`
-
-  const clients = await sanityFetch<SanityDocument[]>({ query: CLIENTS_QUERY })
-  const technology = await sanityFetch<SanityDocument[]>({ query: TECHNOLOGY_QUERY })
-  const solutions = await sanityFetch<SanityDocument[]>({ query: SOLUTIONS_QUERY })
-  const mobileSolutions = await sanityFetch<SanityDocument[]>({ query: MOBILE_SOLUTIONS_QUERY })
-  const { projectId, dataset } = client.config()
-
-  return {
-    props: { clients, technology, mobileSolutions, solutions, projectId, dataset },
+    return {
+      props: { clients, technology, mobileSolutions, solutions, projectId, dataset },
+    };
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return { props: { clients: [], technology: [], mobileSolutions: [], solutions: [], projectId: '', dataset: '' } };
   }
 }
+
 
 
 const HeroSection = () => (
