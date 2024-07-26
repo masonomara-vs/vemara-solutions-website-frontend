@@ -118,7 +118,7 @@ const Contact: FC = () => {
             </label>
             <input
               id='website'
-              type='url'
+              type='string'
               placeholder='Enter your website URL'
               className='inputForeground'
               autoComplete='url'
