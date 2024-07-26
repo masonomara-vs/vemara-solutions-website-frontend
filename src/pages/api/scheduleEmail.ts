@@ -71,7 +71,7 @@ export default async function handler(
     modernizationMigration,
     contentManagementSystems,
   } = services;
-  const { servicePackage, oneTime } = projectOptions;
+  const { ongoingService, oneTime } = projectOptions;
 
   // Create a transporter
   const transporter = nodemailer.createTransport({
@@ -89,7 +89,7 @@ export default async function handler(
   const mailOptions = {
     from: process.env.MY_EMAIL,
     to: process.env.MY_EMAIL,
-    subject: `Vemara Solutions - ${name}, ${email}, ${businessName}`,
+    subject: `Vemara Solutions | Schedule a call | ${businessName}`,
     html: `
         <h3>Basic Info:</h3>
     <p><strong>Email:</strong> ${email}</p>
@@ -132,7 +132,7 @@ export default async function handler(
     <br/>
     <h3>Engagement Type:</h3>
     <p><strong>One-Time Project:</strong> ${oneTime}</p>
-    <p><strong>Service Package:</strong> ${servicePackage}</p>
+    <p><strong>Service Package:</strong> ${ongoingService}</p>
   `,
   };
 

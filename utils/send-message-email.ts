@@ -1,7 +1,7 @@
-import { FormData } from "@/components/ScheduleContact";
+import { FormData } from "@/components/MessageContact";
 
 export function sendEmail(data: FormData) {
-  const apiEndpoint = "/api/scheduleEmail";
+  const apiEndpoint = "/api/messageEmail";
 
   console.log("Sending data:", data); // Log the data to verify
 

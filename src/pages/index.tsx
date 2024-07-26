@@ -527,19 +527,19 @@ const ProcessSection = () => (
 const Home = ({ clients, technology, solutions, mobileSolutions, projectId, dataset }: { clients: any, technology: any, projectId: any, solutions: any, mobileSolutions: any, dataset: any }) => (
   <div className={styles.rootWrapper}>
     <Head>
-      <title>Vemara Solutions - Innovative Technology Consulting</title>
+      <title>Vemara Solutions - Technology Consulting, Design, and Development</title>
       <meta name="description" content="Drive your business towards goals and new opportunities. Access industry-leading technology strategy, design, and development for digital products and solutions." />
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       <link rel="icon" href="/icon.ico" />
       <link rel="shortcut icon" href="/icon.ico" />
       <meta charSet="UTF-8" />
       <meta name="theme-color" content="#070808" />
-      <meta property="og:title" content="Vemara Solutions - Innovative Technology Consulting" />
+      <meta property="og:title" content="Vemara Solutions - Technology Consulting, Design, and Development" />
       <meta property="og:description" content="Drive your business towards goals and new opportunities. Access industry-leading technology strategy, design, and development for digital products and solutions." />
       <meta property="og:image" content="/og-image.png" />
       <meta property="og:url" content="https://www.vemarasolutions.com" />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="Vemara Solutions - Innovative Technology Consulting" />
+      <meta name="twitter:title" content="Vemara Solutions - Technology Consulting, Design, and Development" />
       <meta name="twitter:description" content="Drive your business towards goals and new opportunities. Access industry-leading technology strategy, design, and development for digital products and solutions." />
       <meta name="twitter:image" content="/twitter-image.png" />
       <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
