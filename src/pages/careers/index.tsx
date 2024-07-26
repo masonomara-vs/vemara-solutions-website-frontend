@@ -7,8 +7,10 @@ import LinkCard from "@/components/LinkCard";
 import { SanityDocument } from "next-sanity";
 import { sanityFetch } from "@/sanity/client";
 import Head from "next/head";
-import Link from "next/link";
+
 import Image from "next/image";
+import Link from "next/link";
+
 
 export async function getStaticProps() {
   const JOBS_QUERY = `*[
@@ -91,42 +93,30 @@ const CareersIndex = ({ jobs }: { jobs: SanityDocument[] }) => {
         title="Join our dynamic team and work on exciting projects."
         subtitle="If you think you’re a good fit for our innovative team, we’d love to hear from you."
       />
-      {
-        <>
-          <div className={`${styles.jobsContainerMobile} mobile`}>
-            <motion.div
-              className={styles.linkContainer}
-              variants={fadeIn("up", "spring", 0, 0.8)}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0 }}
-            >
-              <h4 className="label">Let‘s get started</h4>
-              <div className="description">
-                Looking to work with tech consultants who have expert
-                development capabilities and creative design skills? We’re eager
-                to connect with you.
-              </div>
+
+      <div className={styles.contactWrapper}>
+        <div className={`${styles.contactUsContainerMobile} mobile`}>
+          {jobs.map((job) => {
+            return (
               <div className={styles.linkContainerButtonWrapper}>
-                <Link
-                  className="buttonPrimaryBackground"
-                  target="_top"
-                  href="/contact/schedule-a-call"
-                >
-                  <span className={`callout`}>Schedule a call</span>
-                  <Image
-                    height={12.87}
-                    width={12.87}
-                    src="/clientActionArrowWhite.svg"
-                    priority
-                    alt=""
-                  />
+                <Link className="buttonPrimaryBackground" target="_top" href="/careers/job-application">
+                  <span className={`callout`}>Apply now</span>
+                  <Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt="" />
+                </Link>
+                <Link className="buttonSecondaryBackground" target="_top" href={`/careers/${job.slug}`}>
+                  <span className={`callout`}>Learn more</span>
+                  <Image height={12.87} width={12.87} src="/clientActionArrowBlack.svg" priority alt="" />
                 </Link>
               </div>
-            </motion.div>
-          </div>
-          <div className={`${styles.jobsContainerDesktop} desktop`}>
-            {jobs.map((job) => (
+            );
+          })}
+        </div>
+
+        <div className={`${styles.contactContainerDesktopCareers} desktop`}>
+          {jobs.map((job) => {
+            return (
+
+
               <motion.div
                 className={styles.linkContainer}
                 variants={fadeIn("up", "spring", 0, 0.8)}
@@ -136,45 +126,26 @@ const CareersIndex = ({ jobs }: { jobs: SanityDocument[] }) => {
               >
                 <h4 className="label">{job.title}</h4>
                 <div className="description">
-                   {job.overview}
+
+                  {job.overview}
                 </div>
                 <div className={styles.linkContainerButtonWrapper}>
-                  <Link
-                    className="buttonPrimaryBackground"
-                    target="_top"
-                    href="/careers/job-application"
-                  >
+                  <Link className="buttonPrimaryBackground" target="_top" href="/careers/job-application">
                     <span className={`callout`}>Apply now</span>
-                    <Image
-                      height={12.87}
-                      width={12.87}
-                      src="/clientActionArrowWhite.svg"
-                      priority
-                      alt=""
-                    />
+                    <Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt="" />
                   </Link>
-                </div>
-                <div className={styles.linkContainerButtonWrapper}>
-                  <Link
-                    className="buttonPrimaryBackground"
-                    target="_top"
-                    href={`/careers/${job.slug.current}`}
-                  >
+                  <Link className="buttonSecondaryBackground" target="_top" href={`/careers/${job.slug}`}>
                     <span className={`callout`}>Learn more</span>
-                    <Image
-                      height={12.87}
-                      width={12.87}
-                      src="/clientActionArrowWhite.svg"
-                      priority
-                      alt=""
-                    />
+                    <Image height={12.87} width={12.87} src="/clientActionArrowBlack.svg" priority alt="" />
                   </Link>
                 </div>
+
               </motion.div>
-            ))}
-          </div>
-        </>
-      }
+            );
+          })}
+        </div>
+      </div>
+
     </div>
   );
 };

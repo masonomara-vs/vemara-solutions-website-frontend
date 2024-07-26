@@ -25,7 +25,7 @@ export default function LinkCard({
     <div className={styles.linkCardWrapper}>
       <motion.div
         key={title}
-        variants={fadeIn("up", "spring", { delay }, 0.8)}
+        variants={fadeIn("up", "spring", 0, 0.8)}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0 }} // Adjust amount as needed

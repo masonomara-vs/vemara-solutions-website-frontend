@@ -7,7 +7,7 @@ import Image from 'next/image';
 import styles from '../../../styles/selectedWork.module.css';
 import Navbar from '@/components/Navbar';
 import { motion } from "framer-motion";
-import { fadeIn, fade } from '../../../../utils/motion';
+import { fadeIn, fade, textFadeUpSmall, textFadeUp } from '../../../../utils/motion';
 import Head from 'next/head';
 
 const urlFor = (source: SanityImageSource, projectId: string, dataset: string) =>
@@ -153,7 +153,7 @@ const WorkPage = ({
       <div className={styles.wrapper}>
 
         {/* logo section */}
-        <motion.div variants={fade("spring", 0, 0.4, 0.6)} initial="hidden"
+        <motion.div variants={fade("spring", 0, 0.4, 1)} initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0 }} className={styles.logoWrapper}>
           <div className={styles.logoContainer} style={{ aspectRatio: logoAspectRatio }}>
@@ -167,15 +167,21 @@ const WorkPage = ({
         </motion.div>
 
         {/* details section */}
-        <div className={styles.detailsWrapper}>
+        <motion.div variants={fadeIn("up", "spring", 0.1, 0.8)} initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0 }} className={styles.detailsWrapper}>
           <div className={styles.detailsContainer}>
             {industry ? (
-              <div className={styles.details}>
+              <motion.div variants={fade("spring", 0.3, 0.8, .6)} initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0 }} className={styles.details}>
                 <span className={"inactive"}>Industry:&nbsp;{industry.replace("-", " ")}</span>
-              </div>
+              </motion.div>
             ) : null}
             <div className={`mobile ${styles.divider}`}></div>
-            <div className={styles.details}>
+            <motion.div variants={fade("spring", 0.4, 0.8, .6)} initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0 }} className={styles.details}>
               <span className={"inactive"}>Technology:&nbsp;</span>
               {technology
                 ? technology.map((tech: any, index: number) => (
@@ -185,17 +191,24 @@ const WorkPage = ({
                   </span>
                 ))
                 : null}
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
 
         {/* content section */}
         <div className={styles.contentWrapper}>
           <div className={styles.contentContainer}>
             {summary && (
-              <div className={"header"}>{summary}</div>
+              <>
+                <motion.div className={"clientheader"} variants={textFadeUpSmall("up", "spring", 0, 0.8)}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0 }}>{summary}</motion.div>
+              </>
             )}
-            {primaryImage && (<div className={styles.contentImageWrapper}>
+            {primaryImage && (<motion.div className={styles.contentImageWrapper} variants={fadeIn("up", "spring", 0, 0.8)} initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0 }} >
               <Image
                 src={
                   getPhotoUrl(primaryImage) ||
@@ -205,21 +218,32 @@ const WorkPage = ({
                 fill
                 style={{ objectFit: "cover" }}
               />
-            </div>)}
+            </motion.div>)}
             {quote && (
-              <div className={styles.quoteWrapper}>
+              <motion.div className={styles.quoteWrapper} variants={textFadeUpSmall("up", "spring", 0, 0.8)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0 }}>
                 <div className={`location ${styles.quote}`}>{quote}</div>
                 <div className={`body ${styles.quoteAuthor}`}>{quoteAuthor}</div>
                 <div className={`inactive ${styles.quoteAuthorTitle}`}>{quoteAuthorTitle}</div>
-              </div>
+              </motion.div>
             )}
             {challenge && (
               <div className={styles.contentCopy}>
-                <h4 className='header'>{shortName || name}‘s challenge</h4>
-                <p className='body'>{challenge}</p>
+                <motion.h4 variants={textFadeUp("up", "spring", 0, 0.6)}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0 }} className='header'>{shortName || name}‘s challenge</motion.h4>
+                <motion.p className='body' variants={textFadeUpSmall("up", "spring", .1, 1.2)}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0 }}>{challenge}</motion.p>
               </div>
             )}
-            {challengeImage && (<div className={styles.contentImageWrapper}>
+            {challengeImage && (<motion.div className={styles.contentImageWrapper} variants={fadeIn("up", "spring", 0, 0.8)} initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0 }}>
               <Image
                 src={
                   getPhotoUrl(challengeImage) ||
@@ -229,14 +253,22 @@ const WorkPage = ({
                 fill
                 style={{ objectFit: "cover" }}
               />
-            </div>)}
+            </motion.div>)}
             {solution && (
               <div className={styles.contentCopy}>
-                <h4 className='header'>{shortName || name}‘s solution</h4>
-                <p className='body'>{solution}</p>
+                <motion.h4 variants={textFadeUp("up", "spring", 0, 0.6)}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0 }} className='header'>{shortName || name}‘s solution</motion.h4>
+                <motion.p className='body' variants={textFadeUpSmall("up", "spring", .1, 1.2)}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0 }}>{solution}</motion.p>
               </div>
             )}
-            {solutionImage && (<div className={styles.contentImageWrapper}>
+            {solutionImage && (<motion.div className={styles.contentImageWrapper} variants={fadeIn("up", "spring", 0, 0.8)} initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0 }}>
               <Image
                 src={
                   getPhotoUrl(solutionImage) ||
@@ -246,23 +278,31 @@ const WorkPage = ({
                 fill
                 style={{ objectFit: "cover" }}
               />
-            </div>)}
+            </motion.div>)}
             <div className={styles.contentCopy}>
-              <h4 className='header'>Our roles</h4>
+              <motion.h4 variants={textFadeUp("up", "spring", 0, 0.6)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0 }} className='header'>Our roles</motion.h4>
               <div className={styles.solutionsArraysWrapper}>
 
                 {filteredAndSortedCategories.map((category: any) => (
                   <div className={styles.solutionsWrapper} key={category._id}>
-                    <h5 className="inactive" style={{ opacity: .6 }}>{category.name}</h5>
+                    <motion.h5 variants={fade("spring", 0, 0.4, 1)} initial="hidden"
+                      whileInView="show"
+                      viewport={{ once: true, amount: 0 }} className="inactive" style={{ opacity: .6 }}>{category.name}</motion.h5>
                     <div className={styles.solutionsArrayWrapper}>
                       {category.solutions
                         .filter((solution: any) =>
                           getClientSolutionIds().includes(solution._id)
                         )
                         .map((categorySolution: any) => (
-                          <div key={categorySolution._id} className={`${styles.solutionsButton} callout`}>
+                          <motion.div variants={textFadeUpSmall("up", "spring", .1, 1.2)}
+                            initial="hidden"
+                            whileInView="show"
+                            viewport={{ once: true, amount: 0 }} key={categorySolution._id} className={`${styles.solutionsButton} callout`}>
                             {categorySolution.name}
-                          </div>
+                          </motion.div>
                         ))}
                     </div>
                   </div>

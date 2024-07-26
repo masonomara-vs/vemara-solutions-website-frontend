@@ -131,17 +131,24 @@
   flex-direction: column;
   gap: 0px;
   text-align: center;
+  align-items: center;
 }
 .quote {
   opacity: 1;
-  margin-bottom: 12px;
+  text-align: left;
+  margin-bottom: 17px;
+  width: 100%;
 }
 .quoteAuthor {
-  font-weight: 600;
-  margin-bottom: 5px;
+  font-weight: 500;
+  text-align: left;
+  margin-bottom: 3px;
+  width: 100%;
 }
 .quoteAuthorTitle {
   opacity: 0.6;
+  text-align: left;
+  width: 100%;
 }
 @media screen and (min-width: 550px) {
   .solutionsArraysWrapper {
@@ -150,5 +157,20 @@
     flex-wrap: wrap;
     gap: 96px;
     row-gap: 64px;
+  }
+  .quote {
+    opacity: 1;
+    width: 66.67%;
+    text-align: center;
+  }
+  .quoteAuthor {
+    font-weight: 500;
+    width: 66.67%;
+    text-align: center;
+  }
+  .quoteAuthorTitle {
+    opacity: 0.6;
+    width: 66.67%;
+    text-align: center;
   }
 }
