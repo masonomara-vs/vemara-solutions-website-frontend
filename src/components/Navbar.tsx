@@ -146,7 +146,7 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
               </Link>
               <Link href={"/contact/job-application"}
                 target={"_top"} className={styles.mobileSublink}>
-                <div className={` callout`}>Job openings</div>
+                <div className={` callout`}>Apply for a job</div>
               </Link>
               <Link href={"/contact/press-and-media"}
                 target={"_top"} className={styles.mobileSublink}>
@@ -319,7 +319,7 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
                         </Link>
                         <Link href={"/contact/job-application"}
                           target={"_top"} className={styles.linkHoverEffect}>
-                          <div className={`${styles.dropdownTitleDiv} callout`} >Job openings</div>
+                          <div className={`${styles.dropdownTitleDiv} callout`} >Apply for a job</div>
                         </Link>
                         <Link href={"/contact/press-and-media"}
                           target={"_top"} className={styles.linkHoverEffect}>
