@@ -4,7 +4,7 @@ import { sendEmail } from '../../utils/send-schedule-email';
 import styles from "../styles/ContactForm.module.css"
 import Image from 'next/image';
 import { motion } from "framer-motion";
-import { fadeIn, textFadeUp } from "../../utils/motion";
+import { fade, fadeIn, textFadeUp } from "../../utils/motion";
 import Link from 'next/link';
 
 export type FormData = {
@@ -60,7 +60,9 @@ const Contact: FC = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        <form onSubmit={handleSubmit(onSubmit)} className={styles.contactFormWrapper}>
+        <motion.form onSubmit={handleSubmit(onSubmit)} className={styles.contactFormWrapper} variants={fade("spring", 0, 0, 0.6)} initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0 }} >
           <div className={styles.inputWrapper}>
             <label
               htmlFor='name'
@@ -465,7 +467,7 @@ const Contact: FC = () => {
           <div className={styles.email} style={{ paddingTop: 8 }}>
             <span className="body" >Online forms aren‘t for you? Feel free to reach out at&nbsp;<Link href="mailto:connect@vemarasolutions.com" style={{ textDecoration: "underline", textUnderlineOffset: "0.2rem", fontWeight: 500 }} target="_blank">connect@vemarasolutions.com</Link></span>
           </div>
-        </form>
+        </motion.form>
 
         <motion.div className={styles.media} variants={fadeIn("up", "spring", 0, 0.8)}
           initial="hidden"
