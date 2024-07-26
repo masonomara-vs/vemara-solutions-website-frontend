@@ -7,6 +7,8 @@ import LinkCard from "@/components/LinkCard";
 import { SanityDocument } from "next-sanity";
 import { sanityFetch } from "@/sanity/client";
 import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
 
 export async function getStaticProps() {
   const JOBS_QUERY = `*[
@@ -57,53 +59,56 @@ const CareersIndex = ({ jobs }: { jobs: SanityDocument[] }) => {
         title="Join our dynamic team and work on exciting projects."
         subtitle="If you think you’re a good fit for our innovative team, we’d love to hear from you."
       />
-      {/* <div className={styles.contactUsWrapper}>
+      <div className={styles.contactWrapper}>
         <div className={`${styles.contactUsContainerMobile} mobile`}>
           {jobs.map((job) => {
             return (
-              <motion.div
-                key={job._id}
-                variants={fadeIn("up", "spring", 0, 0.8)}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0 }}
-              >
-                <LinkCard
-                  title={job.title}
-                  description={job.overview}
-                  buttonTitle={"Apply now"}
-                  buttonLink={`/careers/job-application`}
-                  button2Title={"Learn more"}
-                  button2Link={`/careers/${job.slug}`}
-                />
-              </motion.div>
+              <div className={styles.linkContainerButtonWrapper}>
+                <Link className="buttonPrimaryBackground" target="_top" href="/careers/job-application">
+                  <span className={`callout`}>Apply now</span>
+                  <Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt="" />
+                </Link>
+                <Link className="buttonSecondaryBackground" target="_top" href={`/careers/${job.slug}`}>
+                  <span className={`callout`}>Learn more</span>
+                  <Image height={12.87} width={12.87} src="/clientActionArrowBlack.svg" priority alt="" />
+                </Link>
+              </div>
             );
           })}
         </div>
 
-        <div className={`${styles.contactUsContainerDesktop} desktop`}>
+        <div className={`${styles.contactContainerDesktopCareers} desktop`}>
           {jobs.map((job) => {
             return (
+
+
               <motion.div
-                key={job._id}
+                className={styles.linkContainer}
                 variants={fadeIn("up", "spring", 0, 0.8)}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0 }}
               >
-                <LinkCard
-                  title={job.title}
-                  description={job.overview}
-                  buttonTitle={"Apply now"}
-                  buttonLink={`/careers/job-application`}
-                  button2Title={"Learn more"}
-                  button2Link={`/careers/${job.slug}`}
-                />
+                <h4 className="label">{job.title}</h4>
+                <div className="description">
+                  {job.overview}
+                </div>
+                <div className={styles.linkContainerButtonWrapper}>
+                  <Link className="buttonPrimaryBackground" target="_top" href="/careers/job-application">
+                    <span className={`callout`}>Apply now</span>
+                    <Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt="" />
+                  </Link>
+                  <Link className="buttonSecondaryBackground" target="_top" href={`/careers/${job.slug}`}>
+                    <span className={`callout`}>Learn more</span>
+                    <Image height={12.87} width={12.87} src="/clientActionArrowBlack.svg" priority alt="" />
+                  </Link>
+                </div>
+
               </motion.div>
             );
           })}
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
