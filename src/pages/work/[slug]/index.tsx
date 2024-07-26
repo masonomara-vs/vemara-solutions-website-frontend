@@ -153,7 +153,7 @@ const WorkPage = ({
       <div className={styles.wrapper}>
 
         {/* logo section */}
-        <motion.div variants={fade("spring", 0, 0.4, 0.6)} initial="hidden"
+        <motion.div variants={fade("spring", 0, 0.4, 1)} initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0 }} className={styles.logoWrapper}>
           <div className={styles.logoContainer} style={{ aspectRatio: logoAspectRatio }}>
@@ -193,7 +193,9 @@ const WorkPage = ({
         <div className={styles.contentWrapper}>
           <div className={styles.contentContainer}>
             {summary && (
-              <div className={"header"}>{summary}</div>
+              <>
+                <div className={"clientheader"}>{summary}</div>
+              </>
             )}
             {primaryImage && (<div className={styles.contentImageWrapper}>
               <Image
@@ -215,7 +217,7 @@ const WorkPage = ({
             )}
             {challenge && (
               <div className={styles.contentCopy}>
-                <h4 className='header'>{shortName || name}‘s challenge</h4>
+                <motion.h4 className='header'>{shortName || name}‘s challenge</motion.h4>
                 <p className='body'>{challenge}</p>
               </div>
             )}

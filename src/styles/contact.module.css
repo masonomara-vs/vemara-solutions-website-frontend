@@ -36,6 +36,19 @@
     padding: 0px 48px;
     column-gap: 24px;
   }
+  .contactContainerDesktopCareers {
+    max-width: var(--max-width);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0px 16px;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 24px;
+    width: 100%;
+    padding: 0px 48px;
+    column-gap: 24px;
+  }
   .contactContainerMobile {
     display: none;
   }
@@ -45,6 +58,11 @@
     max-width: var(--max-width);
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .contactContainerDesktopCareers {
+    max-width: var(--max-width);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
