@@ -185,26 +185,44 @@
 .headerContainerLeftText {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 5px;
   align-items: center;
   justify-content: flex-start;
+}
+.headerContainerLeftSub {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0px 12px;
+  width: 100%;
+  padding: 0px;
+}
+.headerContainerLeftSub * {
+  text-align: left!important;
+  width: 100%;
 }
 @media screen and (min-width: 750px) {
   .headerContainerLeft {
     display: flex;
     flex-direction: row;
     gap: 32px;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
     padding: 0px 12px;
     width: 100%;
     padding: 0px;
   }
+
+  .headerContainerLeft .headerButtonsWrapper {
+    margin-top: 9px;
+  }
   .headerContainerLeftText {
     display: flex;
-    flex-direction: row;
-    gap: 9px;
-    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
     justify-content: space-between;
     width: 100%;
   }
