@@ -107,6 +107,11 @@
   border-radius: 19.2px;
   gap: 9px;
 }
+.linkContainer div:nth-child(2) {
+  max-height: 92.75px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 @media screen and (min-width: 550px) {
   .linkContainer {
     height: 100%;
@@ -157,6 +162,7 @@
   justify-content: flex-end;
   margin-top: 15px;
   flex: 1;
+  z-index: 20;
 }
 .officeImage {
   position: relative;
