@@ -10,7 +10,10 @@ import Head from "next/head";
 import Header from "@/components/Header";
 import Link from "next/link";
 import { PortableText } from "@portabletext/react";
-import {PortableTextComponents} from '@portabletext/react'
+import { PortableTextComponents } from '@portabletext/react'
+import { motion } from "framer-motion";
+import { fade, fadeIn, fadeInButton, textFadeUp } from "../../../../utils/motion"
+
 
 const urlFor = (
   source: SanityImageSource,
@@ -65,8 +68,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
 type JobsPageProps = {
   job:
-    | (SanityDocument & { logoMetadata: { width: number; height: number } })
-    | null;
+  | (SanityDocument & { logoMetadata: { width: number; height: number } })
+  | null;
   projectId: string;
   dataset: string;
 };
@@ -78,13 +81,10 @@ const JobsPage = ({ job, projectId, dataset }: JobsPageProps) => {
 
   const {
     title,
-    slug,
     overview,
-    jobType,
     responsibilities,
     lookingFor,
     qualifications,
-    benefits,
     image,
     logoMetadata,
   } = job;
@@ -99,7 +99,7 @@ const JobsPage = ({ job, projectId, dataset }: JobsPageProps) => {
   return (
     <div>
       <Head>
-        <title>Vemara Solutions - Careers</title>
+        <title>Vemara Solutions - {job.title}</title>
         <meta
           name="description"
           content="Drive your business towards goals and new opportunities. Access industry-leading technology strategy, design, and development for digital products and solutions."
@@ -156,206 +156,88 @@ const JobsPage = ({ job, projectId, dataset }: JobsPageProps) => {
         <meta name="msapplication-TileColor" content="#070808" />
         <meta name="theme-color" content="#070808" />
       </Head>
-      <div className={styles.careersWrapper}>
-        <Navbar
-          firstTitle="Home"
-          firstLink="/"
-          secondTitle="Careers"
-          secondLink='/careers'
-          thirdTitle={title}
-        />
-        <Header label="Job Oppurtunity" title={title} />
-        <Link
-          className="buttonSecondaryBackground"
-          target="_top"
-          href={`/careers/job-application`}
-        >
-          <span className={`callout`}>Apply now</span>
-          <Image
-            height={12.87}
-            width={12.87}
-            src="/clientActionArrowWhite.svg"
-            priority
-            alt=""
-          ></Image>
-        </Link>
-        <Image
-          height={12.87}
-          width={12.87}
-          src={getPhotoUrl(image) || "https://via.placeholder.com/550x310"}
-          priority
-          alt=""
-        ></Image>
-      </div>
-      <h1>Job overview</h1>
-      <div>{overview}</div>
-      <h1>Who we are looking for</h1>
-      <PortableText
-        value={lookingFor}
-        components={{
-          list: {
-            // Ex. 1: customizing common list types
-            bullet: ({ children }) => <ul className="mt-xl">{children}</ul>,
-          },
-        }}
+      <Navbar
+        firstTitle="Home"
+        firstLink="/"
+        secondTitle="Careers"
+        secondLink='/careers'
+        thirdTitle={title}
       />
-       <h1>Your responsibilities</h1>
-      <PortableText
-        value={responsibilities}
-        components={{
-          list: {
-            // Ex. 1: customizing common list types
-            bullet: ({ children }) => <ul className="mt-xl">{children}</ul>,
-          },
-        }}
-      />
-       <h1>Your qualifications</h1>
-      <PortableText
-        value={qualifications}
-        components={{
-          list: {
-            // Ex. 1: customizing common list types
-            bullet: ({ children }) => <ul className="mt-xl">{children}</ul>,
-          },
-        }}
-      />
-       <Link
-          className="buttonSecondaryBackground"
-          target="_top"
-          href={`/careers/job-application`}
-        >
-          <span className={`callout`}>Apply now</span>
-          <Image
-            height={12.87}
-            width={12.87}
-            src="/clientActionArrowWhite.svg"
-            priority
-            alt=""
-          ></Image>
-        </Link>
-      {/* <Navbar firstTitle='Home' firstLink="/" secondTitle="Work" secondLink='/work' thirdTitle={title} />
+      <Header label="Job Opportunity" title={title} linkHref={"/careers/job-application"} linkTitle={"Apply now"} />
+
+
       <div className={styles.wrapper}>
+        <div className={styles.container}>
 
-
-        <div className={styles.logoWrapper}>
-          <div className={styles.logoContainer} style={{ aspectRatio: logoAspectRatio }}>
-            <Image
-              src={getPhotoUrl(primaryImage) || "https://via.placeholder.com/550x310"}
-              alt={title || "Client"}
-              fill
-              style={{ objectFit: "contain" }}
+          <motion.div className={styles.jobDetailsWrapper} variants={fade("spring", 0, 0.8, 1)}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0 }}>
+            <motion.h5 variants={textFadeUp("up", "spring", 0, 0.6)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0 }} className="header">Job overview</motion.h5>
+            <div className="body" style={{ marginBottom: 47 }}>{overview}</div>
+            <motion.h5 variants={textFadeUp("up", "spring", 0, 0.6)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0 }} className="header">Who we are looking for</motion.h5>
+            <PortableText
+              value={lookingFor}
+              components={{
+                list: {
+                  // Ex. 1: customizing common list types
+                  bullet: ({ children }) => <ul className="body" style={{ marginBottom: 47 }}>{children}</ul>,
+                },
+              }}
             />
-          </div>
+            <motion.h5 variants={textFadeUp("up", "spring", 0, 0.6)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0 }} className="header">Your responsibilities</motion.h5>
+            <PortableText
+              value={responsibilities}
+              components={{
+                list: {
+                  // Ex. 1: customizing common list types
+                  bullet: ({ children }) => <ul className="body" style={{ marginBottom: 47 }}>{children}</ul>,
+                },
+              }}
+            />
+            <motion.h5 variants={textFadeUp("up", "spring", 0, 0.6)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0 }} className="header">Qualifications</motion.h5>
+            <PortableText
+              value={qualifications}
+              components={{
+                list: {
+                  // Ex. 1: customizing common list types
+                  bullet: ({ children }) => <ul className="body" style={{ marginBottom: 47 }}>{children}</ul>,
+                },
+              }}
+            />
+
+            <motion.div
+              variants={fadeInButton("up", "spring", .2, 0.8)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0 }}
+            >
+              <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/careers/job-application`} >
+                <span className={`callout`}>Apply Now</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
+              </Link>
+            </motion.div>
+          </motion.div>
+          <motion.div className={styles.media} variants={fadeIn("up", "spring", 0, 0.8)} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0 }}>
+            <Image src={getPhotoUrl(image) || "ship.gif"} alt="Vemara Solutions" unoptimized fill style={{ objectFit: "cover" }} />
+          </motion.div>
         </div>
+      </div>
 
 
-        <div className={styles.detailsWrapper}>
-          <div className={styles.detailsContainer}>
-            {overview ? (
-              <div className={styles.details}>
-                <span className={"inactive"}>Industry:&nbsp;{overview.replace("-", " ")}</span>
-              </div>
-            ) : null}
-            <div className={`mobile ${styles.divider}`}></div>
-            <div className={styles.details}>
-              <span className={"inactive"}>Technology:&nbsp;</span>
-              {technology
-                ? technology.map((tech: any, index: number) => (
-                  <span className={"inactive"} key={tech._id}>
-                    {tech.name}
-                    {index < technology.length - 1 && ",\u00A0"}
-                  </span>
-                ))
-                : null}
-            </div>
-          </div>
-        </div>
 
-    
-        <div className={styles.contentWrapper}>
-          <div className={styles.contentContainer}>
-            {summary && (
-              <div className={"header"}>{summary}</div>
-            )}
-            {primaryImage && (<div className={styles.contentImageWrapper}>
-              <Image
-                src={
-                  getPhotoUrl(primaryImage) ||
-                  "https://via.placeholder.com/550x310"
-                }
-                alt={name || "Client"}
-                fill
-                style={{ objectFit: "cover" }}
-              />
-            </div>)}
-            {quote && (
-              <div className={styles.quoteWrapper}>
-                <div className={`location ${styles.quote}`}>{quote}</div>
-                <div className={`body ${styles.quoteAuthor}`}>{quoteAuthor}</div>
-                <div className={`inactive ${styles.quoteAuthorTitle}`}>{quoteAuthorTitle}</div>
-              </div>
-            )}
-            {challenge && (
-              <div className={styles.contentCopy}>
-                <h4 className='header'>{shortName || name}‘s challenge</h4>
-                <p className='body'>{challenge}</p>
-              </div>
-            )}
-            {challengeImage && (<div className={styles.contentImageWrapper}>
-              <Image
-                src={
-                  getPhotoUrl(challengeImage) ||
-                  "https://via.placeholder.com/550x310"
-                }
-                alt={name || "Client"}
-                fill
-                style={{ objectFit: "cover" }}
-              />
-            </div>)}
-            {solution && (
-              <div className={styles.contentCopy}>
-                <h4 className='header'>{shortName || name}‘s solution</h4>
-                <p className='body'>{solution}</p>
-              </div>
-            )}
-            {solutionImage && (<div className={styles.contentImageWrapper}>
-              <Image
-                src={
-                  getPhotoUrl(solutionImage) ||
-                  "https://via.placeholder.com/550x310"
-                }
-                alt={name || "Client"}
-                fill
-                style={{ objectFit: "cover" }}
-              />
-            </div>)}
-            <div className={styles.contentCopy}>
-              <h4 className='header'>Our roles</h4>
-              <div className={styles.solutionsArraysWrapper}>
-
-                {filteredAndSortedCategories.map((category: any) => (
-                  <div className={styles.solutionsWrapper} key={category._id}>
-                    <h5 className="inactive" style={{ opacity: .6 }}>{category.name}</h5>
-                    <div className={styles.solutionsArrayWrapper}>
-                      {category.solutions
-                        .filter((solution: any) =>
-                          getClientSolutionIds().includes(solution._id)
-                        )
-                        .map((categorySolution: any) => (
-                          <div key={categorySolution._id} className={`${styles.solutionsButton} callout`}>
-                            {categorySolution.name}
-                          </div>
-                        ))}
-                    </div>
-                  </div>
-                ))}
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
-    </div>
+    </div >
   );
 };
 
