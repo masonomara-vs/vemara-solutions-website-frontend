@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '@/components/Header'
 import Navbar from '@/components/Navbar'
 import Head from 'next/head'
+import Contact from '@/components/PressContact'
 
 export default function index() {
   return (
@@ -37,6 +38,9 @@ export default function index() {
         label="Press & Media"
         title="Connect with us for press and media inquiries."
         subtitle="For press information, including images, media, speaking engagements, questions, and articles." />
+      <div>
+        <Contact />
+      </div>
     </div>
   )
 }

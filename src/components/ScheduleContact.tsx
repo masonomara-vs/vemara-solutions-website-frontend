@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { sendEmail } from '../../utils/send-schedule-email';
-import styles from "../styles/ContactForm.module.css"
+import styles from "../styles/ContactForm.module.css";
 import Image from 'next/image';
 import { motion } from "framer-motion";
 import { fade, fadeIn, textFadeUp } from "../../utils/motion";
@@ -18,7 +18,7 @@ export type FormData = {
   startDate?: string;
   projectOptions: {
     oneTime: boolean;
-    servicePackage: boolean;
+    ongoingService: boolean;
   }
   services: {
     customSoftwareDevelopment: boolean;
@@ -60,92 +60,94 @@ const Contact: FC = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
-        <motion.form onSubmit={handleSubmit(onSubmit)} className={styles.contactFormWrapper} variants={fade("spring", 0, 0, 0.6)} initial="hidden"
+        <motion.form
+          onSubmit={handleSubmit(onSubmit)}
+          className={styles.contactFormWrapper}
+          variants={fade("spring", 0, 0.8, 1)}
+          initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0 }} >
+          viewport={{ once: true, amount: 0 }}
+        >
           <div className={styles.inputWrapper}>
-            <label
-              htmlFor='name'
-              className="inactive"
-            >
+            <label htmlFor='name' className="inactive">
               What is your name? <span className="dull">(Required)</span>
             </label>
             <input
+              id='name'
               type='text'
-              placeholder='Full Name'
+              placeholder='Enter your full name'
               className='inputForeground'
+              autoCapitalize='words'
+              autoComplete='name'
+              required
               {...register('name', { required: true })}
             />
           </div>
           <div className={styles.inputWrapper}>
-            <label
-              htmlFor='email'
-              className="inactive"
-            >
+            <label htmlFor='email' className="inactive">
               What is your best email address? <span className="dull">(Required)</span>
             </label>
             <input
+              id='email'
               type='email'
-              placeholder='Best email address'
+              placeholder='Enter your email address'
               className='inputForeground'
+              autoComplete='email'
+              required
               {...register('email', { required: true })}
             />
           </div>
           <div className={styles.inputWrapper}>
-            <label
-              htmlFor='businessName'
-              className="inactive"
-            >
+            <label htmlFor='businessName' className="inactive">
               What is the business name? <span className="dull">(Required)</span>
             </label>
             <input
+              id='businessName'
               type='text'
-              placeholder='Business name'
+              placeholder='Enter the business name'
               className='inputForeground'
+              autoCapitalize='words'
+              autoComplete='organization'
+              required
               {...register('businessName', { required: true })}
             />
           </div>
           <div className={styles.inputWrapper}>
-            <label
-              htmlFor='website'
-              className="inactive"
-            >
+            <label htmlFor='website' className="inactive">
               What is your web address?
             </label>
             <input
-              type='string'
-              placeholder='https://...'
+              id='website'
+              type='url'
+              placeholder='Enter your website URL'
               className='inputForeground'
+              autoComplete='url'
               {...register('website')}
             />
           </div>
           <div className={styles.inputWrapper}>
-            <label
-              htmlFor='location'
-              className="inactive"
-            >
-              What is the business physical address?
+            <label htmlFor='location' className="inactive">
+              What is the business address?
             </label>
             <input
+              id='location'
               type='text'
-              placeholder='Physical address'
+              placeholder='Enter the address'
               className='inputForeground'
+              autoCapitalize='words'
+              autoComplete='street-address'
               {...register('location')}
             />
           </div>
-
           <div className={styles.inputWrapper}>
-            <label
-              htmlFor='services'
-              className="inactive"
-            >
-              What services are you interested in?
+            <label htmlFor='projectOptions' className="inactive">
+              Which would you like to discuss?
             </label>
             <div className={styles.checkboxFieldsWrapper}>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='oneTime'
                   type='checkbox'
-                  value='One-time project'
                   className='checkbox'
                   {...register('projectOptions.oneTime')}
                 />
@@ -153,29 +155,24 @@ const Contact: FC = () => {
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='ongoingService'
                   type='checkbox'
-                  value='Monthly service engagement'
                   className='checkbox'
-                  {...register('projectOptions.servicePackage')}
+                  {...register('projectOptions.ongoingService')}
                 />
-                Monthly service engagement
+                Ongoing service
               </label>
-
             </div>
           </div>
-
           <div className={styles.inputWrapper}>
-            <label
-              htmlFor='services'
-              className="inactive"
-            >
+            <label htmlFor='services' className="inactive">
               What services are you interested in?
             </label>
             <div className={styles.checkboxFieldsWrapper}>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='customSoftwareDevelopment'
                   type='checkbox'
-                  value='Custom Software Development'
                   className='checkbox'
                   {...register('services.customSoftwareDevelopment')}
                 />
@@ -183,8 +180,8 @@ const Contact: FC = () => {
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='uxUiDesign'
                   type='checkbox'
-                  value='UX/UI Design'
                   className='checkbox'
                   {...register('services.uxUiDesign')}
                 />
@@ -192,8 +189,8 @@ const Contact: FC = () => {
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='frontEndDevelopment'
                   type='checkbox'
-                  value='Front-End Development'
                   className='checkbox'
                   {...register('services.frontEndDevelopment')}
                 />
@@ -201,8 +198,8 @@ const Contact: FC = () => {
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='backEndDevelopment'
                   type='checkbox'
-                  value='Back-End Development'
                   className='checkbox'
                   {...register('services.backEndDevelopment')}
                 />
@@ -210,8 +207,8 @@ const Contact: FC = () => {
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='iosAppDevelopment'
                   type='checkbox'
-                  value='iOS App Development'
                   className='checkbox'
                   {...register('services.iosAppDevelopment')}
                 />
@@ -219,8 +216,8 @@ const Contact: FC = () => {
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='androidAppDevelopment'
                   type='checkbox'
-                  value='Android App Development'
                   className='checkbox'
                   {...register('services.androidAppDevelopment')}
                 />
@@ -228,8 +225,8 @@ const Contact: FC = () => {
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='webApplicationDevelopment'
                   type='checkbox'
-                  value='Web Application Development'
                   className='checkbox'
                   {...register('services.webApplicationDevelopment')}
                 />
@@ -237,8 +234,8 @@ const Contact: FC = () => {
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='eCommerceDevelopment'
                   type='checkbox'
-                  value='E-Commerce Development'
                   className='checkbox'
                   {...register('services.eCommerceDevelopment')}
                 />
@@ -246,8 +243,8 @@ const Contact: FC = () => {
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='technologyAdoptionIntegration'
                   type='checkbox'
-                  value='Technology Adoption & Integration'
                   className='checkbox'
                   {...register('services.technologyAdoptionIntegration')}
                 />
@@ -255,8 +252,8 @@ const Contact: FC = () => {
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='brandStrategyIdentity'
                   type='checkbox'
-                  value='Brand Strategy & Identity'
                   className='checkbox'
                   {...register('services.brandStrategyIdentity')}
                 />
@@ -264,8 +261,8 @@ const Contact: FC = () => {
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='userResearchInterviews'
                   type='checkbox'
-                  value='User Research & Interviews'
                   className='checkbox'
                   {...register('services.userResearchInterviews')}
                 />
@@ -273,8 +270,8 @@ const Contact: FC = () => {
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='foundationalProductResearch'
                   type='checkbox'
-                  value='Foundational Product Research'
                   className='checkbox'
                   {...register('services.foundationalProductResearch')}
                 />
@@ -282,8 +279,8 @@ const Contact: FC = () => {
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='maintenanceSupport'
                   type='checkbox'
-                  value='Maintenance & Support'
                   className='checkbox'
                   {...register('services.maintenanceSupport')}
                 />
@@ -291,8 +288,8 @@ const Contact: FC = () => {
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='trainingDocumentation'
                   type='checkbox'
-                  value='Training & Documentation'
                   className='checkbox'
                   {...register('services.trainingDocumentation')}
                 />
@@ -300,8 +297,8 @@ const Contact: FC = () => {
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='projectPlansProcessFlows'
                   type='checkbox'
-                  value='Project Plans & Process Flows'
                   className='checkbox'
                   {...register('services.projectPlansProcessFlows')}
                 />
@@ -309,8 +306,8 @@ const Contact: FC = () => {
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='productDesignSystems'
                   type='checkbox'
-                  value='Product Design Systems'
                   className='checkbox'
                   {...register('services.productDesignSystems')}
                 />
@@ -318,8 +315,8 @@ const Contact: FC = () => {
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='qualityAssuranceTesting'
                   type='checkbox'
-                  value='Quality Assurance & Testing'
                   className='checkbox'
                   {...register('services.qualityAssuranceTesting')}
                 />
@@ -327,8 +324,8 @@ const Contact: FC = () => {
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='sitemapsContentInventory'
                   type='checkbox'
-                  value='Sitemaps & Content Inventory'
                   className='checkbox'
                   {...register('services.sitemapsContentInventory')}
                 />
@@ -336,8 +333,8 @@ const Contact: FC = () => {
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='informationArchitectures'
                   type='checkbox'
-                  value='Information Architectures'
                   className='checkbox'
                   {...register('services.informationArchitectures')}
                 />
@@ -345,17 +342,17 @@ const Contact: FC = () => {
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='productInitiativeStrategy'
                   type='checkbox'
-                  value='Product & Initiative Strategy'
                   className='checkbox'
                   {...register('services.productInitiativeStrategy')}
                 />
-                Product & Initiative Strategy
+                Product Initiative Strategy
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='workflowAutomationImprovement'
                   type='checkbox'
-                  value='Workflow Automation & Improvement'
                   className='checkbox'
                   {...register('services.workflowAutomationImprovement')}
                 />
@@ -363,26 +360,26 @@ const Contact: FC = () => {
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='searchEngineOptimization'
                   type='checkbox'
-                  value='Search Engine Optimization (SEO)'
                   className='checkbox'
                   {...register('services.searchEngineOptimization')}
                 />
-                Search Engine Optimization (SEO)
+                Search Engine Optimization
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='searchEngineMarketing'
                   type='checkbox'
-                  value='Search Engine Marketing (SEM)'
                   className='checkbox'
                   {...register('services.searchEngineMarketing')}
                 />
-                Search Engine Marketing (SEM)
+                Search Engine Marketing
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='usabilityAccessibility'
                   type='checkbox'
-                  value='Usability & Accessibility'
                   className='checkbox'
                   {...register('services.usabilityAccessibility')}
                 />
@@ -390,8 +387,8 @@ const Contact: FC = () => {
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='modernizationMigration'
                   type='checkbox'
-                  value='Modernization & Migration'
                   className='checkbox'
                   {...register('services.modernizationMigration')}
                 />
@@ -399,26 +396,21 @@ const Contact: FC = () => {
               </label>
               <label className={styles.checkboxWrapper}>
                 <input
+                  id='contentManagementSystems'
                   type='checkbox'
-                  value='Content Management Systems (CMS)'
                   className='checkbox'
                   {...register('services.contentManagementSystems')}
                 />
-                Content Management Systems (CMS)
+                Content Management Systems
               </label>
             </div>
           </div>
-
-
-
           <div className={styles.inputWrapper}>
-            <label
-              htmlFor='budget'
-              className="inactive"
-            >
+            <label htmlFor='budget' className="inactive">
               What is your anticipated budget?
             </label>
             <select
+              id='budget'
               className='inputForeground'
               {...register('budget', { required: true })}
             >
@@ -431,60 +423,48 @@ const Contact: FC = () => {
             </select>
           </div>
           <div className={styles.inputWrapper}>
-            <label
-              htmlFor='startDate'
-              className="inactive"
-            >
+            <label htmlFor='startDate' className="inactive">
               Do you have a desired start date?
             </label>
             <input
+              id='startDate'
               type='string'
-              placeholder='Desired start date'
+              placeholder='Enter the desired start date'
               className='inputForeground'
               {...register('startDate')}
             />
           </div>
           <div className={styles.inputWrapper}>
-            <label
-              htmlFor='message'
-              className="inactive"
-            >
+            <label htmlFor='message' className="inactive">
               Any additional thoughts or questions you would like to share?
             </label>
             <textarea
+              id='message'
               rows={5}
-              placeholder='Any additional thoughts or questions, including technical, practical, and other specifics...'
+              placeholder='Share any additional thoughts or questions, including technical, practical, and other specifics'
               className='textBoxForeground'
+              autoCapitalize='sentences'
+              autoComplete='off'
               {...register('message')}
             ></textarea>
           </div>
           <div>
-            <button className='buttonPrimaryBackground'>
+            <button type='submit' className='buttonPrimaryBackground'>
               <span className={`callout`}>Submit</span>
               <Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt="" />
             </button>
           </div>
           <div className={styles.email} style={{ paddingTop: 8 }}>
-            <span className="body" >Online forms aren‘t for you? Feel free to reach out at&nbsp;<Link href="mailto:connect@vemarasolutions.com" style={{ textDecoration: "underline", textUnderlineOffset: "0.2rem", fontWeight: 500 }} target="_blank">connect@vemarasolutions.com</Link></span>
+            <span className="body">
+              Online forms aren‘t for you? Feel free to reach out at <Link href="mailto:connect@vemarasolutions.com" style={{ textDecoration: "underline", textUnderlineOffset: "0.2rem", fontWeight: 500 }} target="_blank">connect@vemarasolutions.com</Link>
+            </span>
           </div>
         </motion.form>
-
-        <motion.div className={styles.media} variants={fadeIn("up", "spring", 0, 0.8)}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0 }}>
-          <Image
-            src="/dance.gif"
-            alt="Vemara Solutions"
-            unoptimized
-            fill
-            style={{ objectFit: "cover" }} />
-
+        <motion.div className={styles.media} variants={fadeIn("up", "spring", 0, 0.8)} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0 }}>
+          <Image src="/dance.gif" alt="Vemara Solutions" unoptimized fill style={{ objectFit: "cover" }} />
         </motion.div>
-
       </div>
     </div>
-
   );
 };
 

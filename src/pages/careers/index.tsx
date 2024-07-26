@@ -57,7 +57,7 @@ const CareersIndex = ({ jobs }: { jobs: SanityDocument[] }) => {
         title="Join our dynamic team and work on exciting projects."
         subtitle="If you think you’re a good fit for our innovative team, we’d love to hear from you."
       />
-      <div className={styles.contactUsWrapper}>
+      {/* <div className={styles.contactUsWrapper}>
         <div className={`${styles.contactUsContainerMobile} mobile`}>
           {jobs.map((job) => {
             return (
@@ -103,7 +103,7 @@ const CareersIndex = ({ jobs }: { jobs: SanityDocument[] }) => {
             );
           })}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

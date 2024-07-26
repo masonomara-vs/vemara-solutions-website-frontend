@@ -114,7 +114,7 @@ const ContactIndex = () => {
               If you think you’re a good fit for our innovative team, we’d love to hear from you.
             </div>
             <div className={styles.linkContainerButtonWrapper}>
-              <Link className="buttonPrimaryBackground" target="_top" href="/careers">
+              <Link className="buttonPrimaryBackground" target="_top" href="/careers/job-application">
                 <span className={`callout`}>View job openings</span>
                 <Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt="" />
               </Link>
@@ -188,7 +188,7 @@ const ContactIndex = () => {
               If you think you’re a good fit for our innovative team, we’d love to hear from you.
             </div>
             <div className={styles.linkContainerButtonWrapper}>
-              <Link className="buttonPrimaryBackground" target="_top" href="/careers">
+              <Link className="buttonPrimaryBackground" target="_top" href="/careers/job-application">
                 <span className={`callout`}>View job openings</span>
                 <Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt="" />
               </Link>

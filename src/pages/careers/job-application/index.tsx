@@ -2,6 +2,7 @@ import React from 'react'
 import Header from '@/components/Header'
 import Navbar from '@/components/Navbar'
 import Head from 'next/head'
+import Contact from '@/components/ApplicationContact'
 
 export default function index() {
   return (
@@ -37,6 +38,9 @@ export default function index() {
         label="Job Application"
         title="Apply for a role at Vemara Solutions."
         subtitle="If you think you’re a good fit for our innovative team, we’d love to hear from you." />
+      <div>
+        <Contact />
+      </div>
     </div>
   )
 }

@@ -411,16 +411,25 @@ body:has(.heroCheck) {
   letter-spacing: -0.02rem;
   color: var(--background);
   width: 100%;
+  outline: 1px solid rgba(255, 255, 255, 0) !important;
+  transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+@media screen and (min-width: 550px) {
+  .inputBackground:hover {
+    outline: 1px solid rgba(255, 255, 255, 0.4) !important;
+    transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
 }
 .inputBackground:focus {
   outline: 1px solid rgba(255, 255, 255, 0.4) !important;
+  transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 .inputBackground::placeholder {
   font-size: 17px;
   line-height: 145%;
   font-weight: 400;
   letter-spacing: -0.02rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.5);
 }
 .inputForeground {
   height: 48px;
@@ -439,16 +448,26 @@ body:has(.heroCheck) {
   letter-spacing: -0.02rem;
   color: var(--foreground);
   width: 100%;
+  outline: 1px solid rgba(7, 8, 8, 0) !important;
+  transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
+@media screen and (min-width: 550px) {
+  .inputForeground:hover {
+    outline: 1px solid rgba(7, 8, 8, 0.2) !important;
+    transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+}
+
 .inputForeground:focus {
   outline: 1px solid rgba(7, 8, 8, 0.2) !important;
+  transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 .inputBainputForegroundckground::placeholder {
   font-size: 17px;
   line-height: 145%;
   font-weight: 400;
   letter-spacing: -0.02rem;
-  color: rgba(7, 8, 8, 0.6);
+  color: rgba(7, 8, 8, 0.5);
 }
 
 .buttonPrimaryForeground {
@@ -603,9 +622,10 @@ input[type="checkbox"] {
   width: 18px;
   min-width: 18px;
   height: 18px;
-  background-color: rgba(7, 8, 8, 0.08);
+  background-color: rgba(7, 8, 8, 0.06);
   border-radius: 5px;
-  /* border: 1px solid rgba(7, 8, 8, 0.2); */
+  outline: 1px solid rgba(7, 8, 8, 0) !important;
+  transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
   cursor: pointer;
 }
 @media screen and (min-width: 550px) {
@@ -620,6 +640,8 @@ input[type="checkbox"] {
     border-radius: 5px;
     outline: 1px solid rgba(7, 8, 8, 0.2);
     cursor: pointer;
+    outline: 1px solid rgba(7, 8, 8, 0.2) !important;
+    transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
   }
 }
 
@@ -628,12 +650,14 @@ input[type="checkbox"]:checked {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 400ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 input[type="checkbox"]:checked:after {
   content: "\2714";
   color: var(--background);
   margin-top: 1px;
+  transition: all 00ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 .textBoxForeground {
   padding: 11.5px 13px;
@@ -652,18 +676,21 @@ input[type="checkbox"]:checked:after {
   color: var(--foreground);
   width: 100%;
   font: inherit;
+  outline: 1px solid rgba(7, 8, 8, 0) !important;
+  transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 .textBoxForeground:focus {
   outline: 1px solid rgba(7, 8, 8, 0.2) !important;
+  transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 .textBoxForegroundckground::placeholder {
   font-size: 17px;
   line-height: 145%;
   font-weight: 400;
   letter-spacing: -0.02rem;
-  color: rgba(7, 8, 8, 0.6);
+  color: rgba(7, 8, 8, 0.5);
 }
 .dull {
-  opacity: .5;
+  opacity: 0.5;
   font-weight: 400;
 }

@@ -2,13 +2,13 @@ import React from 'react'
 import Header from '@/components/Header'
 import Navbar from '@/components/Navbar'
 import Head from 'next/head'
-import Contact from '@/components/MessageContact'
+import Contact from '@/components/ApplicationContact'
 
 export default function index() {
   return (
     <div>
       <Head>
-        <title>Vemara Solutions - Message Us</title>
+        <title>Vemara Solutions - Job Application</title>
         <meta name="description" content="Drive your business towards goals and new opportunities. Access industry-leading technology strategy, design, and development for digital products and solutions." />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <link rel="icon" href="/icon.ico" />
@@ -33,11 +33,11 @@ export default function index() {
         <meta name="msapplication-TileColor" content="#070808" />
         <meta name="theme-color" content="#070808" />
       </Head>
-      <Navbar firstTitle='Home' firstLink="/" secondTitle="Contact" secondLink='/contact' thirdTitle='Message Us' />
+      <Navbar firstTitle='Home' firstLink="/" secondTitle="Contact" secondLink='/contact' thirdTitle='Job Application' />
       <Header
-        label="Message Us"
-        title="General inquiries and getting started"
-        subtitle="For any support, introductions, general interest, getting started on a project, or any other inquiries." />
+        label="Job Application"
+        title="Apply for a role at Vemara Solutions."
+        subtitle="If you think you’re a good fit for our innovative team, we’d love to hear from you." />
       <div>
         <Contact />
       </div>
