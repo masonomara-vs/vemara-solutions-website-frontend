@@ -168,7 +168,7 @@ const JobsPage = ({ job, projectId, dataset }: JobsPageProps) => {
         <Link
           className="buttonSecondaryBackground"
           target="_top"
-          href={`/careers`}
+          href={`/careers/job-application`}
         >
           <span className={`callout`}>Apply now</span>
           <Image
@@ -222,7 +222,7 @@ const JobsPage = ({ job, projectId, dataset }: JobsPageProps) => {
        <Link
           className="buttonSecondaryBackground"
           target="_top"
-          href={`/careers`}
+          href={`/careers/job-application`}
         >
           <span className={`callout`}>Apply now</span>
           <Image
