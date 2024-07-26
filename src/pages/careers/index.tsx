@@ -64,6 +64,7 @@ const CareersIndex = ({ jobs }: { jobs: SanityDocument[] }) => {
               <motion.div
                 className={styles.linkContainer}
                 variants={fadeIn("up", "spring", 0, 0.8)}
+                key={job._id}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0 }}
@@ -92,6 +93,7 @@ const CareersIndex = ({ jobs }: { jobs: SanityDocument[] }) => {
             return (
               <motion.div
                 className={styles.linkContainer}
+                key={job._id}
                 variants={fadeIn("up", "spring", 0, 0.8)}
                 initial="hidden"
                 whileInView="show"
