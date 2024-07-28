@@ -106,6 +106,21 @@ export const growDown: Variants = {
     },
   },
 };
+export const growDownSub: Variants = {
+  hidden: {
+    height: "0px",
+  },
+  show: {
+    height: "calc(100% - 24px)",
+    transition: {
+      type: "spring",
+      delay: 0,
+      duration: 1.6,
+      bounce: 0,
+      ease: [0.17, 0.67, 0.83, 0.67],
+    },
+  },
+};
 export const growRight: Variants = {
   hidden: {
     width: "0px",

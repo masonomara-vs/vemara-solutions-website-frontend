@@ -28,7 +28,7 @@ export default function LinkCard({
         variants={fadeIn("up", "spring", 0, 0.8)}
         initial="hidden"
         whileInView="show"
-        viewport={{ once: true, amount: 0 }} // Adjust amount as needed
+        viewport={{ once: true, amount: 0 }}
       >
         <div className={styles.linkContainer}>
           <h4 className="label">{title}</h4>

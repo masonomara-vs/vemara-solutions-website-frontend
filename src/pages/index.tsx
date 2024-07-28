@@ -3,8 +3,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { SanityDocument } from 'next-sanity'
-import imageUrlBuilder from '@sanity/image-url'
-import { SanityImageSource } from '@sanity/image-url/lib/types/types'
 import Navbar from '@/components/Navbar'
 import TechnologyCarousel from '@/components/TechnologyCarousel'
 import { client, sanityFetch } from '@/sanity/client'
@@ -111,7 +109,7 @@ const HeroSection = () => (
           variants={fadeInButton("up", "spring", .3, 0.8)}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0 }} // Adjust amount as needed
+          viewport={{ once: true, amount: 0 }}
         >
           <Link className="buttonPrimaryForeground buttonFullWidth" target="_top" href={`/contact/schedule-a-call`} >
             <span className={`callout`}>Schedule a call</span><Image height={12.87} width={12.87} src="/clientActionArrowBlack.svg" priority alt=""></Image>
@@ -121,7 +119,7 @@ const HeroSection = () => (
           variants={fadeInButton("up", "spring", 0.4, 0.8)}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, amount: 0 }} // Adjust amount as needed
+          viewport={{ once: true, amount: 0 }}
         >
           <Link className="buttonSecondaryForeground buttonFullWidth" target="_top" href={`/contact/message-us`} >
             <span className={`callout`}>Message us</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
@@ -145,7 +143,7 @@ const WorkSection = ({ clients, projectId, dataset }: { clients: any, projectId:
             variants={fadeInButton("up", "spring", 0.3, 0.8)}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, amount: 0 }} // Adjust amount as needed
+            viewport={{ once: true, amount: 0 }}
           >
             <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/work`} >
               <span className={`callout`}>View all work</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>

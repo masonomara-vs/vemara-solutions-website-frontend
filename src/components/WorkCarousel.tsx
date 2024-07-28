@@ -47,7 +47,7 @@ const WorkCarousel: React.FC<WorkCarouselProps> = ({ clients, projectId, dataset
 
   useAnimationFrame((t, delta) => {
     if (isHovered || hoveredAction) {
-      return; // Pause motion when hovered
+      return;
     }
 
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
