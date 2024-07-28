@@ -142,17 +142,17 @@ export default function Footer() {
             </div>
             <Link
               target="_top"
-              href={`tel:7324554515`}
+              href={`mailto:connect@vemarasolutions.com`}
               className={styles.telephoneButton}
             >
               <Image
                 height={14.63}
                 width={14.63}
-                src="/phone.png"
+                src="/email.png"
                 priority
                 alt=""
               ></Image>
-              <span className="active" style={{ color: "white" }}> (732) 455-4515</span>
+              <span className="active" style={{ color: "white" }}> connect@vemarasolutions.com</span>
             </Link>
           </div>
         </div>

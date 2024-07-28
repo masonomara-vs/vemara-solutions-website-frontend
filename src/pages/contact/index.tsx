@@ -255,7 +255,7 @@ const ContactIndex = () => {
                 <div className={styles.timeWrapper}>
                   <span className="label">{currentTime}&nbsp;&nbsp;</span>
                   <span className="label" style={{ color: asburyParkOpen ? '#386641' : '#bc4749' }}>&#8226;&nbsp;</span>
-                  <span className="label" style={{ color: asburyParkOpen ? '#386641' : '#bc4749' }}>Open</span>
+                  <span className="label" style={{ color: asburyParkOpen ? '#386641' : '#bc4749' }}>{asburyParkOpen ? 'Open' : 'Closed'}</span>
 
                 </div>
               </div>
