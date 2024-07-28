@@ -28,7 +28,7 @@ const CareersIndex = ({ jobs }: { jobs: SanityDocument[] }) => {
       <Head>
         <title>Vemara Solutions - Careers</title>
         <meta name="description" content="Drive your business towards goals and new opportunities. Access industry-leading technology strategy, design, and development for digital products and solutions." />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2" />
         <link rel="icon" href="/icon.ico" />
         <link rel="shortcut icon" href="/icon.ico" />
         <meta charSet="UTF-8" />
@@ -42,7 +42,7 @@ const CareersIndex = ({ jobs }: { jobs: SanityDocument[] }) => {
         <meta name="twitter:description" content="Drive your business towards goals and new opportunities. Access industry-leading technology strategy, design, and development for digital products and solutions." />
         <meta name="twitter:image" content="/twitter-image.png" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.json" />
+        <link rel="manifest" href="/site.webmanifest" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />

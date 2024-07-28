@@ -30,6 +30,15 @@
   z-index: 0;
   object-fit: cover !important;
 }
+.videoPhoto {
+  width: 100%;
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  z-index: 0;
+  object-fit: cover !important;
+}
 .videoBackdrop {
   width: 100%;
   position: absolute !important;
