@@ -242,3 +242,14 @@
   gap: 9px;
   width: fit-content;
 }
+.emailLink {
+  color: white;
+  transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+@media screen and (min-width: 550px) {
+  .emailLink:hover {
+    opacity: 0.87;
+    transition: all 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+}

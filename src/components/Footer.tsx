@@ -105,8 +105,11 @@ export default function Footer() {
                   <span className="active">Sitemap</span>
                 </Link>
               </div> */}
-              <div className="description" style={{ color: "rgba(255,255,255,.6)" }}>
+              <div className="description" style={{ color: "rgba(255,255,255,.6)", fontWeight: 500 }}>
                 2024 Vemara Solutions. All Rights Reserved.
+              </div>
+              <div className="description" style={{ color: "rgba(255,255,255,.6)", fontWeight: 400 }}>
+                Formerly Open Source Solutions
               </div>
             </div>
 
@@ -145,14 +148,14 @@ export default function Footer() {
               href={`mailto:connect@vemarasolutions.com`}
               className={styles.telephoneButton}
             >
-              <Image
-                height={14.63}
+              {/* <Image
+                height={11.7}
                 width={14.63}
                 src="/email.png"
                 priority
                 alt=""
-              ></Image>
-              <span className="active" style={{ color: "white" }}> connect@vemarasolutions.com</span>
+              ></Image> */}
+              <span className={`${styles.emailLink} active`}> connect@vemarasolutions.com</span>
             </Link>
           </div>
         </div>
