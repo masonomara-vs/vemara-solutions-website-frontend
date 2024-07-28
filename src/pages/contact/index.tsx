@@ -19,27 +19,28 @@ const ContactIndex = () => {
         timeZone: "America/New_York",
         hour: "numeric",
         minute: "2-digit",
-        hour12: true
+        hour12: true,
       };
       const timeString = new Intl.DateTimeFormat("en-US", options).format(now);
       setCurrentTime(timeString);
 
-      // Get the current hour in EST
+      const dayOfWeek = now.toLocaleString("en-US", { timeZone: "America/New_York", weekday: "short" });
+      const isWeekend = dayOfWeek === "Sat" || dayOfWeek === "Sun";
+
       const hourOptions: Intl.DateTimeFormatOptions = {
         timeZone: "America/New_York",
         hour: "numeric",
-        hour12: false
+        hour12: false,
       };
       const currentHour = new Intl.DateTimeFormat("en-US", hourOptions).format(now);
       const currentMinute = now.getMinutes();
       const currentTimeInMinutes = parseInt(currentHour) * 60 + currentMinute;
 
-      // Define opening and closing times in minutes
       const openingTime = 9 * 60; // 9:00 AM
       const closingTime = 18 * 60; // 6:00 PM
 
-      // Check if the current time is within the operating hours
-      setAsburyParkOpen(currentTimeInMinutes >= openingTime && currentTimeInMinutes < closingTime);
+      const isOpen = !isWeekend && currentTimeInMinutes >= openingTime && currentTimeInMinutes < closingTime;
+      setAsburyParkOpen(isOpen);
     };
 
     updateTime();
