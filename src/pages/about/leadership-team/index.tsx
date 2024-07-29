@@ -5,7 +5,6 @@ import Head from 'next/head'
 import { motion } from 'framer-motion'
 import { fadeIn, textFadeUp } from '../../../../utils/motion'
 import styles from '../../../styles/home.module.css'
-import Link from 'next/link'
 import Image from 'next/image'
 import { SanityDocument } from "next-sanity";
 import { sanityFetch } from "@/sanity/client";
