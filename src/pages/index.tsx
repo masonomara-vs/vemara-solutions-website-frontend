@@ -91,6 +91,7 @@ const HeroSection = () => (
       src="/vemaraSolutionsVideoBackground.webp"
       alt="Vemara Solutions"
       fill
+      priority
       style={{ objectFit: "cover" }}
       className={styles.videoPhoto} />
     <div className={styles.heroContainer}>

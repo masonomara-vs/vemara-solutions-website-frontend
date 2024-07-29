@@ -180,7 +180,7 @@ export default function Navbar({ firstTitle, firstLink, secondTitle, secondLink,
                 <span className="active">Sitemap</span>
               </Link>
             </div> */}
-            <div className="description" style={{ color: "rgba(255,255,255,.6)", fontWeight: 500 }}>
+            <div className="description" style={{ color: "rgba(255,255,255,.6)", fontWeight: 600, marginBottom: 5 }}>
               2024 Vemara Solutions. All Rights Reserved.
             </div>
             <div className="description" style={{ color: "rgba(255,255,255,.6)", fontWeight: 400 }}>

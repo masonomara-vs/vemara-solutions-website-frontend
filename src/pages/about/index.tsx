@@ -1,11 +1,10 @@
-import React from 'react'
 import Header from '@/components/Header'
 import Navbar from '@/components/Navbar'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { fadeIn, fadeInButton, growDown, growDownSub, growRight, textFadeUp } from '../../../utils/motion'
+import { fadeIn, fadeInButton, growDownSub, textFadeUp } from '../../../utils/motion'
 import styles from '../../styles/home.module.css'
 import ProcessCard from '@/components/ProcessCard'
 
@@ -32,7 +31,7 @@ const TeamSection = () => (
             viewport={{ once: true, amount: 0 }}
           >
             <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/about/leadership-team`} >
-              <span className={`callout`}>Learn more</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
+              <span className={`callout`}>View leadership team</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
             </Link>
           </motion.div>
         </div>
@@ -168,6 +167,51 @@ const ProcessSection = () => (
 
 )
 
+const AboutSection = () => (
+  <div className={styles.contextWrapper} style={{ paddingTop: 0 }}>
+    <div className={styles.contextContainer}>
+      <div className={styles.ctaContainer} style={{ paddingTop: 32, borderTop: '1px solid rgba(7,8,8,0.1)' }}>
+        <motion.div className={styles.imageCalloutContainer} variants={fadeIn("up", "spring", 0.1, 0.8)}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0 }}>
+          <Image
+            src="/jump.gif"
+            alt="Vemara Solutions"
+            unoptimized
+            fill
+            style={{ objectFit: "cover" }} />
+        </motion.div>
+        <div className={`${styles.headerContainerLeft} ${styles.headerContainerLeftSub} ${styles.headerContainerPhotoSub}`} >
+          <div className={styles.headerContainerLeftText}>
+            <motion.p variants={textFadeUp("up", "spring", 0, 0.6)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0 }} className={` ${styles.headerContainerHeader} header`}>Creating digital products and business initiatives.</motion.p>
+            <motion.div variants={textFadeUp("up", "spring", 0, 0.6)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0 }} className="body">We are a technology consulting, design, and development agency creating create new opportunities through our strategy and service.</motion.div>
+          </div>
+          <div className={styles.headerButtonsWrapper}>
+            <motion.div
+              variants={fadeInButton("up", "spring", .3, 0.8)}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0 }}
+            >
+              <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/about/about-us`} >
+                <span className={`callout`}>About us</span><Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt=""></Image>
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+     
+      </div>
+    </div>
+  </div>
+)
+
 export default function index() {
   return (
     <div>
@@ -200,11 +244,11 @@ export default function index() {
       <Navbar firstTitle='Home' firstLink="/" secondTitle="About" />
       <Header
         label="About"
-        title="[Placeholder]"
-        subtitle="[Placeholder]" />
+        title="From digital products including mobile apps, websites, and custom software to technical solutions."
+        subtitle="Our team drives businesses towards their goals and create new opportunities through our comprehensive services." />
+      <AboutSection />
       <TeamSection />
       <ProcessSection />
-
 
     </div>
   )
