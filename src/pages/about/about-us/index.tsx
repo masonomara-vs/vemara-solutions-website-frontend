@@ -57,12 +57,12 @@ export default function index() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0 }}>
-            Founded by Mike Veit and Mason O'Mara who connected over an interest in each other's work and shared experience in leading development teams at Fortune 500 companies, developing apps and websites for startups, and providing consultation and design services for diverse businesses.          </motion.div>
+            Founded by Mike Veit and Mason O‘Mara who connected over an interest in each other‘s work and shared experience in leading development teams at Fortune 500 companies, developing apps and websites for startups, and providing consultation and design services for diverse businesses.          </motion.div>
           <motion.div className="body" variants={textFadeUp("up", "spring", 0, 0.6)}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0 }}>
-            We work with a wide range of clients across various industries, leveraging our expertise in industry-leading technology and our commitment to understanding our clients' needs. This enables us to produce creative, high-performing products that stand out.</motion.div>
+            We work with a wide range of clients across various industries, leveraging our expertise in industry-leading technology and our commitment to understanding our clients‘ needs. This enables us to produce creative, high-performing products that stand out.</motion.div>
         </div>
         <div className={`${styles.containerDesktop}`}>
           <motion.div className="body" variants={textFadeUp("up", "spring", 0, 0.6)}
@@ -80,12 +80,12 @@ export default function index() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0 }}>
-            Founded by Mike Veit and Mason O'Mara who connected over an interest in each other's work and shared experience in leading development teams at Fortune 500 companies, developing apps and websites for startups, and providing consultation and design services for diverse businesses.          </motion.div>
+            Founded by Mike Veit and Mason O‘Mara who connected over an interest in each other‘s work and shared experience in leading development teams at Fortune 500 companies, developing apps and websites for startups, and providing consultation and design services for diverse businesses.          </motion.div>
           <motion.div className="body" variants={textFadeUp("up", "spring", 0.4, 0.6)}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0 }}>
-            We work with a wide range of clients across various industries, leveraging our expertise in industry-leading technology and our commitment to understanding our clients' needs. This enables us to produce creative, high-performing products that stand out.</motion.div>
+            We work with a wide range of clients across various industries, leveraging our expertise in industry-leading technology and our commitment to understanding our clients‘ needs. This enables us to produce creative, high-performing products that stand out.</motion.div>
         </div>
       </div>
     </div>
