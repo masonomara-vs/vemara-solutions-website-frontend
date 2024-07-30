@@ -135,7 +135,7 @@ const TechSection = ({ technology }: { technology: any }) => (
             whileInView="show"
             viewport={{ once: true, amount: 0 }}
           >
-            <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/services/technologies`}>
+            <Link className="buttonPrimaryBackground buttonFullWidth" target="_top" href={`/services/technology`}>
               <span className={`callout`}>View all technologies</span>
               <Image height={12.87} width={12.87} src="/clientActionArrowWhite.svg" priority alt="" />
             </Link>
