@@ -255,8 +255,8 @@ const ContactIndex = () => {
                 <h2 className="label">Asbury Park, NJ</h2>
                 <div className={styles.timeWrapper}>
                   <span className="label">{currentTime}&nbsp;&nbsp;</span>
-                  <span className="label" style={{ color: asburyParkOpen ? '#386641' : '#A63A3A' }}>&#8226;&nbsp;</span>
-                  <span className="label" style={{ color: asburyParkOpen ? '#386641' : '#A63A3A' }}>{asburyParkOpen ? 'Open' : 'Closed'}</span>
+                  <span className="label" style={{ color: asburyParkOpen ? '#386641' : '#9c3636' }}>&#8226;&nbsp;</span>
+                  <span className="label" style={{ color: asburyParkOpen ? '#386641' : '#9c3636' }}>{asburyParkOpen ? 'Open' : 'Closed'}</span>
 
                 </div>
               </div>
