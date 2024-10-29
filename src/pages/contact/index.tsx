@@ -264,7 +264,7 @@ const ContactIndex = () => {
                 <div className="description">
                   1301 Corlies Ave, Neptune City NJ 07712
                 </div>
-                <div className="description">(732) 455-4515</div>
+                <div className="description">(732) 455-9744</div>
               </div>
             </div>
 
